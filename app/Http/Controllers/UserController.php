@@ -20,18 +20,6 @@ class UserController
         }
     }
 
-    public function getStatistic()
-    {
-        $user = auth()->user();
-
-        if ($user) {
-            return $user->userAnswerStatistic;
-        }
-
-        return null; // You might want to return null instead of an empty string if the user is not authenticated.
-    }
-
-
     public function answer(Request $request): JsonResponse
     {
         $answer = $request->input('answer');

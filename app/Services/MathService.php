@@ -24,6 +24,7 @@ class MathService
         return [
             'first' => $first,
             'second' => $second,
+            'equal' => '=',
             'userName' => UserController::getUserName(),
         ];
     }

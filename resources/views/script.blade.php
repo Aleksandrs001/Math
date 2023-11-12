@@ -1,4 +1,3 @@
-
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -7,6 +6,10 @@
 
     function submitAnswer(index) {
         var form = $('#answerForm_' + index);
+
+        // Disable the form to prevent multiple submissions
+        form.find('button').prop('disabled', true);
+
         var formData = form.serialize();
         $.ajax({
             type: 'POST',
@@ -25,6 +28,10 @@
             },
             error: function (error) {
                 console.error(error);
+            },
+            complete: function() {
+                // Enable the form after the request is complete
+                form.find('button').prop('disabled', false);
             }
         });
 
@@ -62,4 +69,3 @@
         }
     });
 </script>
-

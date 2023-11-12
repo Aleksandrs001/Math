@@ -14,8 +14,7 @@ class PlusController extends Controller
     {
         $result = MathService::countOfExample();
         foreach ($result as $key => $value) {
-            $result[$key]['operation'] = '+';
-            $result[$key]['equal'] = '=';
+            $result[$key]['operation'] = Constants::PLUS;
             $result[$key]['result'] = $result[$key]['first'] + $result[$key]['second'];
         }
 
