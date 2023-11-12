@@ -6,7 +6,7 @@
 
 
                 <!-- Navigation Links -->
-                <div class="shrink-0 flex items-center">
+                <div class="shrink-0 flex ">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('messages.dashboard') }}
                     </x-nav-link>

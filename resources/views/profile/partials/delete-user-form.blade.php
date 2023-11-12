@@ -20,7 +20,7 @@
             @method('delete')
 
             <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
-                {{ __('messages.are_you_sure_you_want_to_delete_your_account?') }}
+                {{ __('messages.are_you_sure_you_want_to_delete_your_account') }}
             </h2>
 
             <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
