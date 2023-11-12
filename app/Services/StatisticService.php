@@ -8,7 +8,7 @@ class StatisticService
 {
     public function getStatistic()
     {
-        UserAnswerStatistic::getStatistic();
+       return UserAnswerStatistic::getStatistic();
     }
 
 

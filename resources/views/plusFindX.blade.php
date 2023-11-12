@@ -37,7 +37,7 @@
                         Ты молодец!
                     </div>
                     <div>
-                        <h1>{{$r['first']}} {{$r['operation']}} X {{$r['equal']}} {{$r['result']}}</h1>
+                        <h1 style="font-size: 24px;">{{$r['first']}} {{$r['operation']}} X {{$r['equal']}} {{$r['result']}}</h1>
 
                         <form id="answerForm_{{$index}}" data-index="{{$index}}" class="answer-form">
                             @csrf

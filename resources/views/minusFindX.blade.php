@@ -24,7 +24,7 @@
 
     <main>
         <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-            <div id='minus' style=" background-color: ghostwhite; padding: 10px; color: black; border-radius: 10px;">
+            <div id='minusX' style=" background-color: ghostwhite; padding: 10px; color: black; border-radius: 10px;">
                 @foreach($res as $index => $r)
                     <div id="yellowBubble" style="display: none; background-color: yellow; padding: 10px; color: black; border-radius: 10px;">
                         Введите целое число.
@@ -37,7 +37,7 @@
                         Ты молодец!
                     </div>
                     <div>
-                        <h1>{{$r['first']}} {{$r['operation']}} X {{$r['equal']}} {{$r['result']}}</h1>
+                        <h1 style="font-size: 24px;">{{$r['first']}} {{$r['operation']}} X {{$r['equal']}} {{$r['result']}}</h1>
 
                         <form id="answerForm_{{$index}}" data-index="{{$index}}" class="answer-form">
                             @csrf

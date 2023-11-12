@@ -24,7 +24,7 @@
 
     <main>
         <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-            <div id='minus' style=" background-color: ghostwhite; padding: 10px; color: black; border-radius: 10px;">
+            <div id='minus' style="background-color: ghostwhite; padding: 10px; color: black; border-radius: 10px;">
                 @foreach($res as $index => $r)
                     <div id="yellowBubble" style="display: none; background-color: yellow; padding: 10px; color: black; border-radius: 10px;">
                         Введите целое число.
@@ -32,12 +32,11 @@
                     <div id="redBubble" style="display: none; background-color: red; padding: 10px; color: white; border-radius: 10px;">
                         Попробуй еще! Правильный ответ: {{$r['result']}}
                     </div>
-
                     <div id="greenBubble" style="display: none; background-color: green; padding: 10px; color: white; border-radius: 10px;">
                         Ты молодец!
                     </div>
                     <div>
-                        <h1>{{$r['first']}} {{$r['operation']}} {{$r['second']}} {{$r['equal']}}</h1>
+                        <h1 style="font-size: 24px;">{{$r['first']}} {{$r['operation']}} {{$r['second']}} {{$r['equal']}}</h1>
 
                         <form id="answerForm_{{$index}}" data-index="{{$index}}" class="answer-form">
                             @csrf
@@ -45,18 +44,17 @@
                             <meta name="csrf-token" content="{{ csrf_token() }}">
 
                             <label for="answer_{{$index}}"> {{$r['userName']}}, твой ответ:</label>
-                            <input type="number" id="answer_{{$index}}" name="answer" pattern="[0-9]*" value="" style="border-radius: 5px;"/>
-                            <input type="hidden" id="result_{{$index}}" name="result" value="{{$r['result']}}"/>
-                            <input type="hidden" id="result2_{{$index}}" name="competition" value="minus"/>
+                            <input type="number" id="answer_{{$index}}" name="answer" pattern="[0-9]*" value="" style="border-radius: 5px;" />
+                            <input type="hidden" id="result_{{$index}}" name="result" value="{{$r['result']}}" />
+                            <input type="hidden" id="result2_{{$index}}" name="competition" value="minus" />
                             <button type="button" onclick="submitAnswer({{$index}})">Сохранить</button>
                         </form>
                     </div>
                 @endforeach
             </div>
-
-
         </div>
     </main>
+
 </div>
 </body>
 </html>

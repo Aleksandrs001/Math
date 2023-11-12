@@ -24,7 +24,13 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    {{ __("Statistic") }}
+                    {{ __("Statistic") }}:
+                    <br>
+                    Count of played game: {{(new \App\Services\StatisticService)->getStatistic()->count ?? 'not yet'}}
+                    <br>
+                    Count of win game: {{(new \App\Services\StatisticService)->getStatistic()->win ?? 'not yet'}}
+                    <br>
+                    Count of loss game: {{(new \App\Services\StatisticService)->getStatistic()->loss ?? 'not yet'}}
                 </div>
             </div>
         </div>
