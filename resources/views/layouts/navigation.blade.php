@@ -18,13 +18,23 @@
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('index')" :active="request()->routeIs('index')">
+                    <x-nav-link :href="route('plus')" :active="request()->routeIs('plus')">
                         {{ __('Плюс') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('index')" :active="request()->routeIs('index')">
+                    <x-nav-link :href="route('minus')" :active="request()->routeIs('minus')">
                         {{ __('Минус') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('plusFindX')" :active="request()->routeIs('plusFindX')">
+                        {{ __('Плюс, найти X') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('minusFindX')" :active="request()->routeIs('minusFindX')">
+                        {{ __('Минус, найти X') }}
                     </x-nav-link>
                 </div>
             </div>

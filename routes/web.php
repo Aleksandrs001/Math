@@ -1,6 +1,9 @@
 <?php
 
-use App\Http\Controllers\indexController;
+use App\Http\Controllers\MinusFindXController;
+use App\Http\Controllers\PlusController;
+use App\Http\Controllers\MinusController;
+use App\Http\Controllers\PlusFindXController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,14 +33,17 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
-//Route::put('/answer', 'IndexController@answer')->name('answer');
 
-Route::get('/', [IndexController::class, 'index']);
-//Route::match(['post', 'put'], '/answer', 'IndexController@answer')->name('answer');
+Route::get('/plus', [PlusController::class, 'plus'])->name('plus');
+Route::post('/plus', [PlusController::class, 'answer'])->name('answer');
 
-//Route::put('/answer', [IndexController::class, 'answer'])->name('answer');
-//Route::get('/refresh', [IndexController::class, 'refresh'])->name('refresh');
-Route::get('/start', [IndexController::class, 'index'])->name('index');
-Route::post('/start', [IndexController::class, 'answer'])->name('answer');
+Route::get('/minus', [MinusController::class, 'minus'])->name('minus');
+Route::post('/minus', [MinusController::class, 'answer'])->name('answer');
+
+Route::get('/plusFindX', [PlusFindXController::class, 'plusFindX'])->name('plusFindX');
+Route::post('/plusFindX', [PlusFindXController::class, 'answer'])->name('answer');
+
+Route::get('/minusFindX', [MinusFindXController::class, 'minusFindX'])->name('minusFindX');
+Route::post('/minusFindX', [MinusFindXController::class, 'answer'])->name('answer');
 
 

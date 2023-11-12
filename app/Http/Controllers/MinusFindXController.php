@@ -5,20 +5,18 @@ namespace App\Http\Controllers;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
-
-class IndexController
+class MinusFindXController
 {
     const MAX_SUM = 100;
-
-    function index(): Application|Factory|View|\Illuminate\Foundation\Application
+    public function minusFindX()
     {
         $res = $this->test();
-        return view('start')->with([
-            'res'=> $res,
+        return view('plusFindX')->with([
+            'res' => $res,
         ]);
     }
 
@@ -31,9 +29,9 @@ class IndexController
         return $res;
     }
 
+
     public function answer(Request $request): JsonResponse
     {
-        info('Request data: ' . json_encode($request->all()));
         $answer = $request->input('answer');
         $result = $request->input('result');
 
@@ -59,17 +57,14 @@ class IndexController
     {
         $maxSum = self::MAX_SUM;
 
-        // Generate $first in the range [1, $maxSum - 1]
-        $first = rand(1, $maxSum - 1);
+        $first = rand(1, $maxSum);
+        $second = rand(1, $first - 1);  // Ensure $second is less than or equal to $first
 
-        // Generate $second in the range [1, $maxSum - $first]
-        $second = rand(1, $maxSum - $first);
-
-        $result = $first + $second;
+        $result = $first - $second;
 
         return [
             'first' => $first,
-            'operation' => '+',
+            'operation' => '-',
             'second' => $second,
             'equal' => '=',
             'result' => $result,
@@ -86,7 +81,4 @@ class IndexController
             return '';
         }
     }
-
-
-
 }
