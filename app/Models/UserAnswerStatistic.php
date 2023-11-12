@@ -38,4 +38,8 @@ class UserAnswerStatistic extends Model
         'plus_x_win',
         'plus_x_loss',
     ];
+    public function belongsTo($related, $foreignKey = null, $ownerKey = null, $relation = null)
+    {
+
+    }
 }

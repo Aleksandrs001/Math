@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\Log;
 
 
 class MinusController
@@ -12,6 +14,7 @@ class MinusController
     const MAX_SUM = 100;
     public function minus(): Application|Factory|View|\Illuminate\Foundation\Application
     {
+        Log::debug((new UserController)->getStatistic());
         $res = $this->test();
         return view('minus')->with([
             'res'=> $res,
