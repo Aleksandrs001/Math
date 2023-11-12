@@ -39,12 +39,12 @@ Route::get('/plus', [PlusController::class, 'plus'])->name('plus');
 Route::post('/plus', [UserController::class, 'answer'])->name('answer');
 
 Route::get('/minus', [MinusController::class, 'minus'])->name('minus');
-//Route::post('/minus', [MinusController::class, 'answer'])->name('answer');
+Route::post('/minus', [UserController::class, 'answer'])->name('answer');
 
 Route::get('/plusFindX', [PlusFindXController::class, 'plusFindX'])->name('plusFindX');
-//Route::post('/plusFindX', [PlusFindXController::class, 'answer'])->name('answer');
+Route::post('/plusFindX', [UserController::class, 'answer'])->name('answer');
 
 Route::get('/minusFindX', [MinusFindXController::class, 'minusFindX'])->name('minusFindX');
-//Route::post('/minusFindX', [MinusFindXController::class, 'answer'])->name('answer');
+Route::post('/minusFindX', [UserController::class, 'answer'])->name('answer');
 
 
