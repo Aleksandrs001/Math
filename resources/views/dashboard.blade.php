@@ -26,11 +26,11 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     {{ __("messages.statistic") }}:
                     <br>
-                    {{ __("messages.count_played_game") }} {{ (new \App\Services\StatisticService)->getStatistic()->count ?? 'not yet' }}
+                    {{ __("messages.count_played_game") }} {{ (new \App\Services\StatisticService)->getStatistic()->count ?? __('messages.not_yet') }}
                     <br>
-                    {{ __("messages.count_win_game") }} {{ (new \App\Services\StatisticService)->getStatistic()->win ?? 'not yet' }}
+                    {{ __("messages.count_win_game") }} {{ (new \App\Services\StatisticService)->getStatistic()->win ?? __('messages.not_yet') }}
                     <br>
-                    {{ __("messages.count_loss_game") }} {{ (new \App\Services\StatisticService)->getStatistic()->loss ?? 'not yet' }}
+                    {{ __("messages.count_loss_game") }} {{ (new \App\Services\StatisticService)->getStatistic()->loss ?? __('messages.not_yet') }}
                 </div>
             </div>
         </div>
