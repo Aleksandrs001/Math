@@ -68,18 +68,8 @@ class PlusFindXController
             'second' => $second,
             'equal' => '=',
             'result' => $result,
-            'userName' => $this->getUserName(),
+            'userName' => UserController::getUserName(),
         ];
-    }
-
-    public function getUserName()
-    {
-        $user = auth()->user();
-        if ($user) {
-            return $user->name;
-        } else {
-            return '';
-        }
     }
 
 }
