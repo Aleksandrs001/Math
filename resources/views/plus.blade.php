@@ -27,14 +27,14 @@
             <div id='plus' style=" background-color: ghostwhite; padding: 10px; color: black;  border-radius: 10px;">
                 @foreach($res as $index => $r)
                     <div id="yellowBubble" style="display: none; background-color: yellow; padding: 10px; color: black; border-radius: 10px;">
-                        Введите целое число.
+                        {{__("Введите целое число.")}}
                     </div>
                     <div id="redBubble" style="display: none; background-color: red; padding: 10px; color: white; border-radius: 10px;">
-                        Попробуй еще! Правильный ответ: {{$r['result']}}
+                        {{__("Попробуй еще! Правильный ответ:")}} {{$r['result']}}
                     </div>
 
                     <div id="greenBubble" style="display: none; background-color: green; padding: 10px; color: white; border-radius: 10px;">
-                        Ты молодец!
+                        {{__("Ты молодец!")}}
                     </div>
                     <div>
                         <h1 style="font-size: 24px;">{{$r['first']}} {{$r['operation']}} {{$r['second']}} {{$r['equal']}}</h1>
