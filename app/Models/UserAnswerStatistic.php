@@ -24,6 +24,18 @@ class UserAnswerStatistic extends Model
         'win',
         'loss',
         'updated_at',
-        'created_at'
+        'created_at',
+        'minus_count',
+        'minus_win',
+        'minus_loss',
+        'plus_count',
+        'plus_win',
+        'plus_loss',
+        'minus_x_count',
+        'minus_x_win',
+        'minus_x_loss',
+        'plus_x_count',
+        'plus_x_win',
+        'plus_x_loss',
     ];
 }
