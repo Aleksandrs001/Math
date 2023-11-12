@@ -31,20 +31,22 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+
+    Route::get('/plus', [PlusController::class, 'plus'])->name('plus');
+    Route::post('/plus', [UserController::class, 'answer'])->name('answer');
+
+    Route::get('/minus', [MinusController::class, 'minus'])->name('minus');
+    Route::post('/minus', [UserController::class, 'answer'])->name('answer');
+
+    Route::get('/plusFindX', [PlusFindXController::class, 'plusFindX'])->name('plusFindX');
+    Route::post('/plusFindX', [UserController::class, 'answer'])->name('answer');
+
+    Route::get('/minusFindX', [MinusFindXController::class, 'minusFindX'])->name('minusFindX');
+    Route::post('/minusFindX', [UserController::class, 'answer'])->name('answer');
+
 });
 
 require __DIR__.'/auth.php';
-
-Route::get('/plus', [PlusController::class, 'plus'])->name('plus');
-Route::post('/plus', [UserController::class, 'answer'])->name('answer');
-
-Route::get('/minus', [MinusController::class, 'minus'])->name('minus');
-Route::post('/minus', [UserController::class, 'answer'])->name('answer');
-
-Route::get('/plusFindX', [PlusFindXController::class, 'plusFindX'])->name('plusFindX');
-Route::post('/plusFindX', [UserController::class, 'answer'])->name('answer');
-
-Route::get('/minusFindX', [MinusFindXController::class, 'minusFindX'])->name('minusFindX');
-Route::post('/minusFindX', [UserController::class, 'answer'])->name('answer');
 
 

@@ -3,46 +3,22 @@
 namespace App\Http\Controllers;
 
 
+use App\Services\MathService;
+
 class PlusFindXController
 {
-    const MAX_SUM = 100;
     public function plusFindX()
     {
-        $res = $this->test();
-        return view('plusFindX')->with([
-            'res' => $res,
-        ]);
-    }
-
-    function test(): array
-    {
-        for ($i = 0; $i < 1; $i++) {
-            $res[$i] = $this->generate();
+        $result = MathService::countOfExample();
+        foreach ($result as $key => $value) {
+            $result[$key]['operation'] = '+';
+            $result[$key]['equal'] = '=';
+            $result[$key]['result'] = $result[$key]['first'] + $result[$key]['second'];
         }
 
-        return $res;
+        return view('plusFindX')->with([
+            'res' => $result,
+        ]);
+
     }
-
-    public function generate(): array
-    {
-        $maxSum = self::MAX_SUM;
-
-        // Generate $first in the range [1, $maxSum - 1]
-        $first = rand(1, $maxSum - 1);
-
-        // Generate $second in the range [1, $maxSum - $first]
-        $second = rand(1, $maxSum - $first);
-
-        $result = $first + $second;
-
-        return [
-            'first' => $first,
-            'operation' => '+',
-            'second' => $second,
-            'equal' => '=',
-            'result' => $result,
-            'userName' => UserController::getUserName(),
-        ];
-    }
-
 }
