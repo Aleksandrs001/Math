@@ -35,14 +35,13 @@ class UserController
             );
             $this->updateStatistics($request, $userAnswerStatistic, $answer, $result);
             if ($answer == $result) {
-                return response()->json(['message' => 'Ты молодец!']);
+                return response()->json(['message' => true]);
             } else {
-                return response()->json(['message' => 'Неправильно!']);
+                return response()->json(['message' => false]);
             }
         } catch (\Exception $e) {
             Log::error('Error in answer method: ' . $e->getMessage());
             Log::error($e->getTraceAsString());
-
             return response()->json(['message' => 'Error'], 500);
         }
     }
@@ -50,7 +49,6 @@ class UserController
     private function updateStatistics(Request $request, UserAnswerStatistic $userAnswerStatistic, $answer, $result)
     {
         $competition = $request->input('competition');
-Log::debug('competition: ' . $competition);
         switch ($competition) {
             case 'plusX':
                 $this->updatePlusXStatistics($userAnswerStatistic, $answer, $result);

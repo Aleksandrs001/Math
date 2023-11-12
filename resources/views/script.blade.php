@@ -15,10 +15,9 @@
             type: 'POST',
             url: '{{ route('answer') }}',
             data: formData + '&_token=' + $('meta[name="csrf-token"]').attr('content'),
-            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
             dataType: 'json',
             success: function (response) {
-                if (response.message === 'Ты молодец!') {
+                if (response.message) {
                     showGreenBubble();
                 } else if (response.message === 'Введите целое число.') {
                     showYellowBubble();
@@ -26,13 +25,6 @@
                     showRedBubble();
                 }
             },
-            error: function (error) {
-                console.error(error);
-            },
-            complete: function() {
-                // Enable the form after the request is complete
-                form.find('button').prop('disabled', false);
-            }
         });
 
         function showGreenBubble() {
