@@ -1,9 +1,14 @@
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<!-- ... (your existing HTML) ... -->
 
 <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Focus on the answer input of the first form when the page loads
+        $('#answer_0').focus();
+    });
+
     function submitAnswer(index) {
-        console.log('here')
         var form = $('#answerForm_' + index);
         var formData = form.serialize();
 
@@ -13,7 +18,7 @@
             data: formData + '&_token=' + $('meta[name="csrf-token"]').attr('content'),
             contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
             dataType: 'json',
-            success: function(response) {
+            success: function (response) {
                 if (response.message === 'Ты молодец!') {
                     showGreenBubble();
                 } else if (response.message === 'Введите целое число.') {
@@ -22,7 +27,7 @@
                     showRedBubble();
                 }
             },
-            error: function(error) {
+            error: function (error) {
                 console.error(error);
             }
         });
@@ -30,7 +35,7 @@
         function showGreenBubble() {
             $('#greenBubble').show();
 
-            setTimeout(function() {
+            setTimeout(function () {
                 $('#greenBubble').hide();
                 location.reload();
             }, 3000);
@@ -39,26 +44,26 @@
         function showRedBubble() {
             $('#redBubble').show();
 
-            setTimeout(function() {
+            setTimeout(function () {
                 $('#redBubble').hide();
                 location.reload();
             }, 5000);
         }
+
+        function showYellowBubble() {
+            $('#yellowBubble').show();
+
+            setTimeout(function () {
+                $('#yellowBubble').hide();
+            }, 5000);
+        }
     }
 
-    function showYellowBubble() {
-        $('#yellowBubble').show();
-
-        setTimeout(function() {
-            $('#yellowBubble').hide();
-
-        }, 5000);
-    }
-
-    $('form.answer-form').on('keydown', function(e) {
+    $('form.answer-form').on('keydown', function (e) {
         if (e.keyCode === 13) {
             e.preventDefault();
             submitAnswer($(this).data('index'));
         }
     });
 </script>
+
