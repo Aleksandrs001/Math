@@ -58,7 +58,7 @@ class MinusFindXController
         $maxSum = self::MAX_SUM;
 
         $first = rand(1, $maxSum);
-        $second = rand(1, $first - 1);  // Ensure $second is less than or equal to $first
+        $second = rand(1, $first - 1);
 
         $result = $first - $second;
 
