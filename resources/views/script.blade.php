@@ -1,17 +1,13 @@
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<!-- ... (your existing HTML) ... -->
-
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        // Focus on the answer input of the first form when the page loads
         $('#answer_0').focus();
     });
 
     function submitAnswer(index) {
         var form = $('#answerForm_' + index);
         var formData = form.serialize();
-
         $.ajax({
             type: 'POST',
             url: '{{ route('answer') }}',

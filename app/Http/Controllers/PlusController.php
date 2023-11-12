@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\UserAnswerStatistic;
+use Illuminate\Auth\Events\Login;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
@@ -30,30 +33,6 @@ class PlusController
 
         return $res;
     }
-
-    public function answer(Request $request): JsonResponse
-    {
-        info('Request data: ' . json_encode($request->all()));
-        $answer = $request->input('answer');
-        $result = $request->input('result');
-
-        // Validate if the answer is an integer
-        if (!is_numeric($answer) || floor($answer) != $answer) {
-            return response()->json(['message' => 'Введите целое число.']);
-        }
-
-        try {
-            if ($answer == $result) {
-                return response()->json(['message' => 'Ты молодец!']);
-            } else {
-                return response()->json(['message' => 'Постарайся еще! Правильный ответ: ' . $result]);
-            }
-        } catch (\Exception $e) {
-            Log::error('Error in answer method: ' . $e->getMessage());
-            return response()->json(['message' => 'Error'], 500);
-        }
-    }
-
 
     public function generate(): array
     {

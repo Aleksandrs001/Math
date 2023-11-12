@@ -26,30 +26,6 @@ class PlusFindXController
         return $res;
     }
 
-    public function answer(Request $request): JsonResponse
-    {
-        info('Request data: ' . json_encode($request->all()));
-        $answer = $request->input('answer');
-        $result = $request->input('result');
-
-        // Validate if the answer is an integer
-        if (!is_numeric($answer) || floor($answer) != $answer) {
-            return response()->json(['message' => 'Введите целое число.']);
-        }
-
-        try {
-            if ($answer == $result) {
-                return response()->json(['message' => 'Ты молодец!']);
-            } else {
-                return response()->json(['message' => 'Постарайся еще! Правильный ответ: ' . $result]);
-            }
-        } catch (\Exception $e) {
-            Log::error('Error in answer method: ' . $e->getMessage());
-            return response()->json(['message' => 'Error'], 500);
-        }
-    }
-
-
     public function generate(): array
     {
         $maxSum = self::MAX_SUM;
