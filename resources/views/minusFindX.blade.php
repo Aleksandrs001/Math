@@ -27,14 +27,13 @@
             <div id='minusX' style=" background-color: ghostwhite; padding: 10px; color: black; border-radius: 10px;">
                 @foreach($res as $index => $r)
                     <div id="yellowBubble" style="display: none; background-color: yellow; padding: 10px; color: black; border-radius: 10px;">
-                        {{__("Введите целое число.")}}
+                        {{__("messages.enter_integer")}}
                     </div>
                     <div id="redBubble" style="display: none; background-color: red; padding: 10px; color: white; border-radius: 10px;">
-                        {{__("Попробуй еще! Правильный ответ:")}} {{$r['second']}}
+                        {{__("messages.try_again")}} {{$r['result']}}
                     </div>
-
                     <div id="greenBubble" style="display: none; background-color: green; padding: 10px; color: white; border-radius: 10px;">
-                        {{__("Ты молодец!")}}
+                        {{__("messages.you_are_right")}}
                     </div>
                     <div>
                         <h1 style="font-size: 24px;">{{$r['first']}} {{$r['operation']}} X {{$r['equal']}} {{$r['result']}}</h1>
@@ -44,11 +43,11 @@
                             @method('POST')
                             <meta name="csrf-token" content="{{ csrf_token() }}">
 
-                            <label for="answer_{{$index}}"> {{$r['userName']}}, твой ответ:</label>
+                            <label for="answer_{{$index}}"> {{$r['userName']}}, {{__('messages.your_answer')}}</label>
                             <input type="number" id="answer_{{$index}}" name="answer" pattern="[0-9]*" value="" style="border-radius: 5px;"/>
                             <input type="hidden" id="result_{{$index}}" name="result" value="{{$r['second']}}"/>
                             <input type="hidden" id="result2_{{$index}}" name="competition" value="minusX"/>
-                            <button type="button" onclick="submitAnswer({{$index}})">Сохранить</button>
+                            <button type="button" onclick="submitAnswer({{$index}})">{{__('messages.submit')}}</button>
                         </form>
                     </div>
                 @endforeach
