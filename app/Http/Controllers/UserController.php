@@ -43,14 +43,7 @@ class UserController
         try {
             $userAnswerStatistic = UserAnswerStatistic::updateOrCreate(
                 ['user_id' => $request->user()->id],
-                [
-                    'user_id' => $request->user()->id,
-                    'count' => DB::raw('count + 1'),
-                    'win' => DB::raw($answer == $result ? 'win + 1' : 'win'),
-                    'loss' => DB::raw($answer == $result ? 'loss' : 'loss + 1'),
-                ]
             );
-
             $this->updateStatistics($request, $userAnswerStatistic, $answer, $result);
             if ($answer == $result) {
                 return response()->json(['message' => 'Ты молодец!']);
@@ -68,7 +61,7 @@ class UserController
     private function updateStatistics(Request $request, UserAnswerStatistic $userAnswerStatistic, $answer, $result)
     {
         $competition = $request->input('competition');
-
+Log::debug('competition: ' . $competition);
         switch ($competition) {
             case 'plusX':
                 $this->updatePlusXStatistics($userAnswerStatistic, $answer, $result);
@@ -90,11 +83,14 @@ class UserController
     private function updatePlusXStatistics(UserAnswerStatistic $userAnswerStatistic, $answer, $result)
     {
         $userAnswerStatistic->plus_x_count += 1;
+        $userAnswerStatistic->count += 1;
 
         if ($answer == $result) {
             $userAnswerStatistic->plus_x_win += 1;
+            $userAnswerStatistic->win += 1;
         } else {
             $userAnswerStatistic->plus_x_loss += 1;
+            $userAnswerStatistic->loss += 1;
         }
 
         $userAnswerStatistic->save();
@@ -103,11 +99,16 @@ class UserController
     private function updateMinusXStatistics(UserAnswerStatistic $userAnswerStatistic, $answer, $result)
     {
         $userAnswerStatistic->minus_x_count += 1;
+        $userAnswerStatistic->count += 1;
 
         if ($answer == $result) {
             $userAnswerStatistic->minus_x_win += 1;
+            $userAnswerStatistic->win += 1;
+
+
         } else {
             $userAnswerStatistic->minus_x_loss += 1;
+            $userAnswerStatistic->loss += 1;
         }
 
         $userAnswerStatistic->save();
@@ -116,11 +117,16 @@ class UserController
     private function updatePlusStatistics(UserAnswerStatistic $userAnswerStatistic, $answer, $result)
     {
         $userAnswerStatistic->plus_count += 1;
+        $userAnswerStatistic->count += 1;
 
         if ($answer == $result) {
             $userAnswerStatistic->plus_win += 1;
+            $userAnswerStatistic->win += 1;
+
         } else {
             $userAnswerStatistic->plus_loss += 1;
+            $userAnswerStatistic->win += 1;
+
         }
 
         $userAnswerStatistic->save();
@@ -129,11 +135,16 @@ class UserController
     private function updateMinusStatistics(UserAnswerStatistic $userAnswerStatistic, $answer, $result)
     {
         $userAnswerStatistic->minus_count += 1;
+        $userAnswerStatistic->count += 1;
+
 
         if ($answer == $result) {
             $userAnswerStatistic->minus_win += 1;
+            $userAnswerStatistic->win += 1;
+
         } else {
             $userAnswerStatistic->minus_loss += 1;
+            $userAnswerStatistic->loss += 1;
         }
 
         $userAnswerStatistic->save();
