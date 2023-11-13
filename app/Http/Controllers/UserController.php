@@ -46,118 +46,62 @@ class UserController
         }
     }
 
-    private function updateStatistics(Request $request, UserAnswerStatistic $userAnswerStatistic, $answer, $result)
+    private function updateStatistics(Request $request, UserAnswerStatistic $userAnswerStatistic, $answer, $result): void
     {
         $competition = $request->input('competition');
         switch ($competition) {
             case 'plusX':
-                $this->updatePlusXStatistics($userAnswerStatistic, $answer, $result);
+                $count = 'plus_x_count';
+                $win = 'plus_x_win';
+                $loss = 'plus_x_loss';
+                $this->updateStatisticsInDB($userAnswerStatistic, $answer, $result, $count, $win, $loss);
                 break;
             case 'minusX':
-                $this->updateMinusXStatistics($userAnswerStatistic, $answer, $result);
+                $count = 'minus_x_count';
+                $win = 'minus_x_win';
+                $loss = 'minus_x_loss';
+                $this->updateStatisticsInDB($userAnswerStatistic, $answer, $result, $count, $win, $loss);
                 break;
             case 'plus':
-                $this->updatePlusStatistics($userAnswerStatistic, $answer, $result);
+                $count = 'plus_count';
+                $win = 'plus_win';
+                $loss = 'plus_loss';
+                $this->updateStatisticsInDB($userAnswerStatistic, $answer, $result, $count, $win, $loss);
                 break;
             case 'minus':
-                $this->updateMinusStatistics($userAnswerStatistic, $answer, $result);
+                $count = 'minus_count';
+                $win = 'minus_win';
+                $loss = 'minus_loss';
+                $this->updateStatisticsInDB($userAnswerStatistic, $answer, $result, $count, $win, $loss);
                 break;
             case 'multiply':
-                $this->updateMultiplyStatistics($userAnswerStatistic, $answer, $result);
+                $count = 'multiply_count';
+                $win = 'multiply_win';
+                $loss = 'multiply_loss';
+                $this->updateStatisticsInDB($userAnswerStatistic, $answer, $result, $count, $win, $loss);
                 break;
             case 'divide':
-                $this->updateDivideStatistics($userAnswerStatistic, $answer, $result);
+                $count = 'divide_count';
+                $win = 'divide_win';
+                $loss = 'divide_loss';
+                $this->updateStatisticsInDB($userAnswerStatistic, $answer, $result, $count, $win, $loss);
                 break;
             default:
                 break;
         }
     }
 
-    private function updatePlusXStatistics(UserAnswerStatistic $userAnswerStatistic, $answer, $result)
+    private function updateStatisticsInDB(UserAnswerStatistic $userAnswerStatistic, $answer, $result, $count, $win, $loss): void
     {
-        $userAnswerStatistic->plus_x_count += 1;
+        $userAnswerStatistic->$count += 1;
         $userAnswerStatistic->count += 1;
         if ($answer == $result) {
-            $userAnswerStatistic->plus_x_win += 1;
+            $userAnswerStatistic->$win += 1;
             $userAnswerStatistic->win += 1;
         } else {
-            $userAnswerStatistic->plus_x_loss += 1;
+            $userAnswerStatistic->$loss += 1;
             $userAnswerStatistic->loss += 1;
         }
         $userAnswerStatistic->save();
     }
-
-    private function updateMinusXStatistics(UserAnswerStatistic $userAnswerStatistic, $answer, $result)
-    {
-        $userAnswerStatistic->minus_x_count += 1;
-        $userAnswerStatistic->count += 1;
-        if ($answer == $result) {
-            $userAnswerStatistic->minus_x_win += 1;
-            $userAnswerStatistic->win += 1;
-        } else {
-            $userAnswerStatistic->minus_x_loss += 1;
-            $userAnswerStatistic->loss += 1;
-        }
-        $userAnswerStatistic->save();
-    }
-
-    private function updatePlusStatistics(UserAnswerStatistic $userAnswerStatistic, $answer, $result)
-    {
-        $userAnswerStatistic->plus_count += 1;
-        $userAnswerStatistic->count += 1;
-
-        if ($answer == $result) {
-            $userAnswerStatistic->plus_win += 1;
-            $userAnswerStatistic->win += 1;
-        } else {
-            $userAnswerStatistic->plus_loss += 1;
-            $userAnswerStatistic->win += 1;
-        }
-        $userAnswerStatistic->save();
-    }
-
-    private function updateMinusStatistics(UserAnswerStatistic $userAnswerStatistic, $answer, $result)
-    {
-        $userAnswerStatistic->minus_count += 1;
-        $userAnswerStatistic->count += 1;
-        if ($answer == $result) {
-            $userAnswerStatistic->minus_win += 1;
-            $userAnswerStatistic->win += 1;
-
-        } else {
-            $userAnswerStatistic->minus_loss += 1;
-            $userAnswerStatistic->loss += 1;
-        }
-        $userAnswerStatistic->save();
-    }
-
-    private function updateDivideStatistics(UserAnswerStatistic $userAnswerStatistic, $answer, $result)
-    {
-        $userAnswerStatistic->divide_count += 1;
-        $userAnswerStatistic->count += 1;
-        if ($answer == $result) {
-            $userAnswerStatistic->divide_win += 1;
-            $userAnswerStatistic->win += 1;
-
-        } else {
-            $userAnswerStatistic->divide_loss += 1;
-            $userAnswerStatistic->loss += 1;
-        }
-        $userAnswerStatistic->save();
-    }
-
-    private function updateMultiplyStatistics(UserAnswerStatistic $userAnswerStatistic, $answer, $result)
-    {
-        $userAnswerStatistic->multiply_count += 1;
-        $userAnswerStatistic->count += 1;
-        if ($answer == $result) {
-            $userAnswerStatistic->multiply_win += 1;
-            $userAnswerStatistic->win += 1;
-        } else {
-            $userAnswerStatistic->multiply_loss += 1;
-            $userAnswerStatistic->loss += 1;
-        }
-        $userAnswerStatistic->save();
-    }
-
 }
