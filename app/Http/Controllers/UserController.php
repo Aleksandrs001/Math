@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\UserAnswerStatistic;
 use App\Services\UserService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 
 class UserController
 {
@@ -31,9 +29,6 @@ class UserController
             $competition = $request->input('competition');
             $user_id = $request->user()->id;
 
-            if (!is_numeric($answer) || floor($answer) != $answer) {
-                return response()->json(['message' => 'Введите целое число.'], 422);
-            }
             return (new UserService)->answer($answer,$result,$competition,$user_id);
         }
 

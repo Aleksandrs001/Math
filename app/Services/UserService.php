@@ -10,6 +10,10 @@ class UserService
 {
     public function answer($answer,$result, $competition, $user_id): JsonResponse
     {
+        if (!is_numeric($answer) || floor($answer) != $answer) {
+            return response()->json(['message' => 'Введите целое число.'], 422);
+        }
+
         try {
             $userAnswerStatistic = UserAnswerStatistic::updateOrCreate(['user_id' => $user_id ]);
             $this->updateStatistics($userAnswerStatistic, $answer, $result, $competition);

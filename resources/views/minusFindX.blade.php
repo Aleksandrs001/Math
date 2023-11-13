@@ -38,7 +38,7 @@
                     <div>
                         <h1 style="font-size: 24px;">{{$r['first']}} {{$r['operation']}} X {{$r['equal']}} {{$r['result']}}</h1>
 
-                        <form id="answerForm_{{$index}}" data-index="{{$index}}" class="answer-form">
+                        <form id="answerForm_{{$index}}" data-index="{{$index}}" class="answer-form" autocomplete="off">
                             @csrf
                             @method('POST')
                             <meta name="csrf-token" content="{{ csrf_token() }}">
