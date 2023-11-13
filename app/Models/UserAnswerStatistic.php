@@ -37,6 +37,13 @@ class UserAnswerStatistic extends Model
         'plus_x_count',
         'plus_x_win',
         'plus_x_loss',
+        'divide_count',
+        'divide_win',
+        'divide_loss',
+        'multiply_count',
+        'multiply_win',
+        'multiply_loss',
+
     ];
    static function getStatistic()
    {
