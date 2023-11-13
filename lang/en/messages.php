@@ -46,4 +46,6 @@ return [
     'once_your_account_is_deleted_all_of_its_resources_and_data_will_be_permanently_deleted_please_enter_your_password_to_confirm_you_would_like_to_permanently_delete_your_account'=>"Once your account is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account.",
     'profile' => 'Profile',
     'not_yet' => 'Not yet results',
+    'multiply' => 'Multiply',
+    'divide' => 'Divide',
 ];

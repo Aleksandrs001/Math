@@ -46,5 +46,7 @@ return [
     'once_your_account_is_deleted_all_of_its_resources_and_data_will_be_permanently_deleted_please_enter_your_password_to_confirm_you_would_like_to_permanently_delete_your_account'=>"Kad jūsu konts tiks dzēsts, visi tā resursi un dati tiks neatgriezeniski izdzēsti. Lūdzu, ievadiet savu paroli, lai apstiprinātu, ka vēlaties neatgriezeniski dzēst savu kontu.",
     'not_yet' => 'Vēl nav rezultātu',
     'profile' => 'Profils',
+    'multiply' => 'Reizināt',
+    'divide' => 'Dalīt',
 ];
 

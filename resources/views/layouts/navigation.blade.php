@@ -31,6 +31,16 @@
                         {{ __('messages.minus_find_x') }}
                     </x-nav-link>
                 </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('multiply')" :active="request()->routeIs('multiply')">
+                        {{ __('messages.multiply') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('divide')" :active="request()->routeIs('divide')">
+                        {{ __('messages.divide') }}
+                    </x-nav-link>
+                </div>
             </div>
 
 

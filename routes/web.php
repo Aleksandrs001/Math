@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\DivideController;
 use App\Http\Controllers\MinusFindXController;
+use App\Http\Controllers\MultiplyController;
 use App\Http\Controllers\PlusController;
 use App\Http\Controllers\MinusController;
 use App\Http\Controllers\PlusFindXController;
@@ -46,6 +48,12 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/minusFindX', [MinusFindXController::class, 'minusFindX'])->name('minusFindX');
     Route::post('/minusFindX', [UserController::class, 'answer'])->name('answer');
+
+    Route::get('/multiply', [MultiplyController::class, 'multiply'])->name('multiply');
+    Route::post('/multiply', [UserController::class, 'answer'])->name('answer');
+
+    Route::get('/divide', [DivideController::class, 'divide'])->name('divide');
+    Route::post('/divide', [UserController::class, 'answer'])->name('answer');
 
     Route::get('/change-locale/{locale}', [LocaleController::class, 'changeLocale'])->name('change.locale');
 

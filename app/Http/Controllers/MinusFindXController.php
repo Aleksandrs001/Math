@@ -8,7 +8,7 @@ class MinusFindXController
 {
     public function minusFindX()
     {
-            $result = MathService::countOfExample();
+            $result = MathService::countOfExample(Constants::MINUS);
             foreach ($result as $key => $value)
             {
                 $result[$key]['operation'] = Constants::MINUS;

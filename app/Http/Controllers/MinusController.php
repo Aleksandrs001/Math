@@ -13,16 +13,18 @@ class MinusController
     const MAX_SUM = 100;
     public function minus(): Application|Factory|View|\Illuminate\Foundation\Application
     {
-        $result = MathService::countOfExample();
+        $result = MathService::countOfExample(Constants::MINUS);
         foreach ($result as $key => $value)
         {
             $result[$key]['operation'] = Constants::MINUS;
             $result[$key]['result'] = $result[$key]['first'] - $result[$key]['second'];
         }
 
-        return view('minus')->with([
+        return view('minus')->with(
+            [
             'res'=> $result,
-        ]);
+            ]
+        );
     }
 
 }
