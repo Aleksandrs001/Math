@@ -38,17 +38,14 @@ class MathService
 
         $first = rand(1, $maxSum);
 
-        // Ensure second operand is less than or equal to the first for subtraction
         $second = ($operation == Constants::MINUS) ? rand(1, $first) : rand(1, $maxSum);
 
-        // Ensure division result is an integer
         if ($operation == Constants::DIVIDE) {
             $divisors = array_filter(range(1, $first), function ($divisor) use ($first) {
                 return $first % $divisor == 0;
             });
             $second = $divisors[array_rand($divisors)];
         } else {
-            // Limit operands for multiplication and division to the range of 1 to 10
             $first = rand(1, rand(1, 10));
             $second = rand(1, rand(1, 10));
         }

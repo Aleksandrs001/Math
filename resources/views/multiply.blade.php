@@ -46,7 +46,7 @@
                             <label for="answer_{{$index}}"> {{$r['userName']}}, {{__('messages.your_answer')}}</label>
                             <input type="number" id="answer_{{$index}}" name="answer" pattern="[0-9]*" value="" style="border-radius: 5px;" />
                             <input type="hidden" id="result_{{$index}}" name="result" value="{{$r['result']}}" />
-                            <input type="hidden" id="result2_{{$index}}" name="competition" value="minus" />
+                            <input type="hidden" id="result2_{{$index}}" name="competition" value="multiply" />
                             <button type="button" onclick="submitAnswer({{$index}})">{{__('messages.submit')}}</button>
                         </form>
                     </div>
