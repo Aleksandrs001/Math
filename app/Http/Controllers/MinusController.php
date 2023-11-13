@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\MathService;
+use App\Services\MinusService;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -13,13 +13,7 @@ class MinusController
     const MAX_SUM = 100;
     public function minus(): Application|Factory|View|\Illuminate\Foundation\Application
     {
-        $result = MathService::countOfExample(Constants::MINUS);
-        foreach ($result as $key => $value)
-        {
-            $result[$key]['operation'] = Constants::MINUS;
-            $result[$key]['result'] = $result[$key]['first'] - $result[$key]['second'];
-        }
-
+        $result = MinusService::minusFunction();
         return view('minus')->with(
             [
             'res'=> $result,

@@ -2,21 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\MathService;
+use App\Services\MinusFindXService;
 
 class MinusFindXController
 {
     public function minusFindX()
     {
-            $result = MathService::countOfExample(Constants::MINUS);
-            foreach ($result as $key => $value)
-            {
-                $result[$key]['operation'] = Constants::MINUS;
-                $result[$key]['result'] = $result[$key]['first'] - $result[$key]['second'];
-            }
-
-            return view('minusFindX')->with([
+            $result = MinusFindXService::minusFindXFunction();
+            return view('minusFindX')->with(
+                [
                 'res'=> $result,
-            ]);
+                ]
+            );
     }
 }

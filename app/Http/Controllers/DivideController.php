@@ -11,7 +11,6 @@ class DivideController
     public function divide()
     {
         $result = DivideService::divideFunction();
-
         return view('divide')->with(
             [
                 'res' => $result,
