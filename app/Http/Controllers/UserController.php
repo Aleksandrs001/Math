@@ -5,19 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\UserAnswerStatistic;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 class UserController
 {
-    static function getUserName()
+    static public function getUserName(): string
     {
         $user = auth()->user();
-        if ($user) {
-            return $user->name;
-        } else {
-            return '';
-        }
+        return $user ? $user->name : '';
     }
 
     public function answer(Request $request): JsonResponse
@@ -30,15 +25,11 @@ class UserController
         }
 
         try {
-            $userAnswerStatistic = UserAnswerStatistic::updateOrCreate(
-                ['user_id' => $request->user()->id],
-            );
+            $userAnswerStatistic = UserAnswerStatistic::updateOrCreate(['user_id' => $request->user()->id]);
             $this->updateStatistics($request, $userAnswerStatistic, $answer, $result);
-            if ($answer == $result) {
-                return response()->json(['message' => true]);
-            } else {
-                return response()->json(['message' => false]);
-            }
+
+            $message = ($answer == $result) ? true : false;
+            return response()->json(['message' => $message]);
         } catch (\Exception $e) {
             Log::error('Error in answer method: ' . $e->getMessage());
             Log::error($e->getTraceAsString());
@@ -49,52 +40,35 @@ class UserController
     private function updateStatistics(Request $request, UserAnswerStatistic $userAnswerStatistic, $answer, $result): void
     {
         $competition = $request->input('competition');
-        switch ($competition) {
-            case 'plusX':
-                $count = 'plus_x_count';
-                $win = 'plus_x_win';
-                $loss = 'plus_x_loss';
-                $this->updateStatisticsInDB($userAnswerStatistic, $answer, $result, $count, $win, $loss);
-                break;
-            case 'minusX':
-                $count = 'minus_x_count';
-                $win = 'minus_x_win';
-                $loss = 'minus_x_loss';
-                $this->updateStatisticsInDB($userAnswerStatistic, $answer, $result, $count, $win, $loss);
-                break;
-            case 'plus':
-                $count = 'plus_count';
-                $win = 'plus_win';
-                $loss = 'plus_loss';
-                $this->updateStatisticsInDB($userAnswerStatistic, $answer, $result, $count, $win, $loss);
-                break;
-            case 'minus':
-                $count = 'minus_count';
-                $win = 'minus_win';
-                $loss = 'minus_loss';
-                $this->updateStatisticsInDB($userAnswerStatistic, $answer, $result, $count, $win, $loss);
-                break;
-            case 'multiply':
-                $count = 'multiply_count';
-                $win = 'multiply_win';
-                $loss = 'multiply_loss';
-                $this->updateStatisticsInDB($userAnswerStatistic, $answer, $result, $count, $win, $loss);
-                break;
-            case 'divide':
-                $count = 'divide_count';
-                $win = 'divide_win';
-                $loss = 'divide_loss';
-                $this->updateStatisticsInDB($userAnswerStatistic, $answer, $result, $count, $win, $loss);
-                break;
-            default:
-                break;
-        }
+        $statisticsFields = $this->getStatisticsFields($competition);
+        $this->updateStatisticsInDB($userAnswerStatistic, $answer, $result, $statisticsFields);
     }
 
-    private function updateStatisticsInDB(UserAnswerStatistic $userAnswerStatistic, $answer, $result, $count, $win, $loss): void
+    private function getStatisticsFields($competition): array
     {
+        $fields = [
+            'plusX' => ['plus_x_count', 'plus_x_win', 'plus_x_loss'],
+            'minusX' => ['minus_x_count', 'minus_x_win', 'minus_x_loss'],
+            'plus' => ['plus_count', 'plus_win', 'plus_loss'],
+            'minus' => ['minus_count', 'minus_win', 'minus_loss'],
+            'multiply' => ['multiply_count', 'multiply_win', 'multiply_loss'],
+            'divide' => ['divide_count', 'divide_win', 'divide_loss'],
+        ];
+
+        return $fields[$competition] ?? [];
+    }
+
+    private function updateStatisticsInDB(UserAnswerStatistic $userAnswerStatistic, $answer, $result, $fields): void
+    {
+        if (empty($fields)) {
+            return;
+        }
+
+        [$count, $win, $loss] = $fields;
+
         $userAnswerStatistic->$count += 1;
         $userAnswerStatistic->count += 1;
+
         if ($answer == $result) {
             $userAnswerStatistic->$win += 1;
             $userAnswerStatistic->win += 1;
@@ -102,6 +76,7 @@ class UserController
             $userAnswerStatistic->$loss += 1;
             $userAnswerStatistic->loss += 1;
         }
+
         $userAnswerStatistic->save();
     }
 }
