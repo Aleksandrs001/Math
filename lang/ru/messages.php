@@ -45,7 +45,7 @@ return [
     'are_you_sure_you_want_to_delete_your_account' => 'Вы уверены, что хотите удалить свою учетную запись?',
     'once_your_account_is_deleted_all_of_its_resources_and_data_will_be_permanently_deleted_please_enter_your_password_to_confirm_you_would_like_to_permanently_delete_your_account' => "После удаления учетной записи все ее ресурсы и данные будут безвозвратно удалены. Введите свой пароль, чтобы подтвердить, что вы хотите безвозвратно удалить свою учетную запись.",
     'profile' => 'Профиль',
-    'not_yet' => 'Пока нет результатов',
+    'not_yet' => 'Нет результата',
     'multiply' => 'Умножить',
     'divide' => 'Разделить',
 

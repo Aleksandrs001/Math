@@ -6,7 +6,7 @@ use App\Http\Controllers\Constants;
 
 class MinusFindXService
 {
-    static public function minusFindXFunction()
+    static public function minusFindXFunction(): array
     {
         $result = MathService::countOfExample(Constants::MINUS);
         foreach ($result as $key => $value)
