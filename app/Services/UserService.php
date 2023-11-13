@@ -2,6 +2,12 @@
 
 namespace App\Services;
 
+use App\Models\MathDivideModel;
+use App\Models\MathMinusModel;
+use App\Models\MathMinusXModel;
+use App\Models\MathMultiplyModel;
+use App\Models\MathPlusModel;
+use App\Models\MathPlusXModel;
 use App\Models\UserAnswerStatistic;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Log;
@@ -16,6 +22,13 @@ class UserService
 
         try {
             $userAnswerStatistic = UserAnswerStatistic::updateOrCreate(['user_id' => $user_id ]);
+//            $userAnswerStatistic2 = MathDivideModel::updateOrCreate(['user_id' => $user_id ]);
+//            $userAnswerStatistic3 = MathMinusModel::updateOrCreate(['user_id' => $user_id ]);
+//            $userAnswerStatistic4 = MathMinusXModel::updateOrCreate(['user_id' => $user_id ]);
+//            $userAnswerStatistic5 = MathMultiplyModel::updateOrCreate(['user_id' => $user_id ]);
+//            $userAnswerStatistic6 = MathPlusModel::updateOrCreate(['user_id' => $user_id ]);
+//            $userAnswerStatistic6 = MathPlusXModel::updateOrCreate(['user_id' => $user_id ]);
+
             $this->updateStatistics($userAnswerStatistic, $answer, $result, $competition);
 
             $message = $answer == $result;
@@ -23,36 +36,40 @@ class UserService
         } catch (\Exception $e) {
             Log::error('Error in answer method: ' . $e->getMessage());
             Log::error($e->getTraceAsString());
-            return response()->json(['message' => 'Error'], 500);
+            return response()->json(['message' => 'Error'], 405);
         }
     }
-    private function updateStatistics( UserAnswerStatistic $userAnswerStatistic, $answer, $result, $competition): void
-    {
-        $statisticsFields = $this->getStatisticsFields($competition);
-        $this->updateStatisticsInDB($userAnswerStatistic, $answer, $result, $statisticsFields);
-    }
+
 
     private function getStatisticsFields($competition): array
     {
         $fields = [
-            'plusX' => ['plus_x_count', 'plus_x_win', 'plus_x_loss'],
-            'minusX' => ['minus_x_count', 'minus_x_win', 'minus_x_loss'],
-            'plus' => ['plus_count', 'plus_win', 'plus_loss'],
-            'minus' => ['minus_count', 'minus_win', 'minus_loss'],
-            'multiply' => ['multiply_count', 'multiply_win', 'multiply_loss'],
-            'divide' => ['divide_count', 'divide_win', 'divide_loss'],
+            'plusX' => ['plus_x'],
+            'minusX' => ['minus_x'],
+            'plus' => ['plus'],
+            'minus' => ['minus'],
+            'multiply' => ['multiply'],
+            'divide' => ['divide'],
         ];
 
         return $fields[$competition] ?? [];
     }
 
-    private function updateStatisticsInDB(UserAnswerStatistic $userAnswerStatistic, $answer, $result, $fields): void
-    {
-        if (empty($fields)) {
-            return;
-        }
 
-        [$count, $win, $loss] = $fields;
+    private function updateStatistics(UserAnswerStatistic $userAnswerStatistic, $answer, $result, $competition): void
+    {
+        $statisticsFields = $this->getStatisticsFields($competition);
+
+        foreach ($statisticsFields as $field) {
+            $this->updateStatisticField($userAnswerStatistic, $answer, $result, $field);
+        }
+    }
+
+    private function updateStatisticField(UserAnswerStatistic $userAnswerStatistic, $answer, $result, $field): void
+    {
+        $count = $field . '_count';
+        $win = $field . '_win';
+        $loss = $field . '_loss';
 
         $userAnswerStatistic->$count += 1;
         $userAnswerStatistic->count += 1;
@@ -67,5 +84,6 @@ class UserService
 
         $userAnswerStatistic->save();
     }
+
 
 }

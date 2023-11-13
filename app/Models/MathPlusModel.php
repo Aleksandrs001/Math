@@ -4,14 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class UserAnswerStatistic extends Model
+class MathPlusModel extends Model
 {
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'user_answer_statistic';
+    protected $table = 'math_plus';
 
     /**
      * The attributes that are mass assignable.
@@ -19,17 +19,13 @@ class UserAnswerStatistic extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id',
-        'count',
-        'win',
-        'loss',
+        'plus_count',
+        'plus_win',
+        'plus_loss',
         'updated_at',
         'created_at',
-
+        'user_id'
 
     ];
-   static function getStatistic()
-   {
-         return UserAnswerStatistic::where('user_id', auth()->user()->id)->first();
-   }
+
 }
