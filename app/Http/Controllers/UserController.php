@@ -6,6 +6,7 @@ use App\Services\StatisticService;
 use App\Services\UserService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class UserController
 {
@@ -29,15 +30,13 @@ class UserController
             $result = $request->input('result');
             $competition = $request->input('competition');
             $user_id = $request->user()->id;
-
-            return (new UserService)->answer($answer,$result,$competition,$user_id);
+            $full = $request->input('full');
+            return (new UserService)->answer($answer,$result,$competition,$user_id, $full);
         }
 
     public function topOfUser()
     {
         StatisticService::getTopOfUsersData();
-        var_dump('hello');
-        die;
     }
 
 }

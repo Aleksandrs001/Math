@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\BadAnswerController;
+use App\Http\Controllers\BadAnswersController;
 use App\Http\Controllers\DivideController;
 use App\Http\Controllers\MinusFindXController;
 use App\Http\Controllers\MultiplyController;
@@ -56,6 +58,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/divide', [UserController::class, 'answer'])->name('answer');
 
     Route::get('/topOfUser', [UserController::class, 'topOfUser'])->name('topOfUser');
+
+    Route::get('/badAnswers', [BadAnswersController::class, 'badAnswers'])->name('badAnswers');
 
     Route::get('/change-locale/{locale}', [LocaleController::class, 'changeLocale'])->name('change.locale');
 

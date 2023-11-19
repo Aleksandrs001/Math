@@ -9,12 +9,13 @@ use App\Models\MathMultiplyModel;
 use App\Models\MathPlusModel;
 use App\Models\MathPlusXModel;
 use App\Models\UserAnswerStatistic;
+use App\Models\UserBadAnswerModel;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Log;
 
 class UserService
 {
-    public function answer($answer,$result, $competition, $user_id): JsonResponse
+    public function answer($answer,$result, $competition, $user_id, $full): JsonResponse
     {
         if (!is_numeric($answer) || floor($answer) != $answer) {
             return response()->json(['message' => 'Введите целое число.'], 422);
@@ -43,7 +44,7 @@ class UserService
                 default:
                     return response()->json(['message' => 'Error'], 404);
             }
-            $this->updateStatistics($userAnswerStatistic, $answer, $result, $competition, $user_id);
+            $this->updateStatistics($userAnswerStatistic, $answer, $result, $competition, $user_id, $full);
             $message = $answer == $result;
             return response()->json(['message' => $message]);
         } catch (\Exception $e) {
@@ -68,16 +69,16 @@ class UserService
         return $fields[$competition] ?? [];
     }
 
-    private function updateStatistics($userAnswerStatistic, $answer, $result, $competition, $user_id): void
+    private function updateStatistics($userAnswerStatistic, $answer, $result, $competition, $user_id, $full): void
     {
         $statisticsFields = $this->getStatisticsFields($competition);
 
         foreach ($statisticsFields as $field) {
-            $this->updateStatisticField($userAnswerStatistic, $answer, $result, $field, $user_id);
+            $this->updateStatisticField($userAnswerStatistic, $answer, $result, $field, $user_id, $full);
         }
     }
 
-    private function updateStatisticField($userAnswerStatistic, $answer, $result, $field, $user_id): void
+    private function updateStatisticField($userAnswerStatistic, $answer, $result, $field, $user_id, $full): void
     {
         $count = $field . '_count';
         $win = $field . '_win';
@@ -92,6 +93,12 @@ class UserService
         } else {
             $userAnswerStatistic->$loss += 1;
             $updateStatistic->loss += 1;
+            $as = UserBadAnswerModel::create(['user_id' => $user_id, 'answer' => $answer]);
+            $as->result = $answer;
+            $as->competition = $field;
+            $as->full = $full;
+            $as->save();
+
         }
 
         $userAnswerStatistic->save();
