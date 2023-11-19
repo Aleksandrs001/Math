@@ -19,7 +19,6 @@ class UserService
         if (!is_numeric($answer) || floor($answer) != $answer) {
             return response()->json(['message' => 'Введите целое число.'], 422);
         }
-//            $userAnswerStatistic = UserAnswerStatistic::updateOrCreate(['user_id' => $user_id ]);
 
         try {
             switch ($competition) {
@@ -44,15 +43,7 @@ class UserService
                 default:
                     return response()->json(['message' => 'Error'], 404);
             }
-////            $userAnswerStatistic2 = MathDivideModel::updateOrCreate(['user_id' => $user_id ]);
-////            $userAnswerStatistic3 = MathMinusModel::updateOrCreate(['user_id' => $user_id ]);
-////            $userAnswerStatistic4 = MathMinusXModel::updateOrCreate(['user_id' => $user_id ]);
-////            $userAnswerStatistic5 = MathMultiplyModel::updateOrCreate(['user_id' => $user_id ]);
-////            $userAnswerStatistic6 = MathPlusModel::updateOrCreate(['user_id' => $user_id ]);
-////            $userAnswerStatistic6 = MathPlusXModel::updateOrCreate(['user_id' => $user_id ]);
-
             $this->updateStatistics($userAnswerStatistic, $answer, $result, $competition, $user_id);
-
             $message = $answer == $result;
             return response()->json(['message' => $message]);
         } catch (\Exception $e) {
@@ -76,7 +67,6 @@ class UserService
 
         return $fields[$competition] ?? [];
     }
-
 
     private function updateStatistics($userAnswerStatistic, $answer, $result, $competition, $user_id): void
     {
@@ -107,6 +97,5 @@ class UserService
         $userAnswerStatistic->save();
         $updateStatistic->save();
     }
-
 
 }
