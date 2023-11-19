@@ -48,5 +48,6 @@ return [
     'not_yet' => 'No result',
     'multiply' => 'Multiply',
     'divide' => 'Divide',
-    'topOfUser' => 'Top of Users'
+    'topOfUser' => 'Top of Users',
+    'bad_answers' => 'Bad Answers',
 ];
