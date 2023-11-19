@@ -50,5 +50,6 @@ return [
     'divide' => 'Dalīt',
     'topOfUser' => 'Lietotāju Tops',
     'bad_answers' => 'Nepareizie atbildes',
+    'welcome' => 'Laipni lūdzam ',
 ];
 

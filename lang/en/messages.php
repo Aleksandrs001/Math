@@ -50,4 +50,5 @@ return [
     'divide' => 'Divide',
     'topOfUser' => 'Top of Users',
     'bad_answers' => 'Bad Answers',
+    'welcome' => 'Welcome ',
 ];
