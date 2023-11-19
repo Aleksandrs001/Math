@@ -6,7 +6,12 @@ use App\Models\UserAnswerStatistic;
 
 class StatisticService
 {
-    public function getStatistic()
+    public static function getTopOfUsersData()
+    {
+        return UserAnswerStatistic::getTopOfUsersData();
+    }
+
+    public static function getStatistic()
     {
        return UserAnswerStatistic::getStatistic();
     }

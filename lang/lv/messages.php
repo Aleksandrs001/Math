@@ -48,5 +48,6 @@ return [
     'profile' => 'Profils',
     'multiply' => 'Reizināt',
     'divide' => 'Dalīt',
+    'topOfUser' => 'Lietotāju Tops '
 ];
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\StatisticService;
 use App\Services\UserService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -32,6 +33,11 @@ class UserController
             return (new UserService)->answer($answer,$result,$competition,$user_id);
         }
 
-
+    public function topOfUser()
+    {
+        StatisticService::getTopOfUsersData();
+        var_dump('hello');
+        die;
+    }
 
 }

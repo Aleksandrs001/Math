@@ -19,17 +19,39 @@ class UserService
         if (!is_numeric($answer) || floor($answer) != $answer) {
             return response()->json(['message' => 'Введите целое число.'], 422);
         }
+//            $userAnswerStatistic = UserAnswerStatistic::updateOrCreate(['user_id' => $user_id ]);
 
         try {
-            $userAnswerStatistic = UserAnswerStatistic::updateOrCreate(['user_id' => $user_id ]);
-//            $userAnswerStatistic2 = MathDivideModel::updateOrCreate(['user_id' => $user_id ]);
-//            $userAnswerStatistic3 = MathMinusModel::updateOrCreate(['user_id' => $user_id ]);
-//            $userAnswerStatistic4 = MathMinusXModel::updateOrCreate(['user_id' => $user_id ]);
-//            $userAnswerStatistic5 = MathMultiplyModel::updateOrCreate(['user_id' => $user_id ]);
-//            $userAnswerStatistic6 = MathPlusModel::updateOrCreate(['user_id' => $user_id ]);
-//            $userAnswerStatistic6 = MathPlusXModel::updateOrCreate(['user_id' => $user_id ]);
+            switch ($competition) {
+                case 'plusX':
+                    $userAnswerStatistic = MathPlusXModel::updateOrCreate(['user_id' => $user_id ]);
+                    break;
+                case 'minusX':
+                    $userAnswerStatistic = MathMinusXModel::updateOrCreate(['user_id' => $user_id ]);
+                    break;
+                case 'plus':
+                    $userAnswerStatistic = MathPlusModel::updateOrCreate(['user_id' => $user_id ]);
+                    break;
+                case 'minus':
+                    $userAnswerStatistic = MathMinusModel::updateOrCreate(['user_id' => $user_id ]);
+                    break;
+                case 'multiply':
+                    $userAnswerStatistic = MathMultiplyModel::updateOrCreate(['user_id' => $user_id ]);
+                    break;
+                case 'divide':
+                    $userAnswerStatistic = MathDivideModel::updateOrCreate(['user_id' => $user_id ]);
+                    break;
+                default:
+                    return response()->json(['message' => 'Error'], 404);
+            }
+////            $userAnswerStatistic2 = MathDivideModel::updateOrCreate(['user_id' => $user_id ]);
+////            $userAnswerStatistic3 = MathMinusModel::updateOrCreate(['user_id' => $user_id ]);
+////            $userAnswerStatistic4 = MathMinusXModel::updateOrCreate(['user_id' => $user_id ]);
+////            $userAnswerStatistic5 = MathMultiplyModel::updateOrCreate(['user_id' => $user_id ]);
+////            $userAnswerStatistic6 = MathPlusModel::updateOrCreate(['user_id' => $user_id ]);
+////            $userAnswerStatistic6 = MathPlusXModel::updateOrCreate(['user_id' => $user_id ]);
 
-            $this->updateStatistics($userAnswerStatistic, $answer, $result, $competition);
+            $this->updateStatistics($userAnswerStatistic, $answer, $result, $competition, $user_id);
 
             $message = $answer == $result;
             return response()->json(['message' => $message]);
@@ -56,33 +78,34 @@ class UserService
     }
 
 
-    private function updateStatistics(UserAnswerStatistic $userAnswerStatistic, $answer, $result, $competition): void
+    private function updateStatistics($userAnswerStatistic, $answer, $result, $competition, $user_id): void
     {
         $statisticsFields = $this->getStatisticsFields($competition);
 
         foreach ($statisticsFields as $field) {
-            $this->updateStatisticField($userAnswerStatistic, $answer, $result, $field);
+            $this->updateStatisticField($userAnswerStatistic, $answer, $result, $field, $user_id);
         }
     }
 
-    private function updateStatisticField(UserAnswerStatistic $userAnswerStatistic, $answer, $result, $field): void
+    private function updateStatisticField($userAnswerStatistic, $answer, $result, $field, $user_id): void
     {
         $count = $field . '_count';
         $win = $field . '_win';
         $loss = $field . '_loss';
-
         $userAnswerStatistic->$count += 1;
-        $userAnswerStatistic->count += 1;
+        $updateStatistic = UserAnswerStatistic::updateOrCreate(['user_id' => $user_id ]);
+        $updateStatistic->count += 1;
 
         if ($answer == $result) {
             $userAnswerStatistic->$win += 1;
-            $userAnswerStatistic->win += 1;
+            $updateStatistic->win += 1;
         } else {
             $userAnswerStatistic->$loss += 1;
-            $userAnswerStatistic->loss += 1;
+            $updateStatistic->loss += 1;
         }
 
         $userAnswerStatistic->save();
+        $updateStatistic->save();
     }
 
 

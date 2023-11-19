@@ -5,12 +5,11 @@
     });
 
     function submitAnswer(index) {
-        var form = $('#answerForm_' + index);
+        let form = $('#answerForm_' + index);
 
-        // Disable the form to prevent multiple submissions
         form.find('button').prop('disabled', true);
 
-        var formData = form.serialize();
+        let formData = form.serialize();
         $.ajax({
             type: 'POST',
             url: '{{ route('answer') }}',

@@ -46,8 +46,8 @@ class MathService
             });
             $second = $divisors[array_rand($divisors)];
         } else {
-            $first = rand(1, rand(1, 10));
-            $second = rand(1, rand(1, 10));
+            $first =  rand(1, 10);
+            $second =  rand(1, 10);
         }
 
         return [

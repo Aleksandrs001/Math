@@ -55,6 +55,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/divide', [DivideController::class, 'divide'])->name('divide');
     Route::post('/divide', [UserController::class, 'answer'])->name('answer');
 
+    Route::get('/topOfUser', [UserController::class, 'topOfUser'])->name('topOfUser');
+
     Route::get('/change-locale/{locale}', [LocaleController::class, 'changeLocale'])->name('change.locale');
 
 });
