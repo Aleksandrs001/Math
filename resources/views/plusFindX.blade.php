@@ -48,9 +48,13 @@
                             <input type="hidden" id="result_{{$index}}" name="result" value="{{$r['second']}}"/>
                             <input type="hidden" id="result2_{{$index}}" name="competition" value="plusX"/>
                             <input type="hidden" id="result2_{{$index}}" name="full" value="{{$r['first']}} {{$r['operation']}} X {{$r['equal']}} {{$r['result']}}" />
+
                             <button type="button" onclick="submitAnswer({{$index}})">{{__('messages.submit')}}</button>
                         </form>
                     </div>
+                    <button class="bg-sky-500 hover:bg-sky-700 ...">
+                        Save changes
+                    </button>
                 @endforeach
             </div>
 
