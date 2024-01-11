@@ -38,18 +38,24 @@ class MathService
 
         $first = rand(1, $maxSum);
 
-        $second = ($operation == Constants::MINUS) ? rand(1, $first) : rand(1, $maxSum);
-
         if ($operation == Constants::DIVIDE) {
             $divisors = array_filter(range(1, $first), function ($divisor) use ($first) {
                 return $first % $divisor == 0;
             });
             $second = $divisors[array_rand($divisors)];
-        } else {
-            $first =  rand(1, 10);
-            $second =  rand(1, 10);
-        }
 
+        } elseif ($operation == Constants::MINUS) {
+            $second = rand(1, $first);
+
+        } elseif ($operation == Constants::MULTIPLY) {
+            $second = rand(1, $first);
+        } elseif ($operation == Constants::PLUS) {
+            $second = rand(1, $first);
+        } else {
+            $first = rand(1, $first);
+            $second = rand(1, $first);
+        }
+//dd($first, $second);
         return [
             'first' => $first,
             'second' => $second,
