@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-class BadAnswersController extends Controller
+class StatisticController extends Controller
 {
-    public function badAnswers()
+    public function view()
     {
         return view('topOfUser');
     }
+
 
 }

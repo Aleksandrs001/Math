@@ -8,7 +8,7 @@ use App\Models\MathMinusXModel;
 use App\Models\MathMultiplyModel;
 use App\Models\MathPlusModel;
 use App\Models\MathPlusXModel;
-use App\Models\UserAnswerStatistic;
+use App\Models\UserAnswerStatisticModel;
 use App\Models\UserBadAnswerModel;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Log;
@@ -84,7 +84,7 @@ class UserService
         $win = $field . '_win';
         $loss = $field . '_loss';
         $userAnswerStatistic->$count += 1;
-        $updateStatistic = UserAnswerStatistic::updateOrCreate(['user_id' => $user_id ]);
+        $updateStatistic = UserAnswerStatisticModel::updateOrCreate(['user_id' => $user_id ]);
         $updateStatistic->count += 1;
 
         if ($answer == $result) {

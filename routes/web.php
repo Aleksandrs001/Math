@@ -9,6 +9,7 @@ use App\Http\Controllers\PlusController;
 use App\Http\Controllers\MinusController;
 use App\Http\Controllers\PlusFindXController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\StatisticController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LocaleController;
@@ -62,6 +63,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/badAnswers', [BadAnswersController::class, 'badAnswers'])->name('badAnswers');
 
     Route::get('/change-locale/{locale}', [LocaleController::class, 'changeLocale'])->name('change.locale');
+//    Route::get('/topOfUser/{locale}', [StatisticController::class, 'changeLocale'])->name('change.locale');
 
 });
 
