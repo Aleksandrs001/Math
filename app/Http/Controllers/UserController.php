@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\Log;
 
 class UserController
 {
+    public function helloworld(): string
+    {
+        return 'Hello World';
+    }
     public function login(Request $request): JsonResponse
     {
         if ( !$request->has(['email','password'])) {

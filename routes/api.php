@@ -35,6 +35,7 @@ use Illuminate\Support\Facades\Route;
 //Route::get('/profile', function () {
 //    // ...
 //})->middleware(Authenticate::class);
+Route::get('/helloworld', [UserController::class, 'helloworld'])->name('helloworld');
 
 Route::get('/users', 'UserController@index');
 Route::post('/users', 'UserController@store');
