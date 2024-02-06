@@ -10,6 +10,7 @@ use App\Http\Controllers\MinusController;
 use App\Http\Controllers\PlusFindXController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LocaleController;
 
@@ -64,7 +65,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/change-locale/{locale}', [LocaleController::class, 'changeLocale'])->name('change.locale');
 
 });
-
 
 require __DIR__.'/auth.php';
 

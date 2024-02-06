@@ -10,6 +10,16 @@ use Illuminate\Support\Facades\Log;
 
 class UserController
 {
+    public function login(Request $request): JsonResponse
+    {
+        if ( !$request->has(['email','password'])) {
+            return response()->json(['message' => 'Error'], 404);
+        }
+
+        $email = $request->input('email');
+        $password = $request->input('password');
+        return (new UserService)->login($email,$password);
+    }
     static public function getUserName(): string
     {
         $user = auth()->user();
