@@ -45,4 +45,8 @@ class StatisticModel extends Model
         'multiply_count'
     ];
 
+    public function belongsToUser()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
 }
