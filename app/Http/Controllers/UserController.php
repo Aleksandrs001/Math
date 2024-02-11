@@ -6,14 +6,9 @@ use App\Services\StatisticService;
 use App\Services\UserService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 
 class UserController
 {
-    public function helloworld(): string
-    {
-        return 'Hello World';
-    }
     public function login(Request $request): JsonResponse
     {
         if ( !$request->has(['email','password'])) {

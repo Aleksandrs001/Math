@@ -108,7 +108,9 @@ class UserService
     public function login(mixed $email, mixed $password)
     {
         if (auth()->attempt(['email' => $email, 'password' => $password])) {
-            return response()->json(['message' => 'Success']);
+            $token = auth()->user()->getRememberToken();
+
+            return response()->json(['message' => $token]);
         } else {
             return response()->json(['message' => 'Error'], 404);
         }

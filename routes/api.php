@@ -19,7 +19,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+
+//Route::middleware('auth:api')->get('/user', function(Request $request) {
+//    return $request->user();
+//});
+
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    return $request->user();
+});
+Route::middleware('auth:sanctum')->get('/minus', [MinusController::class, 'minus'])->name('minus');
+
+
+//Route::middleware('auth:sanctum')->post('/user', function (Request $request) {
 //    return $request->user();
 //});
 //Route::post('/login', [UserController::class, 'login'])->name('login');
@@ -35,8 +46,8 @@ use Illuminate\Support\Facades\Route;
 //Route::get('/profile', function () {
 //    // ...
 //})->middleware(Authenticate::class);
-Route::get('/helloworld', [UserController::class, 'helloworld'])->name('helloworld');
-
-Route::get('/users', 'UserController@index');
-Route::post('/users', 'UserController@store');
-Route::get('/users/{id}', 'UserController@show');
+//Route::get('/helloworld', [UserController::class, 'helloworld'])->name('helloworld');
+//
+//Route::get('/users', 'UserController@index');
+//Route::post('/users', 'UserController@store');
+//Route::get('/users/{id}', 'UserController@show');
