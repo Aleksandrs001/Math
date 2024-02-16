@@ -65,7 +65,6 @@ class UserService
             'multiply' => ['multiply'],
             'divide' => ['divide'],
         ];
-
         return $fields[$competition] ?? [];
     }
 
@@ -100,7 +99,6 @@ class UserService
             $as->save();
 
         }
-
         $userAnswerStatistic->save();
         $updateStatistic->save();
     }
