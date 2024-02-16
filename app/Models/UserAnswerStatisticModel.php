@@ -54,4 +54,9 @@ class UserAnswerStatisticModel extends Model
 
     }
 
+    static function getAllUsersStatistic()
+    {
+        return UserAnswerStatisticModel::all();
+    }
+
 }

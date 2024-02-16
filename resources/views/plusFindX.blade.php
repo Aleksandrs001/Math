@@ -52,9 +52,6 @@
                             <button type="button" onclick="submitAnswer({{$index}})">{{__('messages.submit')}}</button>
                         </form>
                     </div>
-                    <button class="bg-sky-500 hover:bg-sky-700 ...">
-                        Save changes
-                    </button>
                 @endforeach
             </div>
 

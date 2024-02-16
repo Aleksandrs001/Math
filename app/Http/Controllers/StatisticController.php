@@ -6,8 +6,11 @@ class StatisticController extends Controller
 {
     public function view()
     {
-        return view('topOfUser');
+        $result = StatisticService::getTopOfUsersData();
+        return view('topOfUser')->with(
+            [
+                'res' => $result,
+            ]
+        );
     }
-
-
 }

@@ -71,7 +71,6 @@ class UserService
     private function updateStatistics($userAnswerStatistic, $answer, $result, $competition, $user_id, $full): void
     {
         $statisticsFields = $this->getStatisticsFields($competition);
-
         foreach ($statisticsFields as $field) {
             $this->updateStatisticField($userAnswerStatistic, $answer, $result, $field, $user_id, $full);
         }
