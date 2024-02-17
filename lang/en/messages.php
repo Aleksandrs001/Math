@@ -58,5 +58,6 @@ return [
     'played_game_count' => 'Played Game Count',
     'loss_game_count' => 'Loss Game Count',
     'ratio' => 'Ratio',
+    'about' => 'About',
 
 ];

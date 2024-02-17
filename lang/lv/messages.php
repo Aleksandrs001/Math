@@ -58,6 +58,7 @@ return [
     'played_game_count' => 'Spēlēto spēļu skaits',
     'loss_game_count' => 'Zaudēto spēļu skaits',
     'ratio' => 'Koeficients',
+    'about' => 'Par mums',
 
 ];
 

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\BadAnswerController;
 use App\Http\Controllers\BadAnswersController;
 use App\Http\Controllers\DivideController;
@@ -29,6 +30,9 @@ use App\Http\Controllers\LocaleController;
 
 Route::get('/', function () {
     return view('welcome');
+});
+Route::get('/about', function () {
+    return view('about');
 });
 
 Route::get('/dashboard', function () {
@@ -63,6 +67,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/badAnswers', [BadAnswersController::class, 'badAnswers'])->name('badAnswers');
 
     Route::get('/change-locale/{locale}', [LocaleController::class, 'changeLocale'])->name('change.locale');
+
+//    Route::get('/about', [AboutController::class, 'about'])->name('about');
 //    Route::get('/topOfUser/{locale}', [StatisticController::class, 'changeLocale'])->name('change.locale');
 
 });
