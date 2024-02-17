@@ -29,10 +29,15 @@
         <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">--}}
             <div id='topOfUsers' style="background-color: ghostwhite; padding: 10px; color: black;">
                 You can buy developers tea or cup of coffee. <br>
-            </div>
-        </div>
+                <div>Contact: <a href="mailto:children.match.contact.us@gmail.com">children.match.contact.us@gmail.com</a></div>
 
-{{--        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">--}}
+            </div>
+
+
+
+
+
+        {{--        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">--}}
 {{--            <div id='topOfUsers' style="background-color: ghostwhite; padding: 10px; color: black;">--}}
 {{--                <table style="border-collapse: collapse; width: 100%;">--}}
 {{--                    <thead>--}}
