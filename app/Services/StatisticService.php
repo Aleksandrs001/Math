@@ -57,35 +57,28 @@ class StatisticService
         $authUser = auth()->user()->id;
         foreach ($notSorted as $key => $value) {
             if (!isset($sorted[$key]['user_id'][$authUser])) {
-                $thisUserCount = UserAnswerStatisticModel::getStatistic()->count ?? 0;
-                $thisUserWin = UserAnswerStatisticModel::getStatistic()->win ?? 0;
-                $thisUserLoss = UserAnswerStatisticModel::getStatistic()->loss ?? 0;
-                if ($thisUserCount == 0 || $thisUserLoss == 0 || $thisUserWin == 0) {
-                    $sorted[$key] = [
-                        'count' => $thisUserCount,
-                        'ratio' => 0,
-                        'loss' => 0,
-                        'user_id' => auth()->user()->id,
-                        'user_name' => UserController::getUserName(),
-                        'user_email' => StatisticService::hideEmail(auth()->user()->email),
-                    ];
-                } else {
-                    $sorted[$key] = [
-                        'count' => $thisUserCount,
-                        'ratio' => $thisUserWin / $thisUserLoss,
-                        'loss' => $thisUserLoss,
-                        'user_id' => auth()->user()->id,
-                        'user_name' => UserController::getUserName(),
-                        'user_email' => StatisticService::hideEmail(auth()->user()->email),
-                    ];
-                }
+                $userStatistic = UserAnswerStatisticModel::getStatistic();
+                $thisUserCount = $userStatistic->count ?? 0;
+                $thisUserWin = $userStatistic->win ?? 0;
+                $thisUserLoss = $userStatistic->loss ?? 0;
+
+                $sorted[$key] = [
+                    'count' => $thisUserCount,
+                    'ratio' => ($thisUserLoss != 0) ? $thisUserWin / $thisUserLoss : 0,
+                    'loss' => $thisUserLoss,
+                    'user_id' => auth()->user()->id,
+                    'user_name' => UserController::getUserName(),
+                    'user_email' => StatisticService::hideEmail(auth()->user()->email),
+                ];
+
                 break;
             }
         }
+
         return $sorted;
     }
 
-    static function hideEmail($email)
+        static function hideEmail($email)
     {
         $emailParts = explode('@', $email);
 
