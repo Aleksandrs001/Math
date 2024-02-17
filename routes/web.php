@@ -68,7 +68,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/change-locale/{locale}', [LocaleController::class, 'changeLocale'])->name('change.locale');
 
-//    Route::get('/about', [AboutController::class, 'about'])->name('about');
+    Route::get('/about', [AboutController::class, 'about'])->name('about');
 //    Route::get('/topOfUser/{locale}', [StatisticController::class, 'changeLocale'])->name('change.locale');
 
 });
