@@ -58,9 +58,9 @@ class StatisticService
         foreach ($notSorted as $key => $value) {
             if (!isset($sorted[$key]['user_id'][$authUser])) {
                 $sorted[$key] = [
-                    'count' => UserAnswerStatisticModel::getStatistic()->count,
+                    'count' => UserAnswerStatisticModel::getStatistic()->count ?? 0,
                     'ratio' => UserAnswerStatisticModel::getStatistic()->win ?? 1 / UserAnswerStatisticModel::getStatistic()->loss ?? 1,
-                    'loss' => UserAnswerStatisticModel::getStatistic()->loss,
+                    'loss' => UserAnswerStatisticModel::getStatistic()->loss ?? 0,
                     'user_id' => auth()->user()->id,
                     'user_name' => UserController::getUserName(),
                     'user_email' => StatisticService::hideEmail(auth()->user()->email),
