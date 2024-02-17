@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Http\Controllers\UserController;
 use App\Models\UserAnswerStatisticModel;
+use Illuminate\Support\Facades\Log;
 
 class StatisticService
 {
@@ -55,6 +56,7 @@ class StatisticService
         $notSorted = $sorted;
         $sorted = array_slice($sorted, 0, 10);
         $authUser = auth()->user()->id;
+        Log::debug(print_r($sorted,true));
         foreach ($notSorted as $key => $value) {
             if (!isset($sorted[$key]['user_id'][$authUser])) {
                 $userStatistic = UserAnswerStatisticModel::getStatistic();
