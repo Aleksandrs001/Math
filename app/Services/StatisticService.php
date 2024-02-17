@@ -70,8 +70,6 @@ class StatisticService
                         'user_email' => StatisticService::hideEmail(auth()->user()->email),
                     ];
                 } else {
-                    $thisUserWin = UserAnswerStatisticModel::getStatistic()->win ?? 0;
-                    $thisUserLoss = UserAnswerStatisticModel::getStatistic()->loss ?? 0;
                     $sorted[$key] = [
                         'count' => $thisUserCount,
                         'ratio' => $thisUserWin / $thisUserLoss,
@@ -81,7 +79,6 @@ class StatisticService
                         'user_email' => StatisticService::hideEmail(auth()->user()->email),
                     ];
                 }
-
                 break;
             }
         }
