@@ -4,13 +4,13 @@ namespace App\Services;
 
 use App\Http\Controllers\UserController;
 use App\Models\UserAnswerStatisticModel;
-use Illuminate\Support\Facades\Log;
 
 class StatisticService
 {
     public static function getTopOfUsersData()
     {
         $topUsers = UserAnswerStatisticModel::getAllUsersStatistic()->toArray();
+        $authUser = auth()->user();
 
         if (empty($topUsers)) {
             return [];
@@ -48,6 +48,9 @@ class StatisticService
                 'loss' => $row['loss'],
                 'user_id' => $row['user_id'],
             ];
+            if ($row['user_id'] == $authUser->id) {
+                $sorted[$row['user_id']]['thisUser'] = 'true';
+            }
         }
         foreach ($sorted as $key => $value) {
             $sorted[$key]['user_name'] = UserController::FindUserById($key)->name;
@@ -55,9 +58,10 @@ class StatisticService
         }
         $notSorted = $sorted;
         $sorted = array_slice($sorted, 0, 10);
-        $authUser = auth()->user()->id;
+        $sortedUserIds = array_column($sorted, 'user_id');
+
         foreach ($notSorted as $key => $value) {
-            if (!isset($sorted[$key]['user_id'][$authUser])) {
+            if (!in_array( $authUser->id, $sortedUserIds)) {
                 $userStatistic = UserAnswerStatisticModel::getStatistic();
                 $thisUserCount = $userStatistic->count ?? 0;
                 $thisUserWin = $userStatistic->win ?? 0;
@@ -67,9 +71,9 @@ class StatisticService
                         'count' => $thisUserCount,
                         'ratio' => $thisUserWin,
                         'loss' => $thisUserLoss,
-                        'user_id' => auth()->user()->id,
+                        'user_id' => $authUser->id,
                         'user_name' => UserController::getUserName(),
-                        'user_email' => StatisticService::hideEmail(auth()->user()->email),
+                        'user_email' => StatisticService::hideEmail($authUser->email),
                         'thisUser' => 'true',
 
                     ];
@@ -78,9 +82,9 @@ class StatisticService
                         'count' => $thisUserCount,
                         'ratio' => ($thisUserLoss != 0) ? round($thisUserWin / $thisUserLoss, 3) : 0,
                         'loss' => $thisUserLoss,
-                        'user_id' => auth()->user()->id,
+                        'user_id' => $authUser->id,
                         'user_name' => UserController::getUserName(),
-                        'user_email' => StatisticService::hideEmail(auth()->user()->email),
+                        'user_email' => StatisticService::hideEmail($authUser->email),
                         'thisUser' => 'true',
                     ];
                 }
