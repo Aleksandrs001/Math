@@ -50,10 +50,6 @@ class UserAnswerStatisticModel extends Model
         return UserAnswerStatisticModel::where('user_id', auth()->user()->id)->first();
     }
 
-    public function model() {
-
-    }
-
     static function getAllUsersStatistic()
     {
         return UserAnswerStatisticModel::all();

@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\StatisticService;
+use App\Models\User;
 use App\Services\UserService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 
 class UserController
 {
@@ -16,27 +15,25 @@ class UserController
         return $user ? $user->name : '';
     }
 
-       public function answer(Request $request): JsonResponse
-        {
-            if (!$request->ajax()){
-                return response()->json(['message' => 'Error'], 404);
-            }
-
-            if ( !$request->has(['answer','result','competition'])) {
-                return response()->json(['message' => 'Error'], 404);
-            }
-
-            $answer = $request->input('answer');
-            $result = $request->input('result');
-            $competition = $request->input('competition');
-            $user_id = $request->user()->id;
-            $full = $request->input('full');
-            return (new UserService)->answer($answer,$result,$competition,$user_id, $full);
+    public function answer(Request $request): JsonResponse
+    {
+        if (!$request->ajax()) {
+            return response()->json(['message' => 'Error'], 404);
         }
 
-    public function topOfUser()
-    {
-        StatisticController::view();
+        if (!$request->has(['answer', 'result', 'competition'])) {
+            return response()->json(['message' => 'Error'], 404);
+        }
+        $answer = $request->input('answer');
+        $result = $request->input('result');
+        $competition = $request->input('competition');
+        $user_id = $request->user()->id;
+        $full = $request->input('full');
+        return (new UserService)->answer($answer, $result, $competition, $user_id, $full);
     }
 
+    static public function FindUserById($id)
+    {
+        return User::find($id);
+    }
 }

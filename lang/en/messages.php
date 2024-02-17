@@ -51,7 +51,6 @@ return [
     'topOfUser' => 'Top of Users',
     'bad_answers' => 'Bad Answers',
     'welcome' => 'Welcome ',
-
     'working' => 'Under Construction!',
     'badAnswers' => 'Bad Answers',
 

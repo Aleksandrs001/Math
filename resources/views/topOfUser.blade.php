@@ -24,11 +24,18 @@
     <header class="bg-white dark:bg-gray-800 shadow">
 
     </header>
-
     <main>
         <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
             <div id='minusX' style=" background-color: ghostwhite; padding: 10px; color: black; border-radius: 10px;">
-                {{__('messages.working')}}
+                List of top users:<br>
+                @foreach($res as $key => $resultOfTop)
+                    {{$key + 1}}.
+                    User name: {{ucfirst($resultOfTop['user_name'])}}
+                    User email: {{$resultOfTop['user_email']}}
+                    Played Game Count: {{$resultOfTop['count']}}
+                    Loss game count: {{$resultOfTop['loss']}}
+                    Ratio: {{$resultOfTop['ratio']}}<br>
+                @endforeach
 
             </div>
         </div>
