@@ -58,7 +58,9 @@ class StatisticService
         foreach ($notSorted as $key => $value) {
             if (!isset($sorted[$key]['user_id'][$authUser])) {
                 $thisUserCount = UserAnswerStatisticModel::getStatistic()->count ?? 0;
-                if ($thisUserCount == 0) {
+                $thisUserWin = UserAnswerStatisticModel::getStatistic()->win ?? 0;
+                $thisUserLoss = UserAnswerStatisticModel::getStatistic()->loss ?? 0;
+                if ($thisUserCount == 0 || $thisUserLoss == 0 || $thisUserWin == 0) {
                     $sorted[$key] = [
                         'count' => $thisUserCount,
                         'ratio' => 0,
