@@ -28,7 +28,11 @@ class StatisticService
         }
 
         foreach ($count as $key => $row) {
-            $count[$key]['ratio'] = $row['win'] / $row['loss'];
+            if ($row['loss'] == 0) {
+                $count[$key]['ratio'] = $row['win'];
+            } else {
+                $count[$key]['ratio'] = $row['win'] / $row['loss'];
+            }
         }
 
         usort($count, function ($a, $b) {
