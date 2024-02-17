@@ -88,7 +88,6 @@ class StatisticService
                         'thisUser' => 'true',
                     ];
                 }
-                break;
             }
         }
         return $sorted;
