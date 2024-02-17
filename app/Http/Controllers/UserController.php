@@ -36,7 +36,7 @@ class UserController
 
     public function topOfUser()
     {
-        StatisticService::getTopOfUsersData();
+        StatisticController::view();
     }
 
 }

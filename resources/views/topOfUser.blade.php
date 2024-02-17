@@ -5,7 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    {{--    <title>{{ config('app.name', 'Laravel') }}</title>--}}
+    <title>
+{{--        {{ __('messages.minus_find_x') }}--}}
+        HEllo
+    </title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -23,10 +27,13 @@
     </header>
 
     <main>
-        hello world
+        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+            <div id='minusX' style=" background-color: ghostwhite; padding: 10px; color: black; border-radius: 10px;">
+            Hello World
+            </div>
+        </div>
     </main>
 </div>
 </body>
 </html>
 @include('script')
-

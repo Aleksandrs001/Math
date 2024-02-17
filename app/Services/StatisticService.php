@@ -10,7 +10,7 @@ class StatisticService
     public static function getTopOfUsersData()
     {
         $topUsers = UserAnswerStatisticModel::getAllUsersStatistic();
-        Log::debug(print_r($topUsers, true));
+//        Log::debug(print_r($topUsers, true));
         return $topUsers;
     }
 

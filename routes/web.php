@@ -58,7 +58,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/divide', [DivideController::class, 'divide'])->name('divide');
     Route::post('/divide', [UserController::class, 'answer'])->name('answer');
 
-    Route::get('/top-users', [UserController::class, 'topOfUser'])->name('topOfUser');
+    Route::get('/topOfUser', [UserController::class, 'topOfUser'])->name('topOfUser');
 
     Route::get('/badAnswers', [BadAnswersController::class, 'badAnswers'])->name('badAnswers');
 
