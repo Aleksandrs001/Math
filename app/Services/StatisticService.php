@@ -70,6 +70,8 @@ class StatisticService
                         'user_id' => auth()->user()->id,
                         'user_name' => UserController::getUserName(),
                         'user_email' => StatisticService::hideEmail(auth()->user()->email),
+                        'thisUser' => 'true',
+
                     ];
                 } else {
                     $sorted[$key] = [
