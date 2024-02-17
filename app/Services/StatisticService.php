@@ -59,7 +59,7 @@ class StatisticService
             if (!isset($sorted[$key]['user_id'][$authUser])) {
                 $sorted[$key] = [
                     'count' => UserAnswerStatisticModel::getStatistic()->count,
-                    'ratio' => UserAnswerStatisticModel::getStatistic()->win / UserAnswerStatisticModel::getStatistic()->loss ?? 1,
+                    'ratio' => UserAnswerStatisticModel::getStatistic()->win ?? 1 / UserAnswerStatisticModel::getStatistic()->loss ?? 1,
                     'loss' => UserAnswerStatisticModel::getStatistic()->loss,
                     'user_id' => auth()->user()->id,
                     'user_name' => UserController::getUserName(),
