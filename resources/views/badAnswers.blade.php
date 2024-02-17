@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    {{--    <title>{{ config('app.name', 'Laravel') }}</title>--}}
+    <title>
+        {{ __('messages.badAnswers') }}
+    </title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -24,40 +27,13 @@
 
     <main>
         <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-            <div id='bad_answer' style="background-color: ghostwhite; padding: 10px; color: black; border-radius: 10px;">
-{{--                @foreach($res as $index => $r)--}}
-{{--                    <div id="yellowBubble" style="display: none; background-color: yellow; padding: 10px; color: black; border-radius: 10px;">--}}
-{{--                        {{__("messages.enter_integer")}}--}}
-{{--                    </div>--}}
-{{--                    <div id="redBubble" style="display: none; background-color: red; padding: 10px; color: white; border-radius: 10px;">--}}
-{{--                        {{__("messages.try_again")}} {{$r['result']}}--}}
-{{--                    </div>--}}
-{{--                    <div id="greenBubble" style="display: none; background-color: green; padding: 10px; color: white; border-radius: 10px;">--}}
-{{--                        {{__("messages.you_are_right")}}--}}
-{{--                    </div>--}}
-{{--                    <div>--}}
-{{--                        <h1 style="font-size: 24px;">{{$r['first']}} {{$r['operation']}} {{$r['second']}} {{$r['equal']}}</h1>--}}
+            <div id='minusX' style=" background-color: ghostwhite; padding: 10px; color: black; border-radius: 10px;">
+                {{__('messages.working')}}
 
-{{--                        <form id="answerForm_{{$index}}" data-index="{{$index}}" class="answer-form" autocomplete="off">--}}
-{{--                            @csrf--}}
-{{--                            @method('POST')--}}
-{{--                            <meta name="csrf-token" content="{{ csrf_token() }}">--}}
-
-{{--                            <label for="answer_{{$index}}"> {{$r['userName']}}, {{__('messages.your_answer')}}</label>--}}
-{{--                            <input type="number" id="answer_{{$index}}" name="answer" pattern="[0-9]*" value="" style="border-radius: 5px;" />--}}
-{{--                            <input type="hidden" id="result_{{$index}}" name="result" value="{{$r['result']}}" />--}}
-{{--                            <input type="hidden" id="result2_{{$index}}" name="full" value="{{$r['first']}} {{$r['operation']}} {{$r['second']}} {{$r['equal']}} {{$r['result']}}" />--}}
-{{--                            <input type="hidden" id="result2_{{$index}}" name="competition" value="minus" />--}}
-{{--                            <button type="button" onclick="submitAnswer({{$index}})">{{__('messages.submit')}}</button>--}}
-{{--                        </form>--}}
-{{--                    </div>--}}
-{{--                @endforeach--}}
             </div>
         </div>
     </main>
-
 </div>
 </body>
 </html>
 @include('script')
-

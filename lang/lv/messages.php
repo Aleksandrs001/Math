@@ -51,5 +51,8 @@ return [
     'topOfUser' => 'Lietotāju Tops',
     'bad_answers' => 'Nepareizie atbildes',
     'welcome' => 'Laipni lūdzam ',
+    'working' => 'Darbosies drīzumā!',
+    'badAnswers' => 'Nepareizie atbildes',
+
 ];
 

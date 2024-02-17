@@ -70,7 +70,7 @@
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('topOfUser')" :active="request()->routeIs('topOfUser')">
+                    <x-nav-link :href="route('view')" :active="request()->routeIs('view')">
                         {{ __('messages.topOfUser') }}
                     </x-nav-link>
                 </div>

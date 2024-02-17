@@ -6,7 +6,7 @@ class BadAnswersController extends Controller
 {
     public function badAnswers()
     {
-        return view('topOfUser');
+        return view('badAnswers');
     }
 
 }

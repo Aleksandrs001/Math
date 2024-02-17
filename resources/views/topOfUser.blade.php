@@ -7,8 +7,7 @@
 
     {{--    <title>{{ config('app.name', 'Laravel') }}</title>--}}
     <title>
-{{--        {{ __('messages.minus_find_x') }}--}}
-        HEllo
+        {{ __('messages.topOfUser') }}
     </title>
 
     <!-- Fonts -->
@@ -29,7 +28,8 @@
     <main>
         <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
             <div id='minusX' style=" background-color: ghostwhite; padding: 10px; color: black; border-radius: 10px;">
-            Hello World
+                {{__('messages.working')}}
+
             </div>
         </div>
     </main>
