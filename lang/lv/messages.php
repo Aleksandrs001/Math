@@ -53,6 +53,11 @@ return [
     'welcome' => 'Laipni lūdzam ',
     'working' => 'Darbosies drīzumā!',
     'badAnswers' => 'Nepareizie atbildes',
+    'user_name' => 'Lietotāja vārds',
+    'user_email' => 'Lietotāja e-pasts',
+    'played_game_count' => 'Spēlēto spēļu skaits',
+    'loss_game_count' => 'Zaudēto spēļu skaits',
+    'ratio' => 'Koeficients',
 
 ];
 

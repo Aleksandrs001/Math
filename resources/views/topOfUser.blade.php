@@ -26,19 +26,35 @@
     </header>
     <main>
         <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-            <div id='minusX' style=" background-color: ghostwhite; padding: 10px; color: black; border-radius: 10px;">
-                List of top users:<br>
-                @foreach($res as $key => $resultOfTop)
-                    {{$key + 1}}.
-                    User name: {{ucfirst($resultOfTop['user_name'])}}
-                    User email: {{$resultOfTop['user_email']}}
-                    Played Game Count: {{$resultOfTop['count']}}
-                    Loss game count: {{$resultOfTop['loss']}}
-                    Ratio: {{$resultOfTop['ratio']}}<br>
-                @endforeach
-
+            <div id='topOfUsers' style="background-color: ghostwhite; padding: 10px; color: black;">
+                <table style="border-collapse: collapse; width: 100%;">
+                    <thead>
+                    <tr>
+                        <th style="border: 1px solid black; border-radius: 10px; text-align: center;">#</th>
+                        <th style="border: 1px solid black; border-radius: 10px; text-align: center;">{{ __('messages.user_name') }}</th>
+                        <th style="border: 1px solid black; border-radius: 10px; text-align: center;">{{ __('messages.user_email') }}</th>
+                        <th style="border: 1px solid black; border-radius: 10px; text-align: center;">{{ __('messages.played_game_count') }}</th>
+                        <th style="border: 1px solid black; border-radius: 10px; text-align: center;">{{ __('messages.loss_game_count') }}</th>
+                        <th style="border: 1px solid black; border-radius: 10px; text-align: center;">{{ __('messages.ratio') }}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($res as $key => $resultOfTop)
+                        <tr style="@if(isset($resultOfTop['thisUser'])) background-color: blue; color: white; @endif">
+                            <td style="border: 1px solid black; text-align: center;">{{$key + 1}}</td>
+                            <td style="border: 1px solid black; text-align: center;">{{ucfirst($resultOfTop['user_name'])}}</td>
+                            <td style="border: 1px solid black; text-align: center;">{{$resultOfTop['user_email']}}</td>
+                            <td style="border: 1px solid black; text-align: center;">{{$resultOfTop['count']}}</td>
+                            <td style="border: 1px solid black; text-align: center;">{{$resultOfTop['loss']}}</td>
+                            <td style="border: 1px solid black; text-align: center;">{{$resultOfTop['ratio']}}</td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
+
+
     </main>
 </div>
 </body>

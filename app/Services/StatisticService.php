@@ -31,7 +31,7 @@ class StatisticService
             if ($row['loss'] == 0) {
                 $count[$key]['ratio'] = $row['win'];
             } else {
-                $count[$key]['ratio'] = $row['win'] / $row['loss'];
+                $count[$key]['ratio'] = round($row['win'] / $row['loss'], 3);
             }
         }
 
@@ -56,28 +56,35 @@ class StatisticService
         $notSorted = $sorted;
         $sorted = array_slice($sorted, 0, 10);
         $authUser = auth()->user()->id;
-        Log::debug(print_r($sorted,true));
-        Log::debug(print_r($authUser,true));
         foreach ($notSorted as $key => $value) {
             if (!isset($sorted[$key]['user_id'][$authUser])) {
                 $userStatistic = UserAnswerStatisticModel::getStatistic();
                 $thisUserCount = $userStatistic->count ?? 0;
                 $thisUserWin = $userStatistic->win ?? 0;
                 $thisUserLoss = $userStatistic->loss ?? 0;
-
-                $sorted[$key] = [
-                    'count' => $thisUserCount,
-                    'ratio' => ($thisUserLoss != 0) ? $thisUserWin / $thisUserLoss : 0,
-                    'loss' => $thisUserLoss,
-                    'user_id' => auth()->user()->id,
-                    'user_name' => UserController::getUserName(),
-                    'user_email' => StatisticService::hideEmail(auth()->user()->email),
-                ];
-
+                if($thisUserCount > 0 && $userStatistic->loss == 0){
+                    $sorted[$key] = [
+                        'count' => $thisUserCount,
+                        'ratio' => $thisUserWin,
+                        'loss' => $thisUserLoss,
+                        'user_id' => auth()->user()->id,
+                        'user_name' => UserController::getUserName(),
+                        'user_email' => StatisticService::hideEmail(auth()->user()->email),
+                    ];
+                } else {
+                    $sorted[$key] = [
+                        'count' => $thisUserCount,
+                        'ratio' => ($thisUserLoss != 0) ? round($thisUserWin / $thisUserLoss, 3) : 0,
+                        'loss' => $thisUserLoss,
+                        'user_id' => auth()->user()->id,
+                        'user_name' => UserController::getUserName(),
+                        'user_email' => StatisticService::hideEmail(auth()->user()->email),
+                        'thisUser' => 'true',
+                    ];
+                }
                 break;
             }
         }
-
         return $sorted;
     }
 
