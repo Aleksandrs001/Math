@@ -59,6 +59,7 @@ return [
     'loss_game_count' => 'Zaudēto spēļu skaits',
     'ratio' => 'Koeficients',
     'about' => 'Par mums',
+    'just_password' => 'Parole',
 
 ];
 

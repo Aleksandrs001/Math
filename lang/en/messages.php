@@ -59,5 +59,7 @@ return [
     'loss_game_count' => 'Loss Game Count',
     'ratio' => 'Ratio',
     'about' => 'About',
+    'just_password' => 'Password',
+
 
 ];
