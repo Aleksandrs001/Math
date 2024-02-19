@@ -59,4 +59,5 @@
             submitAnswer($(this).data('index'));
         }
     });
+
 </script>
