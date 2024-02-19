@@ -53,8 +53,14 @@ class StatisticService
             }
         }
         foreach ($sorted as $key => $value) {
-            $sorted[$key]['user_name'] = UserController::FindUserById($key)->name;
-            $sorted[$key]['user_email'] = StatisticService::hideEmail(UserController::FindUserById($key)->email);
+            $sorted[$key]['user_name'] = UserController::FindUserById($key)->name ?? 'User without name';
+            if (isset(UserController::FindUserById($key)->email)) {
+                $sorted[$key]['user_email'] = StatisticService::hideEmail(UserController::FindUserById($key)->email);
+            } else {
+                //TODO: if user was deleted maybe we should hide result
+//                $sorted[$key]['user_email'] = 'deleted used';
+                unset($sorted[$key]);
+            }
         }
         $notSorted = $sorted;
         $sorted = array_slice($sorted, 0, 10);
