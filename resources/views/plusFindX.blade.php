@@ -21,7 +21,7 @@
 <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
     @include('layouts.navigation')
     <!-- Page Heading -->
-    <header class="bg-white dark:bg-gray-800 shadow">
+    <header class="bg-white dark:bg-gray-800 shadow">awd
     </header>
     <main>
         <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
@@ -31,7 +31,7 @@
                         {{__("messages.enter_integer")}}
                     </div>
                     <div id="redBubble" style="display: none; background-color: red; padding: 10px; color: white; border-radius: 10px;">
-                        {{__("messages.try_again")}} {{$r['result']}}
+                        {{__("messages.try_again")}} {{$r['second']}}
                     </div>
                     <div id="greenBubble" style="display: none; background-color: green; padding: 10px; color: white; border-radius: 10px;">
                         {{__("messages.you_are_right")}}

@@ -33,7 +33,7 @@
                         {{__("messages.enter_integer")}}
                     </div>
                     <div id="redBubble" style="display: none; background-color: red; padding: 10px; color: white; border-radius: 10px;">
-                        {{__("messages.try_again")}} {{$r['result']}}
+                        {{__("messages.try_again")}} {{$r['second']}}
                     </div>
                     <div id="greenBubble" style="display: none; background-color: green; padding: 10px; color: white; border-radius: 10px;">
                         {{__("messages.you_are_right")}}
