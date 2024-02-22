@@ -60,5 +60,6 @@ return [
     'ratio' => 'Коэффициент',
     'about' => 'О нас',
     'just_password' => 'Пароль',
+    'wrong_answers' => 'Неправильные ответы',
 
 ];

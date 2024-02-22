@@ -6,7 +6,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>
-        {{ __('messages.badAnswers') }}
+        {{ __('messages.wrong_answers') }}
     </title>
 
     <!-- Fonts -->
@@ -26,7 +26,17 @@
 
     <main>
         <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-            <div id='minusX' style=" background-color: ghostwhite; padding: 10px; color: black; border-radius: 10px;">
+            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 text-gray-900 dark:text-gray-100">
+                    {{ var_dump($res) }}
+                    @foreach($res as $key => $value)
+                        {{ $key }}: )
+
+                    @endforeach
+                </div>
+            </div>
+        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+            <div id='working_on_it' style=" background-color: ghostwhite; padding: 10px; color: black; border-radius: 10px;">
                 {{__('messages.working')}}
 
             </div>

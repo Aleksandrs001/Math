@@ -55,4 +55,5 @@ class UserAnswerStatisticModel extends Model
         return UserAnswerStatisticModel::all();
     }
 
+
 }

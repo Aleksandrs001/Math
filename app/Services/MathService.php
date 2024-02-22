@@ -8,6 +8,7 @@ use App\Http\Controllers\MinusController;
 use App\Http\Controllers\MultiplyController;
 use App\Http\Controllers\PlusController;
 use App\Http\Controllers\UserController;
+
 class MathService
 {
     static function countOfExample($operation): array

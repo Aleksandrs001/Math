@@ -12,6 +12,7 @@ use App\Http\Controllers\PlusFindXController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StatisticController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\WrongAnswerController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LocaleController;
 
@@ -67,7 +68,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/topOfUser', [StatisticController::class, 'view'])->name('view');
 
-    Route::get('/badAnswers', [BadAnswersController::class, 'badAnswers'])->name('badAnswers');
+    Route::get('/wrongAnswers', [WrongAnswerController::class, 'wrongAnswers'])->name('wrongAnswers');
 
 //    Route::get('/change-locale/{locale}', [LocaleController::class, 'changeLocale'])->name('change.locale');
 

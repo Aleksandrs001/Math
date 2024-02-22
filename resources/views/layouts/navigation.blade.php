@@ -75,8 +75,8 @@
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('badAnswers')" :active="request()->routeIs('badAnswers')">
-                        {{ __('messages.bad_answers') }}
+                    <x-nav-link :href="route('wrongAnswers')" :active="request()->routeIs('wrongAnswers')">
+                        {{ __('messages.wrong_answers') }}
                     </x-nav-link>
                 </div>
             </div>

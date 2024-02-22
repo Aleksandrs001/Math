@@ -60,6 +60,7 @@ return [
     'ratio' => 'Koeficients',
     'about' => 'Par mums',
     'just_password' => 'Parole',
+    'wrong_answers' => 'Nepareizie atbildes',
 
 ];
 

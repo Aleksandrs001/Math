@@ -60,6 +60,7 @@ return [
     'ratio' => 'Ratio',
     'about' => 'About',
     'just_password' => 'Password',
+    'wrong_answers' => 'Wrong Answers',
 
 
 ];

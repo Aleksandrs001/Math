@@ -9,7 +9,7 @@ use App\Models\MathMultiplyModel;
 use App\Models\MathPlusModel;
 use App\Models\MathPlusXModel;
 use App\Models\UserAnswerStatisticModel;
-use App\Models\UserBadAnswerModel;
+use App\Models\WrongAnswersModel;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Log;
 
@@ -91,7 +91,7 @@ class UserService
         } else {
             $userAnswerStatistic->$loss += 1;
             $updateStatistic->loss += 1;
-            $as = UserBadAnswerModel::create(['user_id' => $user_id, 'answer' => $answer]);
+            $as = WrongAnswersModel::create(['user_id' => $user_id, 'answer' => $answer]);
             $as->result = $answer;
             $as->competition = $field;
             $as->full = $full;
