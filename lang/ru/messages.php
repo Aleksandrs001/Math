@@ -62,5 +62,6 @@ return [
     'just_password' => 'Пароль',
     'wrong_answers' => 'Неправильные ответы',
     'home' => 'Главная',
+    'log_out' => 'Выйти',
 
 ];

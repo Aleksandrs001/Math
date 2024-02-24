@@ -62,6 +62,7 @@ return [
     'just_password' => 'Password',
     'wrong_answers' => 'Wrong Answers',
     'home' => 'Home',
+    'log_out' => 'Log Out',
 
 
 ];

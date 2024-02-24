@@ -62,6 +62,7 @@ return [
     'just_password' => 'Parole',
     'wrong_answers' => 'Nepareizie atbildes',
     'home' => 'Sākums',
+    'log_out' => 'Izrakstīties',
 
 ];
 

@@ -96,7 +96,7 @@
 
                     <x-slot name="content">
                         <x-dropdown-link :href="route('profile.edit')">
-                            {{ __('Profile') }}
+                            {{ __('messages.profile') }}
                         </x-dropdown-link>
                         <x-dropdown-link :href="route('about')">
                             {{ __('messages.about') }}
@@ -109,7 +109,7 @@
                             <x-dropdown-link :href="route('logout')"
                                              onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                                {{ __('Log Out') }}
+                                {{ __('messages.log_out') }}
                             </x-dropdown-link>
                         </form>
                     </x-slot>
