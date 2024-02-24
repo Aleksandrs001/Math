@@ -20,6 +20,7 @@ class NavigationController extends Controller
             'minusFindX' => 'messages.minus_find_x',
         ];
     }
+
     public static function getOtherMenu(): array
     {
         return [
