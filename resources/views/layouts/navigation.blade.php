@@ -6,11 +6,10 @@
                 <!-- Navigation Links -->
                 <div class="shrink-0 flex ">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('messages.dashboard') }}
+                        {{ __('messages.home') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden sm:flex sm:items-center sm:ms-6">
-
                     <x-dropdown align="left" width="48">
                         <x-slot name="trigger">
                             <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
@@ -24,13 +23,11 @@
                             </button>
                         </x-slot>
                         <x-slot name="content">
-                            <x-dropdown-link :href="route('plus')" :active="request()->routeIs('plus')">
-                                {{ __('messages.plus') }}
-                            </x-dropdown-link>
-
-                            <x-dropdown-link :href="route('plusFindX')" :active="request()->routeIs('plusFindX')">
-                                {{ __('messages.plus_find_x') }}
-                            </x-dropdown-link>
+                            @foreach(\App\Http\Controllers\NavigationController::getPlusMenu() as $key => $menu)
+                                <x-dropdown-link :href="route($key)" :active="request()->routeIs($key)">
+                                    {{ __($menu) }}
+                                </x-dropdown-link>
+                            @endforeach
                         </x-slot>
                     </x-dropdown>
                 </div>
@@ -49,55 +46,34 @@
                             </button>
                         </x-slot>
                         <x-slot name="content">
-                            <x-dropdown-link :href="route('minus')" :active="request()->routeIs('minus')">
-                                {{ __('messages.minus') }}
-                            </x-dropdown-link>
-
-                            <x-dropdown-link :href="route('minusFindX')" :active="request()->routeIs('minusFindX')">
-                                {{ __('messages.minus_find_x') }}
-                            </x-dropdown-link>
+                            @foreach(\App\Http\Controllers\NavigationController::getMinusMenu() as $key => $menu)
+                                <x-dropdown-link :href="route($key)" :active="request()->routeIs($key)">
+                                    {{ __($menu) }}
+                                </x-dropdown-link>
+                            @endforeach
                         </x-slot>
                     </x-dropdown>
                 </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('multiply')" :active="request()->routeIs('multiply')">
-                        {{ __('messages.multiply') }}
-                    </x-nav-link>
-                </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('divide')" :active="request()->routeIs('divide')">
-                        {{ __('messages.divide') }}
-                    </x-nav-link>
-                </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('view')" :active="request()->routeIs('view')">
-                        {{ __('messages.topOfUser') }}
-                    </x-nav-link>
-                </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('wrongAnswers')" :active="request()->routeIs('wrongAnswers')">
-                        {{ __('messages.wrong_answers') }}
-                    </x-nav-link>
-                </div>
+                @foreach(\App\Http\Controllers\NavigationController::getOtherMenu() as $key => $menu)
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route($key)" :active="request()->routeIs($key)">
+                            {{ __($menu) }}
+                        </x-nav-link>
+                    </div>
+                @endforeach
             </div>
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">
                 <div class="hidden sm:flex sm:items-center sm:ms-6">
                     <div class="text-gray-400">
-                        <a href="{{ route('change.locale', ['locale' => 'en']) }}"
+                        @foreach(\App\Http\Controllers\NavigationController::getAllLanguages() as $key => $menu)
+                            |
+                        <a href="{{ route('change.locale', ['locale' => $key]) }}"
                            style="{{ app()->getLocale() === 'en' ? 'color: #BDBDBD;' : 'color: #808080;' }}">
-                            English
+                            {{$menu}}
                         </a>
+                        @endforeach
                         |
-                        <a href="{{ route('change.locale', ['locale' => 'ru']) }}"
-                           style="{{ app()->getLocale() === 'ru' ? 'color: #BDBDBD;' : 'color: #808080;' }}">
-                            Русский
-                        </a>
-                        |
-                        <a href="{{ route('change.locale', ['locale' => 'lv']) }}"
-                           style="{{ app()->getLocale() === 'lv' ? 'color: #BDBDBD;' : 'color: #808080;' }}">
-                            Latviešu
-                        </a>
                     </div>
                 </div>
 

@@ -61,5 +61,6 @@ return [
     'about' => 'О нас',
     'just_password' => 'Пароль',
     'wrong_answers' => 'Неправильные ответы',
+    'home' => 'Главная',
 
 ];

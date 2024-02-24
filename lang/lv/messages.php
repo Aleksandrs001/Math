@@ -61,6 +61,7 @@ return [
     'about' => 'Par mums',
     'just_password' => 'Parole',
     'wrong_answers' => 'Nepareizie atbildes',
+    'home' => 'Sākums',
 
 ];
 
