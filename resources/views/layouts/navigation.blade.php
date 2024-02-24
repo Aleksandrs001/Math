@@ -69,7 +69,7 @@
                         @foreach(\App\Http\Controllers\NavigationController::getAllLanguages() as $key => $menu)
                             |
                         <a href="{{ route('change.locale', ['locale' => $key]) }}"
-                           style="{{ app()->getLocale() === 'en' ? 'color: #BDBDBD;' : 'color: #808080;' }}">
+                           style="{{ app()->getLocale() === $key ? 'color: #BDBDBD;' : 'color: #808080;' }}">
                             {{$menu}}
                         </a>
                         @endforeach
