@@ -3,25 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Models\WrongAnswerModel;
-use App\Services\WrongAnswerService;
-use Illuminate\Support\Facades\Log;
+use Illuminate\Contracts\View\View;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Foundation\Application;
 
 class WrongAnswerController extends Controller
 {
-    private ?\Illuminate\Contracts\Auth\Authenticatable $user;
 
-    public function wrongAnswers()
+    public function wrongAnswers(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
-        //i need result for auth user
-
-
-        $this->user = $user = auth()->user();
-        $temp = WrongAnswerModel::where('user_id', $this->user->id)->get()->toArray();
-        Log::debug($user);
+        $wrongAnswers = WrongAnswerModel::where('user_id', auth()->user()->id)->get()->toArray();
         return view('wrongAnswers')->with(
             [
-                'wrongAnswers' => $temp,
-                'res' => WrongAnswerService::getUserWrongAnswers(),
+                'wrongAnswers' => $wrongAnswers,
             ]
         );
     }
