@@ -31,6 +31,7 @@ class WrongAnswerModel extends Model
 
     public function user(): BelongsTo
     {
+        $user_id = auth()->user();
         return $this->belongsTo(User::class);
     }
 

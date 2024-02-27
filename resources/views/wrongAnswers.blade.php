@@ -29,10 +29,10 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <pre>
-{{--                    {{ var_dump($res) }}--}}
+{{--                    {{ var_dump($wrongAnswers) }}--}}
                     </pre>
-                    @foreach($res as $key => $value)
-                        {{ $key +1 }}: ) competition {{ $value['competition'] }} example {{ $value['question'] }}  wrong answer {{ $value['answer']  }}<br>
+                    @foreach($wrongAnswers as $key => $value)
+                        {{ $key +1 }}: ) competition {{ $value['competition'] }} example {{ $value['full'] }}  wrong answer {{ $value['result']  }}<br>
 
                     @endforeach
                 </div>
