@@ -1,9 +1,8 @@
 <?php
 
 use App\Http\Controllers\AboutController;
-use App\Http\Controllers\BadAnswerController;
-use App\Http\Controllers\BadAnswersController;
 use App\Http\Controllers\DivideController;
+use App\Http\Controllers\LessonsWithoutRegister;
 use App\Http\Controllers\MinusFindXController;
 use App\Http\Controllers\MultiplyController;
 use App\Http\Controllers\PlusController;
@@ -30,8 +29,15 @@ use App\Http\Controllers\LocaleController;
 
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome')->with(
+        [
+            'res'=> (new LessonsWithoutRegister)->index()
+        ]
+    );
 });
+//withoutRegistration
+Route::post('/withoutRegistration', [LessonsWithoutRegister::class, 'withoutRegistration'])->name('withoutRegistration');
+
 Route::get('/about', function () {
     return view('about');
 });
