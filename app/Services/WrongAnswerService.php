@@ -9,8 +9,7 @@ class WrongAnswerService extends Controller
 {
     public static function getUserWrongAnswers()
     {
-        $authUser = auth()->user();
-        $userWrongAnswers = WrongAnswerModel::where('user_id', $authUser->id)->get()->toArray();
+        $userWrongAnswers = auth()->user->wrongAnswers()->get()->toArray();
         $wrongAnswers = [];
         foreach ($userWrongAnswers as $key => $row) {
             $wrongAnswers[$key] = [
