@@ -37,16 +37,19 @@ Route::get('/', function () {
 });
 //withoutRegistration
 Route::post('/withoutRegistration', [LessonsWithoutRegister::class, 'withoutRegistration'])->name('withoutRegistration');
+Route::get('/about', [AboutController::class, 'about'])->name('about');
+Route::get('/change-locale/{locale}', [LocaleController::class, 'changeLocale'])->name('change.locale');
 
-Route::get('/about', function () {
-    return view('about');
-});
+
+
+//Route::get('/about', function () {
+//    return view('about');
+//});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 //this can be access without log in   Route::get('/change-locale/{locale}', [LocaleController::class, 'changeLocale'])->name('change.locale');
-Route::get('/change-locale/{locale}', [LocaleController::class, 'changeLocale'])->name('change.locale');
 
 
 Route::middleware('auth')->group(function () {
