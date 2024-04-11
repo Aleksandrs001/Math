@@ -5,7 +5,6 @@
     });
 
     function withoutRegistration(index) {
-        //user can see play without registration
         let form = $('#answerForm_' + index);
         form.find('button').prop('disabled', true);
         let formData = form.serialize();
@@ -15,10 +14,13 @@
             data: formData + '&_token=' + $('meta[name="csrf-token"]').attr('content'),
             dataType: 'json',
             success: function (response) {
-                if (response.message) {
+                if (response.message === 'ok') {
                     showGreenBubble();
-                } else if (response.message === 'Введите целое число.') {
+                } else if (response.message === 'nan') {
                     showYellowBubble();
+                } else if (response.message === 'count') {
+                    alert('Вы не зарегистрированы.');
+                    location.reload();
                 } else {
                     showRedBubble();
                 }
@@ -50,7 +52,6 @@
                 $('#yellowBubble').hide();
             }, 5000);
         }
-
     }
 
     function submitAnswer(index) {
@@ -105,10 +106,9 @@
     $('form.answer-form').on('keydown', function (e) {
         if (e.keyCode === 13) {
             e.preventDefault();
-            submitAnswer($(this).data('index'));
-        }
+                submitAnswer($(this).data('index'));
+            }
     });
-
 
     function copyTextToClipboard(elementId) {
         let textToCopy = document.getElementById(elementId);
@@ -124,7 +124,5 @@
 
         alert(textToCopy.textContent + ' copied to clipboard!');
     }
-
-
 
 </script>
