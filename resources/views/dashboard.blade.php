@@ -23,9 +23,6 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     {{ __("messages.welcome") }}
                     {{ Auth::user()->name }}
-                    <a href="../pic/IMG.PNG" >
-                        <img src="../pic/IMG.PNG" alt="HTML tutorial" >
-                    </a>
                 </div>
             </div>
         </div>
