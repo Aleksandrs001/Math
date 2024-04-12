@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Log;
+
 class NavigationController extends Controller
 {
 
@@ -41,6 +43,7 @@ class NavigationController extends Controller
     }
     public static function isMobile(): bool
     {
+        Log::debug($_SERVER['HTTP_USER_AGENT']);
         return preg_match('/(android|iphone|ipad|ipod|blackberry|windows phone)/i', $_SERVER['HTTP_USER_AGENT']);
     }
 }
