@@ -28,6 +28,7 @@ use App\Http\Controllers\LocaleController;
 |
 */
 
+//withoutRegistration
 
 Route::get('/', function () {
     if (Auth::check()) {
@@ -39,18 +40,16 @@ Route::get('/', function () {
     }
 });
 
-
-//withoutRegistration
 Route::post('/withoutRegistration', [LessonsWithoutRegister::class, 'withoutRegistration'])->name('withoutRegistration');
 Route::get('/about', [AboutController::class, 'about'])->name('about');
 Route::get('/change-locale/{locale}', [LocaleController::class, 'changeLocale'])->name('change.locale');
 
+
+
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
-
-//this can be access without log in   Route::get('/change-locale/{locale}', [LocaleController::class, 'changeLocale'])->name('change.locale');
-
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -78,11 +77,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/topOfUser', [StatisticController::class, 'view'])->name('view');
 
     Route::get('/wrongAnswers', [WrongAnswerController::class, 'wrongAnswers'])->name('wrongAnswers');
-
-//    Route::get('/change-locale/{locale}', [LocaleController::class, 'changeLocale'])->name('change.locale');
-
-//    Route::get('/about', [AboutController::class, 'about'])->name('about');
-//    Route::get('/topOfUser/{locale}', [StatisticController::class, 'changeLocale'])->name('change.locale');
 
 });
 
