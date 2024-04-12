@@ -53,7 +53,7 @@
                 </div>
 
                 <div class="text-center text-sm text-gray-500 dark:text-gray-400 sm:text-center sm:ml-0">
-                    <label>© Copyright Children-math </label>
+                    <label>© 2024 Copyright Children-math </label>
                 </div>
 
                 <div class="text-center text-sm text-gray-500 dark:text-gray-400 sm:text-right">

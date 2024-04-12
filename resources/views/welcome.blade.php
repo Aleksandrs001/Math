@@ -1059,7 +1059,7 @@
                 </div>
             </div>
             <div class="text-center text-sm text-gray-500 dark:text-gray-400 sm:text-center sm:ml-0">
-                © Copyright Children-math
+                © 2024 Copyright Children-math
             </div>
             <div class="text-center text-sm text-gray-500 dark:text-gray-400 sm:text-center sm:ml-0">
                 Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
