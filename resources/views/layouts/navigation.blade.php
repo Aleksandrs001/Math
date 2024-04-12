@@ -54,7 +54,6 @@
                                 <x-nav-link :href="route($key)" :active="request()->routeIs($key)">
                                     {{ __($menu) }}
                                 </x-nav-link>
-                                <br>
                             @endforeach
                         </x-slot>
                     </x-dropdown>
@@ -79,7 +78,6 @@
                                 <x-nav-link :href="route($key)" :active="request()->routeIs($key)">
                                     {{ __($menu) }}
                                 </x-nav-link>
-                                <br>
                             @endforeach
                         </x-slot>
                     </x-dropdown>
@@ -146,6 +144,8 @@
                 </x-dropdown>
 
             </div>
+
+
             @endif
 
             <!-- Hamburger -->
