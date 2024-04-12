@@ -12,9 +12,9 @@ class AboutController
     public function about(): Application|Factory|View|\Illuminate\Foundation\Application
     {
         if (auth()->user()) {
-            return view('about');
+            return view('about')->with(['user' => auth()->user()]);
         } else {
-            return view('about2');
+            return view('about');
         }
     }
 
