@@ -42,8 +42,12 @@
                     REVOLT21
                 </div>
                 <div>Contact: <a href="mailto:children.match.contact.us@gmail.com">children.match.contact.us@gmail.com</a></div>
+                @if (empty($user))
+                    <a href="/" class="btn btn-default">Back</a>
+                @endif
             </div>
         </div>
+
 
     </main>
 </div>
