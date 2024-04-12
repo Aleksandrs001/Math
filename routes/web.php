@@ -12,6 +12,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StatisticController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WrongAnswerController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LocaleController;
 
@@ -29,12 +30,15 @@ use App\Http\Controllers\LocaleController;
 
 
 Route::get('/', function () {
-    return view('welcome')->with(
-        [
+    if (Auth::check()) {
+        return redirect('/dashboard');
+    } else {
+        return view('welcome')->with([
             'res'=> (new LessonsWithoutRegister)->index()
-        ]
-    );
+        ]);
+    }
 });
+
 
 //withoutRegistration
 Route::post('/withoutRegistration', [LessonsWithoutRegister::class, 'withoutRegistration'])->name('withoutRegistration');
