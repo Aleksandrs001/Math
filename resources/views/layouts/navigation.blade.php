@@ -20,7 +20,6 @@
                     @endforeach
 
                         @foreach(\App\Http\Controllers\NavigationController::getMinusMenu() as $key => $menu)
-
                         <div class="shrink-0 flex ">
                             <x-nav-link :href="route($key)" :active="request()->routeIs($key)">
                                 {{ __($menu) }}
