@@ -39,4 +39,8 @@ class NavigationController extends Controller
             'lv' => 'Latvian',
         ];
     }
+    public static function isMobile(): bool
+    {
+        return preg_match('/(android|iphone|ipad|ipod|blackberry|windows phone)/i', $_SERVER['HTTP_USER_AGENT']);
+    }
 }

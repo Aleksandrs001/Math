@@ -9,7 +9,32 @@
                         {{ __('messages.home') }}
                     </x-nav-link>
                 </div>
+{{--                if user have mobile phone use this if--}}
+                @if(\App\Http\Controllers\NavigationController::isMobile())
+                    @foreach(\App\Http\Controllers\NavigationController::getPlusMenu() as $key => $menu)
+                        <div class="shrink-0 flex ">
+                            <x-nav-link :href="route($key)" :active="request()->routeIs($key)">
+                                {{ __($menu) }}
+                            </x-nav-link>
+                        </div>
+                    @endforeach
 
+                        @foreach(\App\Http\Controllers\NavigationController::getMinusMenu() as $key => $menu)
+
+                        <div class="shrink-0 flex ">
+                            <x-nav-link :href="route($key)" :active="request()->routeIs($key)">
+                                {{ __($menu) }}
+                            </x-nav-link>
+                        </div>
+                        @endforeach
+                        @foreach(\App\Http\Controllers\NavigationController::getOtherMenu() as $key => $menu)
+                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                                <x-nav-link :href="route($key)" :active="request()->routeIs($key)">
+                                    {{ __($menu) }}
+                                </x-nav-link>
+                            </div>
+                        @endforeach
+                @else
                 <div class="hidden sm:flex sm:items-center sm:ms-6">
                     <x-dropdown align="left" width="48">
                         <x-slot name="trigger">
@@ -121,6 +146,7 @@
                 </x-dropdown>
 
             </div>
+            @endif
 
             <!-- Hamburger -->
             <div class="-me-2 flex items-center sm:hidden">
@@ -137,7 +163,6 @@
             </div>
         </div>
     </div>
-
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
