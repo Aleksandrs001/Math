@@ -791,19 +791,19 @@
             <a href="{{ route('change.locale', ['locale' => 'en']) }}"
                class="font-semibold" style="{{ app()->getLocale() === 'en' ? 'color: #BDBDBD;' : 'color: #808080;' }}"
             >
-                English |
+                {{__('messages.en_lang')}} |
             </a>
 
             <a href="{{ route('change.locale', ['locale' => 'ru']) }}"
                class="font-semibold" style="{{ app()->getLocale() === 'ru' ? 'color: #BDBDBD;' : 'color: #808080;' }}"
             >
-                Русский |
+                {{__('messages.ru_lang')}} |
             </a>
 
             <a href="{{ route('change.locale', ['locale' => 'lv']) }}"
                class="font-semibold" style="{{ app()->getLocale() === 'lv' ? 'color: #BDBDBD;' : 'color: #808080;' }}"
             >
-                Latviešu |
+                {{__('messages.lv_lang')}} |
             </a>
             @auth
                 <a href="{{ url('/dashboard') }}"

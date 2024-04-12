@@ -63,6 +63,11 @@ return [
     'wrong_answers' => 'Nepareizie atbildes',
     'home' => 'Sākums',
     'log_out' => 'Izrakstīties',
+    'en_lang' => 'English',
+    'ru_lang' => 'Русский',
+    'lv_lang' => 'Latviešu',
+
+
 
 ];
 

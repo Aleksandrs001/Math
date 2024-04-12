@@ -23,11 +23,23 @@ class NavigationController extends Controller
         ];
     }
 
-    public static function getOtherMenu(): array
+    public static function getMultiplyMenu(): array
     {
         return [
             'multiply' => 'messages.multiply',
+        ];
+    }
+
+    public static function getDivideMenu(): array
+    {
+        return [
             'divide' => 'messages.divide',
+        ];
+    }
+
+    public static function getOtherMenu(): array
+    {
+        return [
             'view' => 'messages.topOfUser',
             'wrongAnswers' => 'messages.wrong_answers',
         ];
@@ -36,9 +48,9 @@ class NavigationController extends Controller
     public static function getAllLanguages(): array
     {
         return [
-            'en' => 'English',
-            'ru' => 'Russian',
-            'lv' => 'Latvian',
+            'en' => __('messages.en_lang'),
+            'ru' => __('messages.ru_lang'),
+            'lv' => __('messages.lv_lang'),
         ];
     }
     public static function isMobile(): bool

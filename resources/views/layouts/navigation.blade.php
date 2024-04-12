@@ -26,13 +26,6 @@
                             </x-nav-link>
                         </div>
                         @endforeach
-                        @foreach(\App\Http\Controllers\NavigationController::getOtherMenu() as $key => $menu)
-                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                                <x-nav-link :href="route($key)" :active="request()->routeIs($key)">
-                                    {{ __($menu) }}
-                                </x-nav-link>
-                            </div>
-                        @endforeach
                 @else
                 <div class="hidden sm:flex sm:items-center sm:ms-6">
                     <x-dropdown align="left" width="48">
@@ -81,6 +74,23 @@
                         </x-slot>
                     </x-dropdown>
                 </div>
+
+                    @foreach(\App\Http\Controllers\NavigationController::getDivideMenu() as $key => $menu)
+                        <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                            <x-nav-link :href="route($key)" :active="request()->routeIs($key)">
+                                {{ __($menu) }}
+                            </x-nav-link>
+                        </div>
+                    @endforeach
+
+                    @foreach(\App\Http\Controllers\NavigationController::getMultiplyMenu() as $key => $menu)
+                        <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                            <x-nav-link :href="route($key)" :active="request()->routeIs($key)">
+                                {{ __($menu) }}
+                            </x-nav-link>
+                        </div>
+                    @endforeach
+
                 @foreach(\App\Http\Controllers\NavigationController::getOtherMenu() as $key => $menu)
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                         <x-nav-link :href="route($key)" :active="request()->routeIs($key)">
@@ -165,6 +175,23 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
+            <a href="{{ route('change.locale', ['locale' => 'en']) }}"
+               style="{{ app()->getLocale() === 'en' ? 'color: #BDBDBD;' : 'color: #808080;' }}">
+                {{__('messages.en_lang')}}
+            </a>
+        </div>
+        <div class="pt-2 pb-3 space-y-1">
+                <a href="{{ route('change.locale', ['locale' => 'ru']) }}"
+                   style="{{ app()->getLocale() === 'ru' ? 'color: #BDBDBD;' : 'color: #808080;' }}">
+                    {{__('messages.ru_lang')}}
+                </a>
+            </div>
+        <div class="pt-2 pb-3 space-y-1">
+            <a href="{{ route('change.locale', ['locale' => 'lv']) }}"
+               style="{{ app()->getLocale() === 'lv' ? 'color: #BDBDBD;' : 'color: #808080;' }}">
+                {{__('messages.lv_lang')}}
+            </a>
+        <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
@@ -176,11 +203,25 @@
                 <div class="font-medium text-base text-gray-800 dark:text-gray-200">{{ Auth::user()->name }}</div>
                 <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
             </div>
-
             <div class="mt-3 space-y-1">
                 <x-responsive-nav-link :href="route('profile.edit')">
-                    {{ __('Profile') }}
+                    {{ __('messages.profile') }}
                 </x-responsive-nav-link>
+
+                <div class="pt-2 pb-3 space-y-1">
+                    <x-responsive-nav-link :href="route('about')" :active="request()->routeIs('about')">
+                        {{ __('messages.about') }}
+                    </x-responsive-nav-link>
+                </div>
+                @if(\App\Http\Controllers\NavigationController::isMobile())
+                    @foreach(\App\Http\Controllers\NavigationController::getOtherMenu() as $key => $menu)
+                        <div class="pt-2 pb-3 space-y-1">
+                            <x-responsive-nav-link :href="route($key)" :active="request()->routeIs($key)">
+                                {{ __($menu) }}
+                            </x-responsive-nav-link>
+                        </div>
+                    @endforeach
+                @endif
 
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
@@ -189,8 +230,9 @@
                     <x-responsive-nav-link :href="route('logout')"
                                            onclick="event.preventDefault();
                                         this.closest('form').submit();">
-                        {{ __('Log Out') }}
+                        {{ __('messages.log_out') }}
                     </x-responsive-nav-link>
+
                 </form>
             </div>
         </div>

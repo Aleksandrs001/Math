@@ -63,6 +63,10 @@ return [
     'wrong_answers' => 'Wrong Answers',
     'home' => 'Home',
     'log_out' => 'Log Out',
+    'en_lang' => 'English',
+    'ru_lang' => 'Русский',
+    'lv_lang' => 'Latviešu',
+
 
 
 ];

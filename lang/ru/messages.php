@@ -63,5 +63,10 @@ return [
     'wrong_answers' => 'Неправильные ответы',
     'home' => 'Главная',
     'log_out' => 'Выйти',
+    'en_lang' => 'English',
+    'ru_lang' => 'Русский',
+    'lv_lang' => 'Latviešu',
+
+
 
 ];
