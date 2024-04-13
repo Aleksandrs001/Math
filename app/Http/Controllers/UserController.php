@@ -24,10 +24,9 @@ class UserController
         } elseif ($userParams->where('param', 'avatar')->isEmpty()) {
             return false;
         } else {
-            return $userParams->where('param', 'avatar')->first()->value;
+            return 'userAvatars/' . $userParams->where('param', 'avatar')->first()->value;
         }
 
-        return $user ? $user->email : '';
     }
 
     public function answer(Request $request): JsonResponse
