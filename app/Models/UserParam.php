@@ -35,4 +35,17 @@ class UserParam extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function getParam($param, $user_id)
+    {
+        return $this->where('param', $param)->where('user_id', $user_id)->first();
+    }
+
+    public function setParam($param, $value, $user_id)
+    {
+        $this->updateOrCreate(
+            ['param' => $param, 'user_id' => $user_id],
+            ['value' => $value]
+        );
+    }
+
 }

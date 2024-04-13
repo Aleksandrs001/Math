@@ -12,6 +12,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StatisticController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WrongAnswerController;
+use App\Services\AvatarService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LocaleController;
@@ -77,6 +78,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/topOfUser', [StatisticController::class, 'view'])->name('view');
 
     Route::get('/wrongAnswers', [WrongAnswerController::class, 'wrongAnswers'])->name('wrongAnswers');
+
+    Route::post('/avatar', [AvatarService::class, 'save'])->name('avatar.save');
 
 });
 
