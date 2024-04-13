@@ -68,5 +68,6 @@ return [
     'lv_lang' => 'Latviešu',
     'forgot_password' => 'Forgot your password?',
     'support_us' => 'Support us',
+    'log_in' => 'Log In',
 
 ];
