@@ -82,7 +82,6 @@ class StatisticService
                         'user_name' => UserController::getUserName(),
                         'user_email' => StatisticService::hideEmail($authUser->email),
                         'thisUser' => 'true',
-                        'user_avatar' => UserController::getUserAvatar($authUser->id) ?? 'userAvatars/default.png',
 
                     ];
                 } else {
@@ -94,13 +93,20 @@ class StatisticService
                         'user_name' => UserController::getUserName(),
                         'user_email' => StatisticService::hideEmail($authUser->email),
                         'thisUser' => 'true',
-                        'user_avatar' => UserController::getUserAvatar($authUser->id) ?? 'userAvatars/default.png',
                     ];
                 }
                 break;
             }
         }
-Log::debug($sorted);
+        //add user avatar to the array
+        foreach ($sorted as $key => $value) {
+            $avatar = UserController::getUserAvatar($value['user_id']);
+            if ($avatar) {
+                $sorted[$key]['user_avatar'] = $avatar;
+            } else {
+                $sorted[$key]['user_avatar'] = 'user.png';
+            }
+        }
         return $sorted;
     }
 

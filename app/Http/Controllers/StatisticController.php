@@ -12,6 +12,7 @@ class StatisticController extends Controller
     public static function view(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
         $result = StatisticService::getTopOfUsersData();
+
         return view('topOfUser')->with(
             [
                 'res' => $result,
