@@ -16,9 +16,13 @@ class UserController
         return $user ? $user->name : '';
     }
 
-    static public function getUserAvatar(): string
+    static public function getUserAvatar($user_id = null): string
     {
-        $userParams = auth()->user()->userParam()->get();
+        if ($user_id) {
+            $userParams = User::find($user_id)->userParam()->get();
+        } else {
+            $userParams = auth()->user()->userParam()->get();
+        }
         if ($userParams->isEmpty()) {
             return false;
         } elseif ($userParams->where('param', 'avatar')->isEmpty()) {

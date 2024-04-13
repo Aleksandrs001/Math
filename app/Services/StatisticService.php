@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Http\Controllers\UserController;
 use App\Models\UserAnswerStatisticModel;
+use Illuminate\Support\Facades\Log;
 
 class StatisticService
 {
@@ -81,6 +82,7 @@ class StatisticService
                         'user_name' => UserController::getUserName(),
                         'user_email' => StatisticService::hideEmail($authUser->email),
                         'thisUser' => 'true',
+                        'user_avatar' => UserController::getUserAvatar($authUser->id) ?? 'userAvatars/default.png',
 
                     ];
                 } else {
@@ -92,11 +94,13 @@ class StatisticService
                         'user_name' => UserController::getUserName(),
                         'user_email' => StatisticService::hideEmail($authUser->email),
                         'thisUser' => 'true',
+                        'user_avatar' => UserController::getUserAvatar($authUser->id) ?? 'userAvatars/default.png',
                     ];
                 }
                 break;
             }
         }
+Log::debug($sorted);
         return $sorted;
     }
 

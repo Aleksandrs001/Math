@@ -40,6 +40,7 @@
                     </thead>
                     <tbody>
                     @foreach($res as $key => $resultOfTop)
+{{--                        {{$resultOfTop['user_avatar']}}--}}
                         <tr style="@if(isset($resultOfTop['thisUser'])) background-color: blue; color: white; @endif">
                             <td style="border: 1px solid black; text-align: center;">{{$key + 1}}</td>
                             <td style="border: 1px solid black; text-align: center;">{{ucfirst($resultOfTop['user_name'])}}</td>
