@@ -113,7 +113,11 @@
                         |
                     </div>
                 </div>
-
+                @if(!empty(\App\Http\Controllers\UserController::getUserAvatar()))
+                <div class="round-image">
+                    <img src="{{ asset(\App\Http\Controllers\UserController::getUserAvatar()) }}" style="width: 50px; height: auto;" alt="Hacker Image">
+                </div>
+                @endif
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
 

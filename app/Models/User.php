@@ -47,4 +47,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(WrongAnswerModel::class);
     }
+
+    public function userParam(): HasMany
+    {
+        return $this->hasMany(UserParam::class);
+    }
 }
