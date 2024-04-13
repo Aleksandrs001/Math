@@ -68,7 +68,9 @@ return [
     'lv_lang' => 'Latviešu',
     'log_in' => 'Pierakstīties',
     'remember_me' => 'Atcerēties mani',
-    'forgot_password' => 'Aizmirsi paroli?'
+    'forgot_password' => 'Aizmirsi paroli?',
+    'support_us' => 'Atbalstiet mūs',
+
 
 
 

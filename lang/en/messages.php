@@ -66,6 +66,7 @@ return [
     'en_lang' => 'English',
     'ru_lang' => 'Русский',
     'lv_lang' => 'Latviešu',
-    'forgot_password' => 'Forgot your password?'
+    'forgot_password' => 'Forgot your password?',
+    'support_us' => 'Support us',
 
 ];
