@@ -26,6 +26,21 @@
                             </x-nav-link>
                         </div>
                         @endforeach
+                        @foreach(\App\Http\Controllers\NavigationController::getDivideMenu() as $key => $menu)
+                            <div class="shrink-0 flex ">
+                                <x-nav-link :href="route($key)" :active="request()->routeIs($key)">
+                                    {{ __($menu) }}
+                                </x-nav-link>
+                            </div>
+                        @endforeach
+
+                        @foreach(\App\Http\Controllers\NavigationController::getMultiplyMenu() as $key => $menu)
+                            <div class="shrink-0 flex ">
+                                <x-nav-link :href="route($key)" :active="request()->routeIs($key)">
+                                    {{ __($menu) }}
+                                </x-nav-link>
+                            </div>
+                        @endforeach
                 @else
                 <div class="hidden sm:flex sm:items-center sm:ms-6">
                     <x-dropdown align="left" width="48">
