@@ -66,6 +66,12 @@ return [
     'en_lang' => 'English',
     'ru_lang' => 'Русский',
     'lv_lang' => 'Latviešu',
+    'log_in' => 'Pierakstīties',
+    'remember_me' => 'Atcerēties mani',
+    'forgot_password' => 'Aizmirsi paroli?'
+
+
+
 
 
 

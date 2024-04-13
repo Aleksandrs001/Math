@@ -66,6 +66,12 @@ return [
     'en_lang' => 'English',
     'ru_lang' => 'Русский',
     'lv_lang' => 'Latviešu',
+    'log_in' => 'Войти',
+    'remember_me' => 'Запомнить меня',
+    'forgot_password' => 'Забыли пароль?'
+
+
+
 
 
 
