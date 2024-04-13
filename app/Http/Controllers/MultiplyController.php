@@ -6,6 +6,7 @@ use App\Services\MultiplyService;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
+use Illuminate\Support\Facades\Log;
 
 class MultiplyController
 {

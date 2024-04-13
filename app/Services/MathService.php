@@ -56,7 +56,7 @@ class MathService
             $first = rand(1, $first);
             $second = rand(1, $first);
         }
-//dd($first, $second);
+
         return [
             'first' => $first,
             'second' => $second,

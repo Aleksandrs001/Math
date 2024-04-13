@@ -26,7 +26,6 @@ class MathDivideModel extends Model
         'updated_at',
         'created_at',
         'user_id'
-
     ];
 
 }
