@@ -70,12 +70,5 @@ return [
     'remember_me' => 'Atcerēties mani',
     'forgot_password' => 'Aizmirsi paroli?',
     'support_us' => 'Atbalstiet mūs',
-
-
-
-
-
-
-
 ];
 

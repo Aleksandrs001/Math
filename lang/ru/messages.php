@@ -70,11 +70,4 @@ return [
     'remember_me' => 'Запомнить меня',
     'forgot_password' => 'Забыли пароль?',
     'support_us' => 'Поддержите нас',
-
-
-
-
-
-
-
 ];
