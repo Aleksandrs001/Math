@@ -35,7 +35,7 @@ class AvatarService
         return pathinfo($avatar, PATHINFO_DIRNAME);
     }
 
-    public static function save(Request $request)
+    public static function saveListedAvatar(Request $request)
     {
         $saveButton = (new ProfileController)->openSaveButtonForAvatar();
         if ($saveButton['saveButton'] == 'true') {

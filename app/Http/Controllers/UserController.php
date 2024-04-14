@@ -54,4 +54,16 @@ class UserController
     {
         return User::find($id);
     }
+
+    public static function isSuperAdmin()
+    {
+        $userParams = auth()->user()->userParam()->get();
+        if ($userParams->isEmpty()) {
+            return false;
+        } elseif ($userParams->where('param', 'superAdmin')->isEmpty()) {
+            return false;
+        } else {
+            return $userParams->where('param', 'superAdmin')->first()->value == 'true';
+        }
+    }
 }

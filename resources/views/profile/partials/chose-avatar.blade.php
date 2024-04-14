@@ -7,7 +7,7 @@
         @endif
     </header>
 
-    <form id="avatarForm" method="post" action="{{ route('avatar.save') }}" class="mt-6 space-y-6">
+    <form id="avatarForm" method="post" action="{{ route('avatar.saveListedAvatar') }}" class="mt-6 space-y-6">
         @csrf
         @method('post')
 

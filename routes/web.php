@@ -79,7 +79,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/wrongAnswers', [WrongAnswerController::class, 'wrongAnswers'])->name('wrongAnswers');
 
-    Route::post('/avatar', [AvatarService::class, 'save'])->name('avatar.save');
+    Route::post('/avatar', [AvatarService::class, 'saveListedAvatar'])->name('avatar.saveListedAvatar');
 
 });
 

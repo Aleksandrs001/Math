@@ -82,6 +82,10 @@ class ProfileController extends Controller
             $result['saveButton'] = true;
         }
 
+        if (UserController::isSuperAdmin()) {
+            $result['saveButton'] = true;
+        }
+
         return $result;
     }
 
