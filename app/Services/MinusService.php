@@ -3,7 +3,6 @@
 namespace App\Services;
 
 use App\Http\Controllers\Constants;
-use Illuminate\Support\Facades\Log;
 
 class MinusService
 {
