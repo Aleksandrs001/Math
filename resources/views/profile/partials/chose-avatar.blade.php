@@ -31,10 +31,12 @@
         </div>
 
         <div id="selectedAvatarContainer" class="mt-4">
-            <img id="selectedAvatar" src="" alt="Selected Avatar" class="w-12 h-12 rounded-full" style="width: 200px; height: auto;">
+            <img id="selectedAvatar" src=""  class="w-12 h-12 rounded-full" style="width: 200px; height: auto;">
         </div>
+        <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
 
          {{ __('avatar.completed') }}
+        </h2>
          <div class="mt-1 text-sm text-gray-600 dark:text-gray-400">
              {{__('messages.minus')}} , @if($statistic['minus']['completed']) ready @else {{__('avatar.lesson_left')}} {{$statistic['minus']['userLeft']}}  @endif{{ $statistic['minus']['completed'] }}
          </div>
