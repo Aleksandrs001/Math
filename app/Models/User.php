@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -51,5 +52,35 @@ class User extends Authenticatable
     public function userParam(): HasMany
     {
         return $this->hasMany(UserParam::class);
+    }
+
+    public function mathDivide(): BelongsTo
+    {
+        return $this->belongsTo(MathDivideModel::class, 'id', 'user_id');
+    }
+
+    public function mathMultiply(): BelongsTo
+    {
+        return $this->belongsTo(MathMultiplyModel::class, 'id', 'user_id');
+    }
+
+    public function mathMinus(): BelongsTo
+    {
+        return $this->belongsTo(MathMinusModel::class, 'id', 'user_id');
+    }
+
+    public function mathPlus(): BelongsTo
+    {
+        return $this->belongsTo(MathPlusModel::class, 'id', 'user_id');
+    }
+
+    public function plusXFind(): BelongsTo
+    {
+        return $this->belongsTo(MathPlusXModel::class, 'id', 'user_id');
+    }
+
+    public function minusXFind(): BelongsTo
+    {
+        return $this->belongsTo(MathMinusXModel::class, 'id', 'user_id');
     }
 }

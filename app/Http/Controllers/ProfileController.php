@@ -3,10 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\MathDivideModel;
 use App\Services\AvatarService;
+use App\Services\DivideService;
+use App\Services\MinusService;
+use App\Services\MultiplyService;
+use App\Services\PlusService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 
@@ -17,9 +23,11 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): View
     {
+        ProfileController::openSaveButtonForAvatar();
         return view('profile.edit', [
             'user' => $request->user(),
             'avatars' => AvatarService::getAllAvatars(),
+            'statistic' => ProfileController::openSaveButtonForAvatar(),
         ]);
     }
 
@@ -60,8 +68,20 @@ class ProfileController extends Controller
         return Redirect::to('/');
     }
 
-    public function showAllAvatars(Request $request)
+    public function openSaveButtonForAvatar(): array
     {
-        $avatars = AvatarService::getAllAvatars();
+        $result['divide'] = DivideService::getWinDivide();
+        $result['multiply'] = MultiplyService::getWinMultiply();
+        $result['plus'] = PlusService::getWinPlus();
+        $result['minus'] = MinusService::getWinMinus();
+        $result['plusXFind'] = PlusService::getWinPlusXFind();
+        $result['minusXFind'] = MinusService::getWinMinusXFind();
+
+        $result['saveButton'] = false;
+        if ($result['divide']['completed'] && $result['multiply']['completed'] && $result['plus']['completed'] && $result['minus']['completed'] && $result['plusXFind']['completed'] && $result['minusXFind']['completed']) {
+            $result['saveButton'] = true;
+        }
+        return $result;
     }
+
 }

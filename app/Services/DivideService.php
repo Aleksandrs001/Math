@@ -24,4 +24,20 @@ class DivideService
         return $result;
     }
 
+    static public function getWinDivide()
+    {
+        $result['completed'] = false;
+        $user = auth()->user();
+        $divide = $user->mathDivide()->get();
+
+        if (!empty($divide) && $divide[0]['divide_win'] >= Constants::DIVIDE_WIN) {
+            $result['completed'] = true;
+        } else if (!empty($divide[0]['divide_win']))  {
+            $result['userLeft'] = Constants::DIVIDE_WIN - $divide[0]['divide_win'];
+        } else {
+            $result['userLeft'] = Constants::DIVIDE_WIN;
+        }
+        return $result;
+    }
+
 }

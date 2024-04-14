@@ -34,30 +34,47 @@
             <img id="selectedAvatar" src="" alt="Selected Avatar" class="w-12 h-12 rounded-full" style="width: 200px; height: auto;">
         </div>
 
-        <input type="hidden" name="avatar" id="avatarInput">
-
-        <div class="flex items-center gap-4">
-            <x-primary-button onclick="submitForm()">{{ __('messages.save') }}</x-primary-button>
+         {{ __('avatar.completed') }}
+         <div class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+             {{__('messages.minus')}} , @if($statistic['minus']['completed']) ready @else {{__('avatar.lesson_left')}} {{$statistic['minus']['userLeft']}}  @endif{{ $statistic['minus']['completed'] }}
+         </div>
+         <div class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+             {{__('messages.plus')}} , @if($statistic['plus']['completed']) ready  @else {{__('avatar.lesson_left')}} {{ $statistic['plus']['userLeft'] }} @endif
+         </div>
+         <div class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+             {{__('messages.divide')}} , @if($statistic['divide']['completed'])ready  @else {{__('avatar.lesson_left')}} {{ $statistic['divide']['userLeft'] }} @endif
+         </div>
+        <div class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+            {{__('messages.multiply')}} , @if($statistic['multiply']['completed'])ready  @else {{__('avatar.lesson_left')}} {{ $statistic['multiply']['userLeft'] }} @endif
         </div>
+        <div class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+            {{__('messages.plus_find_x')}} , @if($statistic['plusXFind']['completed'])ready  @else {{__('avatar.lesson_left')}} {{ $statistic['plusXFind']['userLeft'] }} @endif
+        </div>
+        <div class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+            {{__('messages.minus_find_x')}} , @if($statistic['minusXFind']['completed'])ready  @else {{__('avatar.lesson_left')}} {{ $statistic['minusXFind']['userLeft'] }} @endif
+        </div>
+
+
+
+        <input type="hidden" name="avatar" id="avatarInput">
+        @if (!empty($statistic['save_button']))
+            <div class="flex items-center gap-4">
+                <x-primary-button onclick="submitForm()">{{ __('messages.save') }}</x-primary-button>
+            </div>
+        @endif
     </form>
 </section>
 
 <script>
-    // JavaScript function to display the selected avatar
     function selectAvatar(url, avatar) {
-        // Get the selected avatar image element
-        var selectedAvatarImg = document.getElementById('selectedAvatar');
-        // Set the src attribute of the selected avatar image
+        let selectedAvatarImg = document.getElementById('selectedAvatar');
         selectedAvatarImg.src = "{{ asset('') }}" + url;
 
-        // Set the value of the hidden input field to the selected avatar
         document.getElementById('avatarInput').value = avatar;
 
-        // Show the selected avatar container
         document.getElementById('selectedAvatarContainer').style.display = 'block';
     }
 
-    // JavaScript function to submit the form
     function submitForm() {
         document.getElementById('avatarForm').submit();
     }
