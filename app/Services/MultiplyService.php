@@ -27,7 +27,7 @@ class MultiplyService
         $user = auth()->user();
         $multiply = $user->mathMultiply()->get();
 
-        if (!empty($multiply) && $multiply[0]['multiply_win'] >= Constants::MULTIPLY_WIN) {
+        if (!empty($multiply[0]) && $multiply[0]['multiply_win'] >= Constants::MULTIPLY_WIN) {
             $result['completed'] = true;
         } else if (!empty($multiply[0]['multiply_win']))  {
             $result['userLeft'] = Constants::MULTIPLY_WIN - $multiply[0]['multiply_win'];

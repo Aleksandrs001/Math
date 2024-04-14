@@ -24,7 +24,7 @@ class MinusService
         $user = auth()->user();
         $minus = $user->mathMinus()->get();
 
-        if (!empty($minus) && $minus[0]['minus_win'] >= Constants::MINUS_WIN) {
+        if (!empty($minus[0]) && $minus[0]['minus_win'] >= Constants::MINUS_WIN) {
             $result['completed'] = true;
         } else if (!empty($minus[0]['minus_win']))  {
             $result['userLeft'] = Constants::MINUS_WIN - $minus[0]['minus_win'];
@@ -39,7 +39,7 @@ class MinusService
         $result['completed'] = false;
         $user = auth()->user();
         $minus = $user->minusXFind()->get();
-        if (!empty($minus) && $minus[0]['minus_win'] >= Constants::MINUS_X_WIN) {
+        if (!empty($minus[0]) && $minus[0]['minus_win'] >= Constants::MINUS_X_WIN) {
             $result['completed'] = true;
         } else if (!empty($minus[0]['minus_win']))  {
             $result['userLeft'] = Constants::MINUS_X_WIN - $minus[0]['minus_win'];
