@@ -3,6 +3,7 @@
 namespace App\Services;
 
 
+use App\Http\Controllers\Auth\H;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Models\UserParam;
@@ -17,7 +18,7 @@ class AvatarService
         foreach (glob(public_path('userAvatars/*.png')) as $filename) {
             $namesOfPNGs[ 'userAvatars/'. basename($filename)] = pathinfo($filename, PATHINFO_FILENAME);
         }
-        if (!UserController::isSuperAdmin()) {
+        if (!H::isAdmin()) {
         unset($namesOfPNGs['userAvatars/hacker.png']);
 
         }

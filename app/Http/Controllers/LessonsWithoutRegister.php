@@ -48,7 +48,6 @@ class LessonsWithoutRegister
 
     public function withoutRegistration(Request $request)
     {
-        Log::debug($request->all());
         if (!$request->ajax()) {
             return response()->json(['message' => 'Error'], 404);
         }

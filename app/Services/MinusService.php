@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Http\Controllers\Auth\H;
 use App\Http\Controllers\Constants;
 
 class MinusService
@@ -20,8 +21,7 @@ class MinusService
 	public static function getWinMinus()
 	{
         $result['completed'] = false;
-        $user = auth()->user();
-        $minus = $user->mathMinus()->get();
+        $minus = H::user()->mathMinus()->get();
 
         if (!empty($minus[0]) && $minus[0]['minus_win'] >= Constants::MINUS_WIN) {
             $result['completed'] = true;
@@ -36,8 +36,7 @@ class MinusService
     public static function getWinMinusXFind()
     {
         $result['completed'] = false;
-        $user = auth()->user();
-        $minus = $user->minusXFind()->get();
+        $minus = H::user()->minusXFind()->get();
         if (!empty($minus[0]) && $minus[0]['minus_x_win'] >= Constants::MINUS_X_WIN) {
             $result['completed'] = true;
         } else if (!empty($minus[0]['minus_x_win']))  {

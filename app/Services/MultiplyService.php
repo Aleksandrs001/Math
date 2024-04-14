@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Http\Controllers\Auth\H;
 use App\Http\Controllers\Constants;
 use App\Http\Controllers\MultiplyController;
 
@@ -24,8 +25,7 @@ class MultiplyService
     public static function getWinMultiply()
     {
         $result['completed'] = false;
-        $user = auth()->user();
-        $multiply = $user->mathMultiply()->get();
+        $multiply = H::user()->mathMultiply()->get();
 
         if (!empty($multiply[0]) && $multiply[0]['multiply_win'] >= Constants::MULTIPLY_WIN) {
             $result['completed'] = true;

@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Http\Controllers\Auth\H;
 use App\Http\Controllers\Constants;
 
 class DivideService
@@ -27,8 +28,7 @@ class DivideService
     static public function getWinDivide()
     {
         $result['completed'] = false;
-        $user = auth()->user();
-        $divide = $user->mathDivide()->get();
+        $divide = H::user()->mathDivide()->get();
 
         if (!empty($divide[0]) && $divide[0]['divide_win'] >= Constants::DIVIDE_WIN) {
             $result['completed'] = true;

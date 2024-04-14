@@ -2,14 +2,14 @@
 
 namespace App\Services;
 
+use App\Http\Controllers\Auth\H;
 use App\Http\Controllers\Controller;
-use App\Models\WrongAnswerModel;
 
 class WrongAnswerService extends Controller
 {
     public static function getUserWrongAnswers()
     {
-        $userWrongAnswers = auth()->user->wrongAnswers()->get()->toArray();
+        $userWrongAnswers = H::user()->wrongAnswers()->get()->toArray();
         $wrongAnswers = [];
         foreach ($userWrongAnswers as $key => $row) {
             $wrongAnswers[$key] = [

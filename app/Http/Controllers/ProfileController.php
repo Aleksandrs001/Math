@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Auth\H;
 use App\Http\Requests\ProfileUpdateRequest;
 use App\Models\MathDivideModel;
 use App\Services\AvatarService;
@@ -82,7 +83,7 @@ class ProfileController extends Controller
             $result['saveButton'] = true;
         }
 
-        if (UserController::isSuperAdmin()) {
+        if (H::isAdmin()) {
             $result['saveButton'] = true;
         }
 

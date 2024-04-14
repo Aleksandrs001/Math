@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Http\Controllers\Auth\H;
 use App\Http\Controllers\Constants;
 
 class PlusService
@@ -22,8 +23,7 @@ class PlusService
 	public static function getWinPlus()
 	{
         $result['completed'] = false;
-        $user = auth()->user();
-        $plus = $user->mathPlus()->get();
+        $plus = H::user()->mathPlus()->get();
 
         if (!empty($plus[0]) && $plus[0]['plus_win'] >= Constants::PLUS_WIN) {
             $result['completed'] = true;
@@ -38,8 +38,7 @@ class PlusService
     public static function getWinPlusXFind()
     {
         $result['completed'] = false;
-        $user = auth()->user();
-        $plus = $user->plusXFind()->get();
+        $plus = H::user()->plusXFind()->get();
 
         if (!empty($plus[0]) && $plus[0]['plus_x_win'] >= Constants::PLUS_X_WIN) {
             $result['completed'] = true;

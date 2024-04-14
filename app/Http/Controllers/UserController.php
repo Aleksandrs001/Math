@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Auth\H;
 use App\Models\User;
 use App\Services\UserService;
 use Illuminate\Http\JsonResponse;
@@ -52,17 +53,5 @@ class UserController
     static public function FindUserById($id)
     {
         return User::find($id);
-    }
-
-    public static function isSuperAdmin()
-    {
-        $userParams = auth()->user()->userParam()->get();
-        if ($userParams->isEmpty()) {
-            return false;
-        } elseif ($userParams->where('param', 'superAdmin')->isEmpty()) {
-            return false;
-        } else {
-            return $userParams->where('param', 'superAdmin')->first()->value == 'true';
-        }
     }
 }

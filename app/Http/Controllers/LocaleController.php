@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Http\Controllers\Auth\H;
 use App\Models\UserParam;
 
 class LocaleController extends Controller
@@ -11,8 +12,7 @@ class LocaleController extends Controller
     {
         session()->put('locale', $locale);
         if (auth()->check()) {
-            $user = auth()->user();
-            (new UserParam)->setParam('userLocale', $locale, $user->id);
+            (new UserParam)->setParam('userLocale', $locale, H::user()->id);
         }
         return redirect()->back();
     }

@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Http\Controllers\Auth\H;
 use App\Http\Controllers\UserController;
 use App\Models\UserAnswerStatisticModel;
 use Illuminate\Support\Facades\Log;
@@ -11,7 +12,7 @@ class StatisticService
     public static function getTopOfUsersData()
     {
         $topUsers = UserAnswerStatisticModel::getAllUsersStatistic()->toArray();
-        $authUser = auth()->user();
+        $authUser = H::user();
 
         if (empty($topUsers)) {
             return [];
