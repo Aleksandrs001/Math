@@ -37,23 +37,24 @@
 
          {{ __('avatar.completed') }}
         </h2>
+
          <div class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-             {{__('messages.minus')}} , @if($statistic['minus']['completed']) ready @else {{__('avatar.lesson_left')}} {{$statistic['minus']['userLeft']}}  @endif{{ $statistic['minus']['completed'] }}
+             {{__('messages.minus')}} , @if($statistic['minus']['completed']) {{__('avatar.ready')}} ready @else {{__('avatar.lesson_left')}} {{$statistic['minus']['userLeft']}}  @endif
          </div>
          <div class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-             {{__('messages.plus')}} , @if($statistic['plus']['completed']) ready  @else {{__('avatar.lesson_left')}} {{ $statistic['plus']['userLeft'] }} @endif
+             {{__('messages.plus')}} , @if($statistic['plus']['completed']) {{__('avatar.ready')}}  @else {{__('avatar.lesson_left')}} {{ $statistic['plus']['userLeft'] }} @endif
          </div>
          <div class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-             {{__('messages.divide')}} , @if($statistic['divide']['completed'])ready  @else {{__('avatar.lesson_left')}} {{ $statistic['divide']['userLeft'] }} @endif
+             {{__('messages.divide')}} , @if($statistic['divide']['completed']){{__('avatar.ready')}}  @else {{__('avatar.lesson_left')}} {{ $statistic['divide']['userLeft'] }} @endif
          </div>
         <div class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-            {{__('messages.multiply')}} , @if($statistic['multiply']['completed'])ready  @else {{__('avatar.lesson_left')}} {{ $statistic['multiply']['userLeft'] }} @endif
+            {{__('messages.multiply')}} , @if($statistic['multiply']['completed']){{__('avatar.ready')}}  @else {{__('avatar.lesson_left')}} {{ $statistic['multiply']['userLeft'] }} @endif
         </div>
         <div class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-            {{__('messages.plus_find_x')}} , @if($statistic['plusXFind']['completed'])ready  @else {{__('avatar.lesson_left')}} {{ $statistic['plusXFind']['userLeft'] }} @endif
+            {{__('messages.plus_find_x')}} , @if($statistic['plusXFind']['completed']){{__('avatar.ready')}}  @else {{__('avatar.lesson_left')}} {{ $statistic['plusXFind']['userLeft'] }} @endif
         </div>
         <div class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-            {{__('messages.minus_find_x')}} , @if($statistic['minusXFind']['completed'])ready  @else {{__('avatar.lesson_left')}} {{ $statistic['minusXFind']['userLeft'] }} @endif
+            {{__('messages.minus_find_x')}} , @if($statistic['minusXFind']['completed']){{__('avatar.ready')}}  @else {{__('avatar.lesson_left')}} {{ $statistic['minusXFind']['userLeft'] }} @endif
         </div>
 
 
