@@ -42,7 +42,7 @@ class AvatarService
             $avatarName = $request->input('avatar') . '.png';
             (new UserParam)->setParam('avatar', $avatarName, $request->user()->id);
         } else {
-            Log::error('Error in save method: saveButton is false');
+            Log::error('Error in save method: saveButton is false user_id: ' . auth()->user()->id);
         }
 
         return Redirect::to('/profile')->with('status', 'avatar-updated');

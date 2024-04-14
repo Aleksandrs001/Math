@@ -81,6 +81,7 @@ class ProfileController extends Controller
         if ($result['divide']['completed'] && $result['multiply']['completed'] && $result['plus']['completed'] && $result['minus']['completed'] && $result['plus_find_x']['completed'] && $result['minus_find_x']['completed']) {
             $result['saveButton'] = true;
         }
+
         return $result;
     }
 
