@@ -41,10 +41,10 @@ class PlusService
         $user = auth()->user();
         $plus = $user->plusXFind()->get();
 
-        if (!empty($plus[0]) && $plus[0]['plus_win'] >= Constants::PLUS_X_WIN) {
+        if (!empty($plus[0]) && $plus[0]['plus_x_win'] >= Constants::PLUS_X_WIN) {
             $result['completed'] = true;
-        } else if (!empty($plus[0]['plus_win']))  {
-            $result['userLeft'] = Constants::PLUS_X_WIN - $plus[0]['plus_win'];
+        } else if (!empty($plus[0]['plus_x_win']))  {
+            $result['userLeft'] = Constants::PLUS_X_WIN - $plus[0]['plus_x_win'];
         } else {
             $result['userLeft'] = Constants::PLUS_X_WIN;
         }
