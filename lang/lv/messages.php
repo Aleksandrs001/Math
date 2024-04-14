@@ -35,7 +35,7 @@ return [
     'password_update' => 'Paroles atjaunināšana',
     "update_your_account_s_profile_information_and_email_address" => "Atjauniniet sava konta profilu un e-pasta adresi",
     'profile_information' => 'Profila informācija',
-    'name' => 'Vārds',
+    'name' => 'Vārds (var būt latviešu burtiem)',
     'email' => 'E-pasts',
     'your_email_address_is_unverified' => 'Jūsu e-pasta adrese nav apstiprināta.',
     'click_here_to_re_send_the_verification_email' => 'Noklikšķiniet šeit, lai atkārtoti nosūtītu apstiprinājuma e-pastu.',
