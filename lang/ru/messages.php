@@ -35,7 +35,7 @@ return [
     'password_update' => 'Обновление пароля',
     "update_your_account_s_profile_information_and_email_address" => "Обновите профиль своей учетной записи и адрес электронной почты",
     'profile_information' => 'Информация о профиле',
-    'name' => 'Имя',
+    'name' => 'Имя (можно кириллицей - русскими буквами)',
     'email' => 'Электронная почта',
     'your_email_address_is_unverified' => 'Ваш адрес электронной почты не подтвержден.',
     'click_here_to_re_send_the_verification_email' => 'Нажмите здесь, чтобы повторно отправить письмо с подтверждением.',
