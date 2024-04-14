@@ -125,4 +125,15 @@
         alert(textToCopy.textContent + ' copied to clipboard!');
     }
 
+    function selectAvatar(url, avatar) {
+        let selectedAvatarImg = document.getElementById('selectedAvatar');
+        selectedAvatarImg.src = "{{ asset('') }}" + url;
+        document.getElementById('avatarInput').value = avatar;
+        document.getElementById('selectedAvatarContainer').style.display = 'block';
+    }
+
+    function submitForm() {
+        document.getElementById('avatarForm').submit();
+    }
+
 </script>

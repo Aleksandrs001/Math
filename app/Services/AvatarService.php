@@ -3,6 +3,7 @@
 namespace App\Services;
 
 
+use App\Http\Controllers\ProfileController;
 use App\Models\UserParam;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -12,7 +13,6 @@ class AvatarService
 {
     public static function getAllAvatars()
     {
-        // add to the array the names of the PNG files in the userAvatars/ directory
         foreach (glob(public_path('userAvatars/*.png')) as $filename) {
             $namesOfPNGs[ 'userAvatars/'. basename($filename)] = pathinfo($filename, PATHINFO_FILENAME);
         }
@@ -37,8 +37,13 @@ class AvatarService
 
     public static function save(Request $request)
     {
-        $avatarName = $request->input('avatar') . '.png';
-       (new UserParam)->setParam('avatar', $avatarName, $request->user()->id);
+        $saveButton = (new ProfileController)->openSaveButtonForAvatar();
+        if ($saveButton['saveButton'] == 'true') {
+            $avatarName = $request->input('avatar') . '.png';
+            (new UserParam)->setParam('avatar', $avatarName, $request->user()->id);
+        } else {
+            Log::error('Error in save method: saveButton is false');
+        }
 
         return Redirect::to('/profile')->with('status', 'avatar-updated');
     }
