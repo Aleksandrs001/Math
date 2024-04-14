@@ -4,6 +4,17 @@
         $('#answer_0').focus();
     });
 
+    function toggleMenu(item) {
+        if (item === 'plus') {
+            let menu = document.getElementById("plus-menu-items");
+            menu.style.display = (menu.style.display === "none") ? "block" : "none";
+        } else {
+            let menu = document.getElementById("minus-menu-items");
+            menu.style.display = (menu.style.display === "none") ? "block" : "none";
+        }
+
+    }
+
     function withoutRegistration(index) {
         let form = $('#answerForm_' + index);
         form.find('button').prop('disabled', true);
