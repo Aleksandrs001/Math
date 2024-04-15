@@ -35,10 +35,10 @@
         @foreach($statistic as $key => $value)
             @if($key != 'saveButton')
                 <div class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-                    {{__('messages.' . $key)}} , @if($statistic[$key]['completed'])
+                    {{__('messages.' . $key)}} , @if($value['completed'])
                         {{__('avatar.ready')}}
                     @else
-                        {{__('avatar.lesson_left')}} {{$statistic[$key]['userLeft']}}
+                        {{__('avatar.lesson_left')}} {{$value['userLeft']}}
                     @endif
                 </div>
             @endif
