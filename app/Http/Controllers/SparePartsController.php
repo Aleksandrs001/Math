@@ -24,7 +24,7 @@ class SparePartsController
 //            ]
 //        );
         Log::debug('carSpareParts');
-        return view('welcome');
+        return view('carSpareParts');
     }
 
 }
