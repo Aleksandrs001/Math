@@ -23,8 +23,6 @@ class SparePartsController
 
             ]
         );
-//        Log::debug('carSpareParts');
-//        return view('carSpareParts');
     }
 
 }
