@@ -20,7 +20,6 @@ class SparePartsController
                 'index'=> 'LV-1057',
                 'workingHours',
                 'siteName' => 'www.disk.lv'
-
             ]
         );
     }
