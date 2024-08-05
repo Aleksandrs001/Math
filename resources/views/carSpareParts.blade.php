@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Background Image with Header and Footer</title>
+    <title>www.disk.lv</title>
     <style>
         body, html {
             margin: 0;
             padding: 0;
             height: 100%;
             overflow: hidden;
-            position: relative; /* Ensures that absolute positioning works correctly */
-            background-color: #d3d3d3; /* Light grey background color */
+            position: relative;
+            background-color: #d3d3d3;
             z-index: -2;
         }
         .background-image {
@@ -21,38 +21,42 @@
             width: 100%;
             height: auto;
             object-fit: cover;
-            z-index: -1; /* Background image should be behind all other content */
+            z-index: -1;
         }
         .header-image {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            z-index: 1; /* Header image should be on top of the background image */
-        }
-        .locale-links {
-            position: absolute;
-            top: 10px; /* Default top positioning */
-            right: 10px; /* Default right positioning */
-            z-index: 2; /* Locale links should be above the header image */
-            color: #808080; /* Default link color */
-            font-size: 14px; /* Default font size */
+            z-index: 1;
         }
         .locale-links a.active {
-            color: #BDBDBD; /* Color for the active locale */
+            color: #BDBDBD;
         }
         .working-hours {
             position: absolute;
-            top: 50%; /* Vertically center the section */
-            left: 50%; /* Horizontally center the section */
-            transform: translate(-50%, -50%); /* Adjust position to truly center it */
-            text-align: center; /* Center align the text */
-            color: #000; /* Black text color for better visibility */
-            z-index: 2; /* Ensure it appears above the background image */
-            padding: 20px; /* Padding inside the frame */
-            border: 2px solid #808080; /* Grey border */
-            background-color: #f0f0f0; /* Light grey background color for the frame */
-            border-radius: 10px; /* Rounded corners for the frame */
+            top: 28%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #000;
+            z-index: 2;
+            padding: 20px;
+            border: 2px solid #808080;
+            background-color: #f0f0f0;
+            border-radius: 10px;
+        }
+        .map-container {
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width:  30%;
+            height: auto;
+            border: 2px solid #808080;
+            border-radius: 10px;
+            overflow: hidden;
+            z-index: 2;
         }
         .footer {
             position: absolute;
@@ -61,29 +65,39 @@
             transform: translateX(-50%);
             text-align: center;
             width: 100%;
-            padding: 10px 0; /* Padding for better spacing */
-            color: #000; /* Black text color */
-            z-index: 2; /* Footer should be above the background image */
-            background-color: rgba(255, 255, 255, 0.7); /* Optional: Semi-transparent background for better visibility */
+            padding: 10px 0;
+            color: #000;
+            z-index: 2;
+            background-color: rgba(255, 255, 255, 0.7);
         }
 
-        /* Responsive Design */
         @media (max-width: 768px) {
-            .locale-links {
-                top: 5px;
-                right: 5px;
+            .map-container {
+                width: 50%;
+            }
+            .working-hours {
+                top: 35%;
                 font-size: 12px;
             }
         }
 
         @media (max-width: 480px) {
-            .locale-links {
-                top: 5px;
-                right: 5px;
+            .map-container {
+                top: 45%;
+                left: 50%;
                 font-size: 10px;
                 text-align: center;
                 width: 100%;
-                left: 0;
+                display: flex;
+                justify-content: center;
+                gap: 5px;
+            }
+            .working-hours {
+                top: 38%;
+                left: 50%;
+                font-size: 10px;
+                text-align: center;
+                width: 90%;
                 display: flex;
                 justify-content: center;
                 gap: 5px;
@@ -100,29 +114,15 @@
      class="header-image"
      alt="Header Image">
 
-{{-- Locale Links --}}
-{{-- <div class="locale-links"> --}}
-{{--     <a href="{{ route('change.locale', ['locale' => 'en']) }}" --}}
-{{--        class="{{ app()->getLocale() === 'en' ? 'active' : '' }}"> --}}
-{{--         English --}}
-{{--     </a> --}}
-{{--     | --}}
-{{--     <a href="{{ route('change.locale', ['locale' => 'ru']) }}" --}}
-{{--        class="{{ app()->getLocale() === 'ru' ? 'active' : '' }}"> --}}
-{{--         Русский --}}
-{{--     </a> --}}
-{{--     | --}}
-{{--     <a href="{{ route('change.locale', ['locale' => 'lv']) }}" --}}
-{{--        class="{{ app()->getLocale() === 'lv' ? 'active' : '' }}"> --}}
-{{--         Latviešu --}}
-{{--     </a> --}}
-{{-- </div> --}}
-
 <div class="working-hours">
-    <h1>Darba Laiki</h1>
-    <p>Darba dienās 9:00-18:00</p>
-    <p>Svētdienās 11:00-15:00</p>
-    <p>Sestdienās - Slēgts</p>
+    <h1>DARBA LAIKS</h1>
+    <p>Darba dienās - 9:00-18:00</p>
+    <p>Sestdienā - 11:00-15:00 </p>
+    <p>Svētdienā - Slēgts</p>
+</div>
+
+<div class="map-container">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2177.681191405509!2d24.16550949427466!3d56.91999290530979!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46eed1f9f2047f5f%3A0xb08cc69058248735!2zxLZlbmdhcmFnYSBpZWxhIDJCLCBMYXRnYWxlcyBwcmlla8WhcGlsc8STdGEsIFLEq2dhLCBMVi0xMDYz!5e0!3m2!1sru!2slv!4v1722888136853!5m2!1sru!2slv" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 </div>
 
 <div class="footer">
