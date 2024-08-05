@@ -9,6 +9,7 @@ use App\Http\Controllers\PlusController;
 use App\Http\Controllers\MinusController;
 use App\Http\Controllers\PlusFindXController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SparePartsController;
 use App\Http\Controllers\StatisticController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WrongAnswerController;
@@ -44,6 +45,8 @@ Route::get('/', function () {
 Route::post('/withoutRegistration', [LessonsWithoutRegister::class, 'withoutRegistration'])->name('withoutRegistration');
 Route::get('/about', [AboutController::class, 'about'])->name('about');
 Route::get('/change-locale/{locale}', [LocaleController::class, 'changeLocale'])->name('change.locale');
+
+Route::get('/carSpareParts', [SparePartsController::class, 'carSpareParts'])->name('carSpareParts');
 
 
 
