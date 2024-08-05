@@ -11,20 +11,20 @@ class SparePartsController
 {
     public function carSpareParts()
     {
-//        return view('carSpareParts')->with(
-//            [
-//                'phone' => '+371 27020098',
-//                'email'=> '',
-//                'adress'=> 'Riga, Latvia',
-//                'adress2'=> 'Kengaraga 2b',
-//                'index'=> 'LV-1057',
-//                'workingHours',
-//                'siteName' => 'www.disk.lv'
-//
-//            ]
-//        );
-        Log::debug('carSpareParts');
-        return view('carSpareParts');
+        return view('carSpareParts')->with(
+            [
+                'phone' => '+371 27020098',
+                'email'=> '',
+                'adress'=> 'Riga, Latvia',
+                'adress2'=> 'Kengaraga 2b',
+                'index'=> 'LV-1057',
+                'workingHours',
+                'siteName' => 'www.disk.lv'
+
+            ]
+        );
+//        Log::debug('carSpareParts');
+//        return view('carSpareParts');
     }
 
 }
