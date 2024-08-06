@@ -51,7 +51,7 @@
             bottom: 50px;
             left: 50%;
             transform: translateX(-50%);
-            width:  300px;
+            width:  600px;
             height: auto;
             border: 2px solid #808080;
             border-radius: 10px;
