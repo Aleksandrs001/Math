@@ -116,7 +116,7 @@
 
 <div class="working-hours">
     <h1>DARBA LAIKS</h1>
-    <p>Darba dienās - 9:00-18:00</p>
+    <p>Darba dienās - 9:00-19:00</p>
     <p>Sestdienā - 11:00-15:00 </p>
     <p>Svētdienā - Slēgts</p>
 </div>
