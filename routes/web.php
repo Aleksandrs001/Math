@@ -9,7 +9,6 @@ use App\Http\Controllers\PlusController;
 use App\Http\Controllers\MinusController;
 use App\Http\Controllers\PlusFindXController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\SparePartsController;
 use App\Http\Controllers\StatisticController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WrongAnswerController;
