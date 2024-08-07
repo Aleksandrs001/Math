@@ -46,7 +46,6 @@ Route::post('/withoutRegistration', [LessonsWithoutRegister::class, 'withoutRegi
 Route::get('/about', [AboutController::class, 'about'])->name('about');
 Route::get('/change-locale/{locale}', [LocaleController::class, 'changeLocale'])->name('change.locale');
 
-Route::get('/car', [SparePartsController::class, 'carSpareParts'])->name('car');
 
 
 
