@@ -51,6 +51,7 @@ Route::get('/car', [SparePartsController::class, 'carSpareParts'])->name('car');
 
 
 
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
