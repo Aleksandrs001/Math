@@ -71,6 +71,8 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/divide', [DivideController::class, 'divide'])->name('divide');
     Route::post('/divide', [UserController::class, 'answer'])->name('answer');
+    Route::get('/long_divide', [DivideController::class, 'long_divide'])->name('long_divide');
+
 
     Route::get('/topOfUser', [StatisticController::class, 'view'])->name('view');
 

@@ -22,4 +22,15 @@ class DivideController
 
     }
 
+    public function long_divide(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
+    {
+        $result = DivideService::long_divideFunction();
+        return view('long_divide')->with(
+            [
+                'res' => $result,
+            ]
+        );
+
+    }
+
 }

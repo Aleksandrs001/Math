@@ -32,6 +32,7 @@ class NavigationController extends Controller
     {
         return [
             'divide' => 'messages.divide',
+            'long_divide' => 'divide.long_divide',
         ];
     }
 
