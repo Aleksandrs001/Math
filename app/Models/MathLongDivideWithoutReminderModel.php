@@ -11,7 +11,7 @@ class MathLongDivideWithoutReminderModel extends Model
      *
      * @var string
      */
-    protected $table = 'math_long_divide';
+    protected $table = 'math_long_divide_without_reminder';
 
     /**
      * The attributes that are mass assignable.
