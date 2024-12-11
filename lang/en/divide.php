@@ -2,6 +2,6 @@
 
 
 return [
-    'long_divide' => 'Long Division',
+    'long_divide_without_reminder' => 'Long division without remainder',
     'divide' => 'Division',
 ];

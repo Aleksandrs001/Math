@@ -27,7 +27,8 @@
 
     <main>
         <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-            <div id='minus' style="background-color: ghostwhite; padding: 10px; color: black; border-radius: 10px;">
+            <div id='divide' style="background-color: ghostwhite; padding: 10px; color: black; border-radius: 10px;">
+                {{__('messages.divide')}}
                 @foreach($res as $index => $r)
                     <div id="yellowBubble" style="display: none; background-color: yellow; padding: 10px; color: black; border-radius: 10px;">
                         {{__("messages.enter_integer")}}

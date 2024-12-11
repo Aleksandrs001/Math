@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\MathDivideModel;
+use App\Models\MathLongDivideModel;
 use App\Models\MathMinusModel;
 use App\Models\MathMinusXModel;
 use App\Models\MathMultiplyModel;
@@ -15,12 +16,13 @@ use Illuminate\Support\Facades\Log;
 
 class UserService
 {
-    public function answer($answer,$result, $competition, $user_id, $full): JsonResponse
+    public function answer($answer, $result, $competition, $user_id, $full): JsonResponse
     {
-        if (!is_numeric($answer) || floor($answer) != $answer) {
-            return response()->json(['message' => 'Введите целое число.'], 422);
+        if (!is_numeric($answer) || $competition != 'long_divide_without_reminder' && floor($answer) != $answer) {
+            return response()->json(['message' => 'float.']);
+        } else if ($competition == 'long_divide_without_reminder' && $answer != (int)$answer) {
+            return response()->json(['message' => 'float']);
         }
-
         try {
             switch ($competition) {
                 case 'plusX':
@@ -41,11 +43,28 @@ class UserService
                 case 'divide':
                     $userAnswerStatistic = MathDivideModel::updateOrCreate(['user_id' => $user_id ]);
                     break;
+                case 'long_divide_without_reminder':
+                    $userAnswerStatistic = MathLongDivideModel::updateOrCreate(['user_id' => $user_id ]);
+                    break;
                 default:
-                    return response()->json(['message' => 'Error'], 404);
+                    return response()->json(['message' => 'Error'], 466);
             }
             $this->updateStatistics($userAnswerStatistic, $answer, $result, $competition, $user_id, $full);
-            $message = $answer == $result;
+
+            if ($competition != 'long_divide_without_reminder' && $answer == $result) {
+                $message = 'ok';
+
+            } else {
+                $message = 'wrong';
+            }
+            if ($competition == 'long_divide_without_reminder') {
+                if ((int)$answer == (int)$result) {
+                    $message = 'ok';
+                } else {
+                    $message = 'wrong';
+                }
+
+            }
             return response()->json(['message' => $message]);
         } catch (\Exception $e) {
             Log::error('Error in answer method: ' . $e->getMessage());
@@ -64,6 +83,7 @@ class UserService
             'minus' => ['minus'],
             'multiply' => ['multiply'],
             'divide' => ['divide'],
+            'long divide without reminder' => ['long_divide_without_reminder']
         ];
         return $fields[$competition] ?? [];
     }

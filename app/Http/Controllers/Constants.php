@@ -16,5 +16,5 @@ class Constants extends Controller
     const DIVIDE_WIN = 25;
     const MINUS_X_WIN = 15;
     const PLUS_X_WIN = 15;
-    const LONG_DIVIDE = 25;
+    const LONG_DIVIDE_WIN = 25;
 }

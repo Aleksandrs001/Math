@@ -77,9 +77,10 @@ class ProfileController extends Controller
         $result['minus'] = MinusService::getWinMinus();
         $result['plus_find_x'] = PlusService::getWinPlusXFind();
         $result['minus_find_x'] = MinusService::getWinMinusXFind();
+        $result['long_divide'] = DivideService::getWinLongDivideWithoutReminder();
 
         $result['saveButton'] = false;
-        if ($result['divide']['completed'] && $result['multiply']['completed'] && $result['plus']['completed'] && $result['minus']['completed'] && $result['plus_find_x']['completed'] && $result['minus_find_x']['completed']) {
+        if ($result['divide']['completed'] && $result['multiply']['completed'] && $result['plus']['completed'] && $result['minus']['completed'] && $result['plus_find_x']['completed'] && $result['minus_find_x']['completed'] && $result['long_divide']['completed']) {
             $result['saveButton'] = true;
         }
 

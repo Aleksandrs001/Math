@@ -2,6 +2,6 @@
 
 
 return [
-    'long_divide' => 'Dalīšana stabiņos',
+    'long_divide_without_reminder' => 'Dalīšana stabiņos bez atlikuma',
     'divide' => 'Dalīšana',
     ];

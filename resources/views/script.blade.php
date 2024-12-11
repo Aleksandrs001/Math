@@ -77,9 +77,10 @@
             data: formData + '&_token=' + $('meta[name="csrf-token"]').attr('content'),
             dataType: 'json',
             success: function (response) {
-                if (response.message) {
+                console.log(response)
+                if (response.message === 'ok') {
                     showGreenBubble();
-                } else if (response.message === 'Введите целое число.') {
+                } else if (response.message === 'float') {
                     showYellowBubble();
                 } else {
                     showRedBubble();
@@ -111,6 +112,7 @@
             setTimeout(function () {
                 $('#yellowBubble').hide();
             }, 5000);
+            form.find('button').prop('disabled', false);
         }
     }
 

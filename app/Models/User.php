@@ -83,4 +83,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo(MathMinusXModel::class, 'id', 'user_id');
     }
+
+    public function longDivideWithoutReminder(): BelongsTo
+    {
+        return $this->belongsTo(MathLongDivideWithoutReminderModel::class, 'id', 'user_id');
+    }
 }

@@ -7,7 +7,7 @@
 
     {{--    <title>{{ config('app.name', 'Laravel') }}</title>--}}
     <title>
-        {{ __('divide.long_divide') }}
+        {{ __('divide.long_divide_without_reminder') }}
     </title>
 
     <!-- Fonts -->
@@ -27,19 +27,33 @@
 
     <main>
         <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-            <div id='minus' style="background-color: ghostwhite; padding: 10px; color: black; border-radius: 10px;">
+            <div id='long_divide_without_reminder' style="background-color: ghostwhite; padding: 10px; color: black; border-radius: 10px;">
+                {{__('divide.long_divide_without_reminder')}}
+
                 @foreach($res as $index => $r)
                     <div id="yellowBubble" style="display: none; background-color: yellow; padding: 10px; color: black; border-radius: 10px;">
                         {{__("messages.enter_integer")}}
                     </div>
                     <div id="redBubble" style="display: none; background-color: red; padding: 10px; color: white; border-radius: 10px;">
-                        {{__("messages.try_again")}} {{$r['result']}}
+                        {{__("messages.try_again")}} {{(int)$r['result']}}
                     </div>
                     <div id="greenBubble" style="display: none; background-color: green; padding: 10px; color: white; border-radius: 10px;">
                         {{__("messages.you_are_right")}}
                     </div>
                     <div>
-                        <h1 style="font-size: 24px;">{{$r['first']}} {{$r['operation']}} {{$r['second']}} {{$r['equal']}}</h1>
+{{--                        <h1 style="font-size: 24px;">{{$r['first']}} {{$r['operation']}} {{$r['second']}} {{$r['equal']}}</h1>--}}
+                        <div style="font-size: 24px; font-family: sans-serif; display: inline-block; text-align: center;">
+                            <div style="border-bottom: 2px solid black; padding: 5px;">
+                                {{$r['first']}}
+                            </div>
+                            <div>
+{{--                                {{$r['operation']}}--}}
+                                {{$r['second']}}
+                            </div>
+                            <div style="margin-top: 10px;">
+                                {{$r['equal']}}
+                            </div>
+                        </div>
 
                         <form id="answerForm_{{$index}}" data-index="{{$index}}" class="answer-form" autocomplete="off">
                             @csrf
@@ -49,7 +63,7 @@
                             <label for="answer_{{$index}}"> {{$r['userName']}}, {{__('messages.your_answer')}}</label>
                             <input type="number" id="answer_{{$index}}" name="answer" pattern="[0-9]*" value="" style="border-radius: 5px;" />
                             <input type="hidden" id="result_{{$index}}" name="result" value="{{$r['result']}}" />
-                            <input type="hidden" id="result2_{{$index}}" name="competition" value="divide" />
+                            <input type="hidden" id="result2_{{$index}}" name="competition" value="long_divide_without_reminder" />
                             <input type="hidden" id="result2_{{$index}}" name="full" value="{{$r['first']}} {{$r['operation']}} {{$r['second']}} {{$r['equal']}} {{$r['result']}}" />
                             <button type="button" onclick="submitAnswer({{$index}})">{{__('messages.submit')}}</button>
                         </form>

@@ -2,6 +2,6 @@
 
 
 return [
-    'long_divide' => 'Деление столбиком',
+    'long_divide_without_reminder' => 'Деление столбиком без остатка',
     'divide' => 'Деление',
     ];

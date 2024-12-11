@@ -25,7 +25,7 @@ class DivideService
         return $result;
     }
 
-    static public function getWinDivide()
+    static public function getWinDivide(): array
     {
         $result['completed'] = false;
         $divide = H::user()->mathDivide()->get();
@@ -40,35 +40,35 @@ class DivideService
         return $result;
     }
 
-	public static function long_divideFunction()
-	{
-        $result = MathService::countOfExample(Constants::LONG_DIVIDE);
+	public static function longDivideWithoutReminderFunction(): array
+    {
+        $result = MathService::countOfExample(Constants::LONG_DIVIDE_WIN);
         foreach ($result as $key => $value)
         {
-            $result[$key]['operation'] = Constants::LONG_DIVIDE;
+            $result[$key]['operation'] = Constants::DIVIDE;
             $result[$key]['result'] = $result[$key]['first'] / $result[$key]['second'];
             if ($result[$key]['first'] == $result[$key]['second'] || $result[$key]['second'] == 1) {
-                return DivideService::long_divideFunction();
+                return DivideService::longDivideWithoutReminderFunction();
             }
             if($result[$key]['result'] < 0) {
-                return DivideService::long_divideFunction();
+                return DivideService::longDivideWithoutReminderFunction();
             }
         }
 
         return $result;
 	}
 
-    public static function getWinLongDivide()
+    static public function getWinLongDivideWithoutReminder(): array
     {
         $result['completed'] = false;
-        $divide = H::user()->mathDivide()->get();
+        $divide = H::user()->longDivideWithoutReminder()->get();
 
-        if (!empty($divide[0]) && $divide[0]['long_divide'] >= Constants::LONG_DIVIDE) {
+        if (!empty($divide[0]) && $divide[0]['long_divide_without_reminder_win'] >= Constants::LONG_DIVIDE_WIN) {
             $result['completed'] = true;
-        } else if (!empty($divide[0]['long_divide']))  {
-            $result['userLeft'] = Constants::LONG_DIVIDE - $divide[0]['long_divide'];
+        } else if (!empty($divide[0]['long_divide_without_reminder_win']))  {
+            $result['userLeft'] = Constants::LONG_DIVIDE_WIN - $divide[0]['long_divide_without_reminder_win'];
         } else {
-            $result['userLeft'] = Constants::LONG_DIVIDE;
+            $result['userLeft'] = Constants::LONG_DIVIDE_WIN;
         }
         return $result;
     }

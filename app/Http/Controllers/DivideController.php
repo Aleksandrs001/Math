@@ -22,10 +22,10 @@ class DivideController
 
     }
 
-    public function long_divide(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
+    public function longDivideWithoutReminder(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
-        $result = DivideService::long_divideFunction();
-        return view('long_divide')->with(
+        $result = DivideService::longDivideWithoutReminderFunction();
+        return view('long_divide_without_reminder')->with(
             [
                 'res' => $result,
             ]

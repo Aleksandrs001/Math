@@ -19,7 +19,8 @@ class MathService
         return $res;
     }
 
-    public static function generate($operation): array {
+    public static function generate($operation): array
+    {
         $maxSum = 100;
 
         switch ($operation) {
