@@ -70,4 +70,7 @@ return [
     'remember_me' => 'Запомнить меня',
     'forgot_password' => 'Забыли пароль?',
     'support_us' => 'Поддержите нас',
+    'long_divide_without_reminder' => 'Деление столбиком без остатка',
+
+
 ];
