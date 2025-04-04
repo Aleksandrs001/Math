@@ -1,9 +1,39 @@
 <nav x-data="{ open: false }" class="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
     <!-- Primary Navigation Menu -->
+    @if($weather = \App\Http\Controllers\NavigationController::weather())
+        <div class="max-w-xs mx-4 my-4 p-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-md flex items-center space-x-4">
+            <img src="{{ $weather['icon'] }}" alt="Weather Icon" class="w-12 h-12">
+            <div class="text-sm text-gray-700 dark:text-gray-200">
+                <div class="font-semibold text-lg">
+                    {{ __('weather.temp') }}: {{ $weather['temp'] }}°C
+                </div>
+                <div class="text-xs mt-1">
+                    {{ __('weather.temp_min_max') }}:
+                    {{ $weather['temp_min'] }}°C / {{ $weather['temp_max'] }}°C
+                </div>
+                <div class="text-xs mt-1">
+                    {{ __('weather.humidity') }}: {{ $weather['humidity'] }}%
+                </div>
+                <div class="text-xs mt-1">
+                    {{ __('weather.wind') }}: {{ $weather['wind'] }} m/s
+                </div>
+                <div class="text-xs mt-1">
+                    {{ __('weather.pressure') }}: {{ $weather['pressure'] }} hPa
+                </div>
+                <div class="text-xs mt-1">
+                    {{ __('weather.city') }}: {{ $weather['city'] }},
+                    {{ __('weather.country') }}: {{ $weather['country'] }}
+                </div>
+            </div>
+        </div>
+    @endif
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
         <div class="flex justify-between h-16">
+
             <div class="flex">
                 <!-- Navigation Links -->
+
                 <div class="shrink-0 flex ">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('messages.home') }}
@@ -203,8 +233,10 @@
                         <x-dropdown-link :href="route('profile.edit')">
                             {{ __('messages.profile') }}
                         </x-dropdown-link>
+
                         <x-dropdown-link :href="route('about')">
                             {{ __('messages.about') }}
+
                         </x-dropdown-link>
 
                         <!-- Authentication -->

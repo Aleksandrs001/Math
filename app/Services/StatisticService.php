@@ -5,7 +5,6 @@ namespace App\Services;
 use App\Http\Controllers\Auth\H;
 use App\Http\Controllers\UserController;
 use App\Models\UserAnswerStatisticModel;
-use Illuminate\Support\Facades\Log;
 
 class StatisticService
 {

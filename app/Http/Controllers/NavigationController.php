@@ -56,4 +56,34 @@ class NavigationController extends Controller
     {
         return preg_match('/(android|iphone|ipad|ipod|blackberry|windows phone)/i', $_SERVER['HTTP_USER_AGENT']);
     }
+
+    public static  function weather() {
+        $weather = (new \App\Services\WeatherService)->getWeather();
+//        if ($weather['cod'] !== 200) {
+//            return [
+//                'icon' => '',
+//                'temp' => '',
+//                'temp_min' => '',
+//                'temp_max' => '',
+//                'humidity' => '',
+//                'pressure' => '',
+//                'wind' => '',
+//                'description' => '',
+//                'city' => '',
+//                'country' => '',
+//            ];
+//        }
+        return [
+            'icon' => 'https://openweathermap.org/img/wn/' . $weather['weather'][0]['icon'] . '@2x.png',
+            'temp' => $weather['main']['temp'],
+            'temp_min' => $weather['main']['temp_min'],
+            'temp_max' => $weather['main']['temp_max'],
+            'humidity' => $weather['main']['humidity'],
+            'pressure' => $weather['main']['pressure'],
+            'wind' => $weather['wind']['speed'],
+            'description' => $weather['weather'][0]['description'],
+            'city' => $weather['name'],
+            'country' => $weather['sys']['country'],
+        ];
+    }
 }

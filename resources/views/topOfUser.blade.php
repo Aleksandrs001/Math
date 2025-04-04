@@ -41,40 +41,6 @@
                     </thead>
                     <tbody>
 
-
-                    @if (isset($icon)) {
-                    <img src="{{$icon}}" alt="Italian Trulli">
-                    @endif
-                    <br>
-                    temp:
-                    {{round($temp, 1)}} celsius
-                    <br>
-                    temp min:
-                    {{round($temp_min,1)}} celsius
-                    <br>
-                    temp max:
-
-                    {{round($temp_max,1)}} celsius
-                    <br>
-                    humidity:
-
-                    {{$humidity}}%
-                    <br>
-                    pressure:
-
-                    {{$pressure}} hPa
-                    <br>
-                    description:
-                    {{$description}}
-                    <br>
-                   country:  {{$country}} code
-                    <br>
-                    city: {{$city}}
-                    <br>
-
-
-
-
                     @foreach($res as $key => $resultOfTop)
                         <tr style="@if(isset($resultOfTop['thisUser'])) background-color: blue; color: white; @endif">
                             <td style="border: 1px solid black; text-align: center;"><img src="{{asset($resultOfTop['user_avatar'])}}" alt="avatar" style="width: 25px; height: 25px; border-radius: 50%;"></td>

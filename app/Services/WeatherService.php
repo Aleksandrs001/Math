@@ -16,7 +16,8 @@ class WeatherService
         $nowTime = time();
         Log::debug($nowTime);
         $weatherData = json_decode(file_get_contents($filePath), true);
-        if ($nowTime < $weatherData['dt'] + 3600) {
+        Log::debug($weatherData);
+        if (!isset($weatherData) && $nowTime < $weatherData['dt'] + 3600) {
             return $weatherData;
         } else {
             file_put_contents($filePath, json_encode([]));
