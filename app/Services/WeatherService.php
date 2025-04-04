@@ -10,27 +10,32 @@ class WeatherService
     public function getWeather()
     {
         $filePath = storage_path('app/weather.json');
+        $logPath = storage_path('logs/weather_attempts.log'); // Путь для логирования
+
         if (!file_exists($filePath)) {
             file_put_contents($filePath, json_encode([]));
         }
         $nowTime = time();
-        Log::debug($nowTime);
         $weatherData = json_decode(file_get_contents($filePath), true);
-        Log::debug($weatherData);
-        if (!isset($weatherData) && $nowTime < $weatherData['dt'] + 3600) {
+
+        if (!empty($weatherData) && $nowTime < $weatherData['dt'] + 100) {
             return $weatherData;
-        } else {
-            file_put_contents($filePath, json_encode([]));
-            Log::debug('Weather data is outdated, fetching new data');
-        }
-        if (!$weatherData) {
+        }else {
+            $attempts = file_exists($logPath) ? count(file($logPath)) + 1 : 1;  // Читаем количество строк в логе для подсчета попыток
+
+            file_put_contents($logPath, "Attempt #{$attempts} at " . date('Y-m-d H:i:s') . "\n", FILE_APPEND);
+
             $weatherData = $this->fetchWeatherFromApi();
+
             if ($weatherData) {
+                $weatherData['dt'] = $nowTime; // Добавляем время последнего обновления
                 file_put_contents($filePath, json_encode($weatherData));
             }
+
+            return $weatherData;
         }
-        return $weatherData;
     }
+
 
     private function fetchWeatherFromApi()
     {
