@@ -25,6 +25,11 @@ class WeatherService
 
             file_put_contents($logPath, "Attempt #{$attempts} at " . date('Y-m-d H:i:s') . "\n", FILE_APPEND);
 
+            if (file_exists($logPath) && time() - filemtime($logPath) > 7 * 24 * 60 * 60) {
+                unlink($logPath);
+            }
+
+
             $weatherData = $this->fetchWeatherFromApi();
 
             if ($weatherData) {
