@@ -59,20 +59,20 @@ class NavigationController extends Controller
 
     public static  function weather() {
         $weather = (new \App\Services\WeatherService)->getWeather();
-//        if ($weather['cod'] !== 200) {
-//            return [
-//                'icon' => '',
-//                'temp' => '',
-//                'temp_min' => '',
-//                'temp_max' => '',
-//                'humidity' => '',
-//                'pressure' => '',
-//                'wind' => '',
-//                'description' => '',
-//                'city' => '',
-//                'country' => '',
-//            ];
-//        }
+        if ($weather['cod'] !== 200) {
+            return [
+                'icon' => '',
+                'temp' => '',
+                'temp_min' => '',
+                'temp_max' => '',
+                'humidity' => '',
+                'pressure' => '',
+                'wind' => '',
+                'description' => '',
+                'city' => '',
+                'country' => '',
+            ];
+        }
         return [
             'icon' => 'https://openweathermap.org/img/wn/' . $weather['weather'][0]['icon'] . '@2x.png',
             'temp' => $weather['main']['temp'],

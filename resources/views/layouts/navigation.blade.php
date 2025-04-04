@@ -1,33 +1,50 @@
 <nav x-data="{ open: false }" class="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
     <!-- Primary Navigation Menu -->
-    @if($weather = \App\Http\Controllers\NavigationController::weather())
-        <div class="max-w-xs mx-4 my-4 p-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-md flex items-center space-x-4">
-            <img src="{{ $weather['icon'] }}" alt="Weather Icon" class="w-12 h-12">
-            <div class="text-sm text-gray-700 dark:text-gray-200">
-                <div class="font-semibold text-lg">
-                    {{ __('weather.temp') }}: {{ $weather['temp'] }}°C
-                </div>
-                <div class="text-xs mt-1">
-                    {{ __('weather.temp_min_max') }}:
-                    {{ $weather['temp_min'] }}°C / {{ $weather['temp_max'] }}°C
-                </div>
-                <div class="text-xs mt-1">
-                    {{ __('weather.humidity') }}: {{ $weather['humidity'] }}%
-                </div>
-                <div class="text-xs mt-1">
-                    {{ __('weather.wind') }}: {{ $weather['wind'] }} m/s
-                </div>
-                <div class="text-xs mt-1">
-                    {{ __('weather.pressure') }}: {{ $weather['pressure'] }} hPa
-                </div>
-                <div class="text-xs mt-1">
-                    {{ __('weather.city') }}: {{ $weather['city'] }},
-                    {{ __('weather.country') }}: {{ $weather['country'] }}
+{{--    @if($weather = \App\Http\Controllers\NavigationController::weather())--}}
+{{--        <div--}}
+{{--            class="max-w-xs mx-4 my-4 p-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-md flex items-center space-x-4">--}}
+{{--            <img src="{{ $weather['icon'] }}" alt="Weather Icon" class="w-12 h-12">--}}
+{{--            <div class="text-sm text-gray-700 dark:text-gray-200">--}}
+{{--                <div class="font-semibold text-lg">--}}
+{{--                    {{ __('weather.temp') }}: {{ $weather['temp'] }}°C--}}
+{{--                </div>--}}
+{{--                <div class="text-xs mt-1">--}}
+{{--                    {{ __('weather.temp_min_max') }}:--}}
+{{--                    {{ $weather['temp_min'] }}°C / {{ $weather['temp_max'] }}°C--}}
+{{--                </div>--}}
+{{--                <div class="text-xs mt-1">--}}
+{{--                    {{ __('weather.humidity') }}: {{ $weather['humidity'] }}%--}}
+{{--                </div>--}}
+{{--                <div class="text-xs mt-1">--}}
+{{--                    {{ __('weather.wind') }}: {{ $weather['wind'] }} m/s--}}
+{{--                </div>--}}
+{{--                <div class="text-xs mt-1">--}}
+{{--                    {{ __('weather.pressure') }}: {{ $weather['pressure'] }} hPa--}}
+{{--                </div>--}}
+{{--                <div class="text-xs mt-1">--}}
+{{--                    {{ __('weather.city') }}: {{ $weather['city'] }},--}}
+{{--                    {{ __('weather.country') }}: {{ $weather['country'] }}--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    @endif--}}
+
+
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        @if($weather = \App\Http\Controllers\NavigationController::weather())
+            <div class="mx-auto my-4 p-4 flex items-center justify-center space-x-4">
+                <img src="{{ $weather['icon'] }}" alt="Weather Icon" class="w-12 h-12">
+                <div class="text-sm text-gray-700 dark:text-gray-200 flex items-center space-x-4">
+                    <div class="text-xs">{{ __('weather.temp') }}: {{ $weather['temp'] }}°C</div>
+                    <div class="text-xs">{{ __('weather.temp_min_max') }}: {{ $weather['temp_min'] }}°C / {{ $weather['temp_max'] }}°C</div>
+                    <div class="text-xs">{{ __('weather.humidity') }}: {{ $weather['humidity'] }}%</div>
+                    <div class="text-xs">{{ __('weather.wind') }}: {{ $weather['wind'] }} m/s</div>
+                    <div class="text-xs">{{ __('weather.pressure') }}: {{ $weather['pressure'] }} hPa</div>
+                    <div class="text-xs">{{ __('weather.city') }}: {{ $weather['city'] }}, {{ __('weather.country') }}: {{ $weather['country'] }}</div>
                 </div>
             </div>
-        </div>
-    @endif
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        @endif
 
         <div class="flex justify-between h-16">
 
@@ -41,16 +58,20 @@
                 </div>
                 {{--                if user have mobile phone use this if--}}
                 @if(\App\Http\Controllers\NavigationController::isMobile())
-                    <div  class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150"  onclick="toggleMenu('plus')">
-                       {{__('messages.plus')}}
+                    <div
+                        class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150"
+                        onclick="toggleMenu('plus')">
+                        {{__('messages.plus')}}
                     </div>
                     <ul id="plus-menu-items" style="display: none;">
                         @foreach(\App\Http\Controllers\NavigationController::getPlusMenu() as $key => $menu)
-                                <x-nav-link href="{{ route($key) }}">{{ __($menu) }}</x-nav-link>
+                            <x-nav-link href="{{ route($key) }}">{{ __($menu) }}</x-nav-link>
                         @endforeach
                     </ul>
 
-                    <div  class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150"  onclick="toggleMenu('minus')">
+                    <div
+                        class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150"
+                        onclick="toggleMenu('minus')">
                         {{__('messages.minus')}}
                     </div>
                     <ul id="minus-menu-items" style="display: none;">
@@ -61,7 +82,9 @@
 
 
 
-                    <div  class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150"  onclick="toggleMenu('plus')">
+                    <div
+                        class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150"
+                        onclick="toggleMenu('plus')">
                         {{__('divide.divide')}}
                     </div>
                     <ul id="plus-menu-items" style="display: none;">
@@ -70,13 +93,13 @@
                         @endforeach
                     </ul>
 
-{{--                    @foreach(\App\Http\Controllers\NavigationController::getDivideMenu() as $key => $menu)--}}
-{{--                        <div class="shrink-0 flex ">--}}
-{{--                            <x-nav-link :href="route($key)" :active="request()->routeIs($key)">--}}
-{{--                                {{ __($menu) }}--}}
-{{--                            </x-nav-link>--}}
-{{--                        </div>--}}
-{{--                    @endforeach--}}
+                    {{--                    @foreach(\App\Http\Controllers\NavigationController::getDivideMenu() as $key => $menu)--}}
+                    {{--                        <div class="shrink-0 flex ">--}}
+                    {{--                            <x-nav-link :href="route($key)" :active="request()->routeIs($key)">--}}
+                    {{--                                {{ __($menu) }}--}}
+                    {{--                            </x-nav-link>--}}
+                    {{--                        </div>--}}
+                    {{--                    @endforeach--}}
 
                     @foreach(\App\Http\Controllers\NavigationController::getMultiplyMenu() as $key => $menu)
                         <div class="shrink-0 flex ">
