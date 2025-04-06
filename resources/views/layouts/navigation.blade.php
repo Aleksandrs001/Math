@@ -33,18 +33,21 @@
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         @if($weather = \App\Http\Controllers\NavigationController::weather())
-            <div class="mx-auto my-4 p-4 flex items-center justify-center space-x-4">
+            <div class="mx-auto my-4 p-4 flex items-center justify-center space-x-4 text-sm text-gray-700 dark:text-gray-200">
                 <img src="{{ $weather['icon'] }}" alt="Weather Icon" class="w-12 h-12">
-                <div class="text-sm text-gray-700 dark:text-gray-200 flex items-center space-x-4">
-                    <div class="text-xs">{{ __('weather.temp') }}: {{ $weather['temp'] }}°C</div>
-                    <div class="text-xs">{{ __('weather.temp_min_max') }}: {{ $weather['temp_min'] }}°C / {{ $weather['temp_max'] }}°C</div>
-                    <div class="text-xs">{{ __('weather.humidity') }}: {{ $weather['humidity'] }}%</div>
-                    <div class="text-xs">{{ __('weather.wind') }}: {{ $weather['wind'] }} m/s</div>
-                    <div class="text-xs">{{ __('weather.pressure') }}: {{ $weather['pressure'] }} hPa</div>
-                    <div class="text-xs">{{ __('weather.city') }}: {{ $weather['city'] }}, {{ __('weather.country') }}: {{ $weather['country'] }}</div>
+                <div class="text-xs whitespace-nowrap">
+                    {{ __('weather.temp') }}: {{ $weather['temp'] }}°C&nbsp;
+                    {{ __('weather.temp_min_max') }}: {{ $weather['temp_min'] }}°C / {{ $weather['temp_max'] }}°C&nbsp;
+                    {{ __('weather.humidity') }}: {{ $weather['humidity'] }}%&nbsp;
+                    {{ __('weather.wind') }}: {{ $weather['wind'] }} m/s&nbsp;
+                    {{ __('weather.pressure') }}: {{ $weather['pressure'] }} hPa&nbsp;
+                    {{ __('weather.city') }}: {{ $weather['city'] }}, {{ __('weather.country') }}: {{ $weather['country'] }}
                 </div>
             </div>
         @endif
+
+
+
 
         <div class="flex justify-between h-16">
 

@@ -75,9 +75,9 @@ class NavigationController extends Controller
         }
         return [
             'icon' => 'https://openweathermap.org/img/wn/' . $weather['weather'][0]['icon'] . '@2x.png',
-            'temp' => $weather['main']['temp'],
-            'temp_min' => $weather['main']['temp_min'],
-            'temp_max' => $weather['main']['temp_max'],
+            'temp' => round($weather['main']['temp'], 1),
+            'temp_min' => round($weather['main']['temp_min'], 1),
+            'temp_max' => round($weather['main']['temp_max'], 1),
             'humidity' => $weather['main']['humidity'],
             'pressure' => $weather['main']['pressure'],
             'wind' => $weather['wind']['speed'],
