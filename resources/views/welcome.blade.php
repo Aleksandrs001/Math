@@ -778,14 +778,14 @@
                 padding: 2rem
             }
         }
+
     </style>
+
 </head>
 
-
 <body class="antialiased">
-<div
+<div class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
 
-    class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
 
     @if (Route::has('login'))
         <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
@@ -823,6 +823,21 @@
     @endif
 
     <div class="max-w-7xl mx-auto p-6 lg:p-8">
+        @if($weather = \App\Http\Controllers\NavigationController::weather())
+            <div class="mx-auto my-4 p-4 flex items-center justify-center space-x-4 text-sm">
+                <img src="{{ $weather['icon'] }}" alt="Weather Icon" class="w-12 h-12">
+                <div class="text-xs whitespace-nowrap text-gray-900 dark:text-white font-bold dark:font-normal weather-text">
+                    {{ __('weather.temp') }}: {{ $weather['temp'] }}°C&nbsp;
+                    {{ __('weather.temp_min_max') }}: {{ $weather['temp_min'] }}°C / {{ $weather['temp_max'] }}°C&nbsp;
+                    {{ __('weather.humidity') }}: {{ $weather['humidity'] }}%&nbsp;
+                    {{ __('weather.wind') }}: {{ $weather['wind'] }} m/s&nbsp;
+                    {{ __('weather.pressure') }}: {{ $weather['pressure'] }} hPa&nbsp;
+                    {{ __('weather.city') }}: {{ $weather['city'] }}, {{ __('weather.country') }}: {{ $weather['country'] }}
+                </div>
+            </div>
+        @endif
+
+
         <div class="flex justify-center">
             <svg width="100" height="100" viewBox="0 0 100 100">
                 <!-- "m" -->
@@ -895,6 +910,7 @@
                                 You can support project
                             @endif
                         </h2>
+
 
                         <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
                             @if ( app()->getLocale() === 'lv' )
