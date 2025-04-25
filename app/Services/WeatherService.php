@@ -20,7 +20,7 @@ class WeatherService
 
         if (!empty($weatherData) && $nowTime < $weatherData['dt'] + 100) {
             return $weatherData;
-        }else {
+        } else {
             $attempts = file_exists($logPath) ? count(file($logPath)) + 1 : 1;  // Читаем количество строк в логе для подсчета попыток
 
             file_put_contents($logPath, "Attempt #{$attempts} at " . date('Y-m-d H:i:s') . "\n", FILE_APPEND);
@@ -34,7 +34,7 @@ class WeatherService
 
             if ($weatherData) {
                 $weatherData['dt'] = $nowTime; // Добавляем время последнего обновления
-                file_put_contents($filePath, json_encode($weatherData));
+                file_put_contents($filePath, json_encode($weatherData, JSON_PRETTY_PRINT));
             }
 
             return $weatherData;
@@ -44,21 +44,33 @@ class WeatherService
 
     private function fetchWeatherFromApi()
     {
-    $apiKey = env('WEATHER_API_KEY');
-    $city = 'Riga';
-    $url = "https://api.openweathermap.org/data/2.5/weather?q={$city}&appid={$apiKey}&units=metric";
-    $response = file_get_contents($url);
+        $apiKey = env('WEATHER_API_KEY');
+        $city = 'Riga';
+        $url = "https://api.openweathermap.org/data/2.5/weather?q={$city}&appid={$apiKey}&units=metric";
 
-    if ($response === false) {
-        Log::error('Weather API request failed');
-        return null;
-    }
-    $weatherData = json_decode($response, true);
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 10);
 
-    if ($weatherData === null) {
-        Log::error('Failed to decode weather data');
-        return null;
-    }
+        $response = curl_exec($ch);
+        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
+        if (curl_errno($ch) || $httpCode !== 200) {
+            Log::error('Weather API request failed: ' . curl_error($ch));
+            curl_close($ch);
+            return null;
+        }
+
+        curl_close($ch);
+
+        $weatherData = json_decode($response, true);
+
+        if ($weatherData === null) {
+            Log::error('Failed to decode weather data');
+            return null;
+        }
+
         return $weatherData;
     }
 

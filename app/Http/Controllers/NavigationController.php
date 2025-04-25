@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\WeatherService;
+use Illuminate\Support\Facades\Log;
+
 class NavigationController extends Controller
 {
 
@@ -58,20 +61,9 @@ class NavigationController extends Controller
     }
 
     public static  function weather() {
-        $weather = (new \App\Services\WeatherService)->getWeather();
-        if ($weather['cod'] !== 200) {
-            return [
-                'icon' => '',
-                'temp' => '',
-                'temp_min' => '',
-                'temp_max' => '',
-                'humidity' => '',
-                'pressure' => '',
-                'wind' => '',
-                'description' => '',
-                'city' => '',
-                'country' => '',
-            ];
+        $weather = (new WeatherService)->getWeather();
+        if (empty($weather['cod']) || $weather['cod'] != 200) {
+            return [];
         }
         return [
             'icon' => 'https://openweathermap.org/img/wn/' . $weather['weather'][0]['icon'] . '@2x.png',
