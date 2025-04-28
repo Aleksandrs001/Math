@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Log;
 class WeatherService
 {
 
-    public function getWeather()
+    public static function getWeather()
     {
         $filePath = storage_path('app/weather.json');
         $logPath = storage_path('logs/weather_attempts.log'); // Путь для логирования
@@ -30,7 +30,7 @@ class WeatherService
             }
 
 
-            $weatherData = $this->fetchWeatherFromApi();
+            $weatherData = WeatherService::fetchWeatherFromApi();
 
             if ($weatherData) {
                 $weatherData['dt'] = $nowTime; // Добавляем время последнего обновления
@@ -41,8 +41,7 @@ class WeatherService
         }
     }
 
-
-    private function fetchWeatherFromApi()
+    private static function fetchWeatherFromApi()
     {
         $apiKey = env('WEATHER_API_KEY');
         $city = 'Riga';

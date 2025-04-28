@@ -60,8 +60,8 @@ class NavigationController extends Controller
         return preg_match('/(android|iphone|ipad|ipod|blackberry|windows phone)/i', $_SERVER['HTTP_USER_AGENT']);
     }
 
-    public static  function weather() {
-        $weather = (new WeatherService)->getWeather();
+    public static function weather() {
+        $weather = WeatherService::getWeather();
         if (empty($weather['cod']) || $weather['cod'] != 200) {
             return [];
         }
