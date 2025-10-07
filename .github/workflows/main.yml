@@ -8,7 +8,6 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment: SSH_HOST   # <--- добавляем это!
 
     steps:
       - name: Deploy via SSH
@@ -20,8 +19,4 @@ jobs:
           script: |
             cd /home/admin/web/Math
             git pull origin master
-            composer install --no-dev --optimize-autoloader
-            php artisan migrate --force
-            php artisan cache:clear
-            php artisan config:cache
-            echo "✅ Project deployed successfully!"
+            echo "✅ Project updated on server!"
