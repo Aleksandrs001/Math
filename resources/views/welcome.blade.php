@@ -1075,7 +1075,8 @@
                 </div>
             </div>
             <div class="text-center text-sm text-gray-500 dark:text-gray-400 sm:text-center sm:ml-0">
-                © 2025 Copyright Children-math
+                © 2026 Children-Math.com — Developed by
+                <a href="https://www.alexanderbutaev.dev/" target="_blank" style="color:#1a73e8; text-decoration:none;">Alexander Butaev</a>
             </div>
             <div class="text-center text-sm text-gray-500 dark:text-gray-400 sm:text-center sm:ml-0">
                 Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
@@ -1085,10 +1086,7 @@
     </div>
 </div>
 </body>
-<footer style="text-align:center; font-size:0.8em; color:#555; margin-top:40px;">
-    © 2026 Children-Math.com — Developed by
-    <a href="https://www.alexanderbutaev.dev/" target="_blank" style="color:#1a73e8; text-decoration:none;">Alexander Butaev</a>
-</footer>
+
 </html>
 
 @include('script')
