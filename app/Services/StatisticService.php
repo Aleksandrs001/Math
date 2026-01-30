@@ -115,7 +115,7 @@ class StatisticService
         $emailParts = explode('@', $email);
 
         if (strlen($emailParts[0]) <= 4) {
-            $maskedEmail = substr_replace($emailParts[0], '**', 1, 2) . '@' . $emailParts[1];
+            $maskedEmail = substr_replace($emailParts[0], '***', 1, 2) . '@' . $emailParts[1];
         } else {
             $firstPart = substr($emailParts[0], 0, 2); // First character
             $hiddenPart = str_repeat('*', min(strlen($emailParts[0]) - 4, 3)); // Show no more than three asterisks
