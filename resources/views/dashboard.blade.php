@@ -52,7 +52,8 @@
                 </div>
 
                 <div class="text-center text-sm text-gray-500 dark:text-gray-400 sm:text-center sm:ml-0">
-                    <label>© 2025 Copyright Children-math </label>
+                    © 2026 Children-Math.com — Developed by
+                    <a href="https://www.alexanderbutaev.dev/" target="_blank" style="color:#1a73e8; text-decoration:none;">Alexander Butaev</a>
                 </div>
 
                 <div class="text-center text-sm text-gray-500 dark:text-gray-400 sm:text-right">
