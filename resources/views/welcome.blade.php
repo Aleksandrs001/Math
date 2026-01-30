@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Alexander Butaev">
     <meta name="robots" content="index, follow">
     <meta name="google-site-verification" content="googled639664c411f382b">
     <meta name="google-site-verification" content="7XW-_wB8VVlYGrG5JqWigHi0Agc3urv0pLOvxWuav1Y" />
@@ -1084,6 +1085,10 @@
     </div>
 </div>
 </body>
+<footer style="text-align:center; font-size:0.8em; color:#555; margin-top:40px;">
+    © 2026 Children-Math.com — Developed by
+    <a href="https://www.alexanderbutaev.dev/" target="_blank" style="color:#1a73e8; text-decoration:none;">Alexander Butaev</a>
+</footer>
 </html>
 
 @include('script')
