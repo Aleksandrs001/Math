@@ -126,7 +126,7 @@ class StatisticService
        return $maskedEmail;
     }
 
-    public static function getStatistic(): array
+    public static function getStatistic(): UserAnswerStatisticModel
     {
        return UserAnswerStatisticModel::getStatistic();
     }
