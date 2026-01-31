@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 
 class WrongAnswerService extends Controller
 {
-    public static function getUserWrongAnswers()
+    public static function getUserWrongAnswers(): array
     {
         $userWrongAnswers = H::user()->wrongAnswers()->get()->toArray();
         $wrongAnswers = [];

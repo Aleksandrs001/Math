@@ -9,6 +9,4 @@ return [
     'completed' => 'Kad jūs izpildīsiet visas prasības, jūs varēsiet saglabāt avataru',
     'ready' => 'Gatavs',
     'information' => 'Lai saglabātu avataru, jums jāatrisina Plus ' . Constants::PLUS_WIN . ' piemēri un Minus ' . Constants::MINUS_WIN . ' piemēri, sadaļā "Reizināt" ' . Constants::MULTIPLY_WIN . ' un "Dalīt" ' .  Constants::DIVIDE_WIN . ' kā arī sadaļā "Plus, atrast X" ' . Constants::PLUS_X_WIN . ' un "Minus, atrast X" '. Constants::MINUS_X_WIN . '.'
-
-
 ];

@@ -1,5 +1,6 @@
 <?php
 return [
+
     'temp' => 'Temperature',
     'wind' => 'Wind',
     'humidity' => 'Humidity',

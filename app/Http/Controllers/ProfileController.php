@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Auth\H;
 use App\Http\Requests\ProfileUpdateRequest;
-use App\Models\MathDivideModel;
 use App\Services\AvatarService;
 use App\Services\DivideService;
 use App\Services\MinusService;
@@ -13,7 +12,6 @@ use App\Services\PlusService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 

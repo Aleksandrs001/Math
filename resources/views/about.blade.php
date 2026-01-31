@@ -30,7 +30,7 @@
     <main>
         <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
             <div id='topOfUsers' style="background-color: ghostwhite; padding: 10px; color: black;">
-                You can buy developers tea or cup of coffee. <br>
+                You can buy the developer a tea or a cup of coffee. <br>
                 <div> Revolute Bank</div>
                 <button
                         id="copyButton1"

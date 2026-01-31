@@ -18,7 +18,7 @@ class MinusService
          return $result;
      }
 
-	public static function getWinMinus()
+	public static function getWinMinus(): array
 	{
         $result['completed'] = false;
         $minus = H::user()->mathMinus()->get();
@@ -33,7 +33,7 @@ class MinusService
         return $result;
 	}
 
-    public static function getWinMinusXFind()
+    public static function getWinMinusXFind(): array
     {
         $result['completed'] = false;
         $minus = H::user()->minusXFind()->get();

@@ -1,5 +1,6 @@
 <?php
 return [
+
     'country' => 'Valsts',
     'city' => 'Pilsēta',
     'temp' => 'Temperatūra',

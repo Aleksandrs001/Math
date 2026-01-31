@@ -1,6 +1,7 @@
 <?php
 
 return [
+
     'statistic' => 'Statistika',
     'count_played_game' => 'Spēlēto spēļu skaits:',
     'count_win_game' => 'Uzvarēto spēļu skaits:',

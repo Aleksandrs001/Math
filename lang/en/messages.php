@@ -71,5 +71,4 @@ return [
     'log_in' => 'Log In',
     'remember_me' => 'Remember me',
     'long_divide_without_reminder' => 'Деление столбиком без остатка',
-
 ];

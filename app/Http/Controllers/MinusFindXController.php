@@ -11,11 +11,11 @@ class MinusFindXController
 {
     public function minusFindX(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
-            $result = MinusFindXService::minusFindXFunction();
-            return view('minusFindX')->with(
-                [
-                'res'=> $result,
-                ]
-            );
+		$result = MinusFindXService::minusFindXFunction();
+		return view('minusFindX')->with(
+			[
+				'res'=> $result,
+			]
+		);
     }
 }

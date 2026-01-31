@@ -7,7 +7,7 @@ use App\Http\Controllers\Constants;
 
 class PlusService
 {
-    static public function plusFunction()
+    static public function plusFunction(): array
     {
         $result = MathService::countOfExample(Constants::PLUS);
         foreach ($result as $key => $value)
@@ -20,7 +20,7 @@ class PlusService
 
     }
 
-	public static function getWinPlus()
+	public static function getWinPlus(): array
 	{
         $result['completed'] = false;
         $plus = H::user()->mathPlus()->get();
@@ -35,7 +35,7 @@ class PlusService
         return $result;
 	}
 
-    public static function getWinPlusXFind()
+    public static function getWinPlusXFind(): array
     {
         $result['completed'] = false;
         $plus = H::user()->plusXFind()->get();

@@ -5,7 +5,6 @@ namespace App\Services;
 
 use App\Http\Controllers\Auth\H;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\UserController;
 use App\Models\UserParam;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;

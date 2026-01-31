@@ -6,7 +6,7 @@ use App\Http\Controllers\Constants;
 
 class PlusFindXService
 {
-    static public function plusFindXFunction()
+    static public function plusFindXFunction(): array
     {
         $result = MathService::countOfExample(Constants::PLUS);
         foreach ($result as $key => $value) {

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Services\WeatherService;
-use Illuminate\Support\Facades\Log;
 
 class NavigationController extends Controller
 {

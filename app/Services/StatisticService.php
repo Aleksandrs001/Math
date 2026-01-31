@@ -8,7 +8,7 @@ use App\Models\UserAnswerStatisticModel;
 
 class StatisticService
 {
-    public static function getTopOfUsersData()
+    public static function getTopOfUsersData(): array
     {
         $topUsers = UserAnswerStatisticModel::getAllUsersStatistic()->toArray();
         $authUser = H::user();
@@ -110,8 +110,8 @@ class StatisticService
         return $sorted;
     }
 
-        static function hideEmail($email)
-    {
+        static function hideEmail($email): string
+        {
         $emailParts = explode('@', $email);
 
         if (strlen($emailParts[0]) <= 4) {
@@ -126,7 +126,7 @@ class StatisticService
        return $maskedEmail;
     }
 
-    public static function getStatistic()
+    public static function getStatistic(): array
     {
        return UserAnswerStatisticModel::getStatistic();
     }
