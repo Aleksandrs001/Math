@@ -32,12 +32,20 @@
             <div id='topOfUsers' style="background-color: ghostwhite; padding: 10px; color: black;">
                 You can buy developers tea or cup of coffee. <br>
                 <div> Revolute Bank</div>
-                <button id="copyButton1" onclick="copyTextToClipboard('first')">Copy IBAN:</button>
-
+                <button
+                        id="copyButton1"
+                        onclick="copyTextToClipboard('first')"
+                        style="background-color: #0d6efd; color: #fff; border: none; padding: 6px 12px; border-radius: 4px;"
+                >
+                    Copy IBAN
+                </button>
                 <div id="first">
                     LT68 3250 0247 1666 9628
                 </div>
-                <button id="copyButton2" onclick="copyTextToClipboard('second')">Copy BIC:</button>
+                <button id="copyButton2" onclick="copyTextToClipboard('second')"
+                        style="background-color: #0d6efd; color: #fff; border: none; padding: 6px 12px; border-radius: 4px;"
+                >
+                    Copy BIC:</button>
 
                 <div id="second">
                     REVOLT21
