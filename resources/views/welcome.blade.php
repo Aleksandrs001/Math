@@ -8,11 +8,6 @@
     <meta name="google-site-verification" content="googled639664c411f382b">
     <meta name="google-site-verification" content="7XW-_wB8VVlYGrG5JqWigHi0Agc3urv0pLOvxWuav1Y" />
     <title>Children Math — Learning Math for Kids</title>
-    <h1>Children Math</h1>
-
-    <p>
-        Children Math is an educational platform for kids to learn math online.
-    </p>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -794,7 +789,6 @@
 <body class="antialiased">
 <div class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
 
-
     @if (Route::has('login'))
         <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
             <a href="{{ route('change.locale', ['locale' => 'en']) }}"
@@ -831,8 +825,14 @@
     @endif
 
     <div class="max-w-7xl mx-auto p-6 lg:p-8">
+        <h1>Children Math</h1>
+
+        <p>
+            Children Math is an educational platform for kids to learn math online.
+        </p>
         @if($weather = \App\Http\Controllers\NavigationController::weather())
             <div class="mx-auto my-4 p-4 flex items-center justify-center space-x-4 text-sm">
+
                 <img src="{{ $weather['icon'] }}" alt="Weather Icon" class="w-12 h-12">
                 <div class="text-xs whitespace-nowrap text-gray-900 dark:text-white font-bold dark:font-normal weather-text">
                     {{ __('weather.temp') }}: {{ $weather['temp'] }}°C&nbsp;
@@ -844,7 +844,6 @@
                 </div>
             </div>
         @endif
-
 
         <div class="flex justify-center">
             <svg width="100" height="100" viewBox="0 0 100 100">
