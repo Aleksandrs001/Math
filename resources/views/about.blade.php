@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>
-        About — Children Math</title>
+    <title> About — Children Math </title>
     <meta name="description" content="About Children Math — educational platform for learning math.">
     <meta name="robots" content="index, follow">
 
