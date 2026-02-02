@@ -7,7 +7,9 @@
 
     {{--    <title>{{ config('app.name', 'Laravel') }}</title>--}}
     <title>
-        {{ __('messages.about') }}
+        <title>About — Children Math</title>
+    <meta name="description" content="About Children Math — educational platform for learning math.">
+    <meta name="robots" content="index, follow">
     </title>
 
 
